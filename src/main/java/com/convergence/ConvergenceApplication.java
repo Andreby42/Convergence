@@ -1,15 +1,15 @@
 package com.convergence;
 
 import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication(exclude = MybatisAutoConfiguration.class)
-// @EnableCaching//开启缓存
+@SpringBootApplication
+// @EnableCaching//开启缓存	
 @EnableTransactionManagement
+@EnableAutoConfiguration
 @MapperScan("com.convergence.dao")
 public class ConvergenceApplication {
 
