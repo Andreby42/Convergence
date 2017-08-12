@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.convergence.dao.AtomDao" >
   <resultMap id="BaseResultMap" type="com.convergence.domain.AtomDTO" >
-    <id column="atom_id" property="atomId" jdbcType="INTEGER" />
+    <id column="atom_id" property="atomId" jdbcType="VARCHAR" />
     <result column="citizen_id" property="citizenId" jdbcType="VARCHAR" />
     <result column="real_name" property="realName" jdbcType="VARCHAR" />
     <result column="copt_level" property="coptLevel" jdbcType="VARCHAR" />
@@ -71,15 +71,15 @@
     ip, msn, pay_password, home_phone, depart, aliww, icq, yahoo, site, lastip, remark, 
     data_from, province
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from atom
-    where atom_id = #{atomId,jdbcType=INTEGER}
+    where atom_id = #{atomId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from atom
-    where atom_id = #{atomId,jdbcType=INTEGER}
+    where atom_id = #{atomId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.convergence.domain.AtomDTO" >
     insert into atom (atom_id, citizen_id, real_name, 
@@ -102,7 +102,7 @@
       icq, yahoo, site, lastip, 
       remark, data_from, province
       )
-    values (#{atomId,jdbcType=INTEGER}, #{citizenId,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+    values (#{atomId,jdbcType=VARCHAR}, #{citizenId,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
       #{coptLevel,jdbcType=VARCHAR}, #{coptAddress,jdbcType=VARCHAR}, #{coptContactInfo,jdbcType=VARCHAR}, 
       #{coptZip,jdbcType=VARCHAR}, #{coptName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{birthDay,jdbcType=VARCHAR}, #{birthMonth,jdbcType=VARCHAR}, #{birthYear,jdbcType=VARCHAR}, 
@@ -306,7 +306,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="atomId != null" >
-        #{atomId,jdbcType=INTEGER},
+        #{atomId,jdbcType=VARCHAR},
       </if>
       <if test="citizenId != null" >
         #{citizenId,jdbcType=VARCHAR},
@@ -662,7 +662,7 @@
         province = #{province,jdbcType=VARCHAR},
       </if>
     </set>
-    where atom_id = #{atomId,jdbcType=INTEGER}
+    where atom_id = #{atomId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.convergence.domain.AtomDTO" >
     update atom
@@ -724,6 +724,6 @@
       remark = #{remark,jdbcType=VARCHAR},
       data_from = #{dataFrom,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR}
-    where atom_id = #{atomId,jdbcType=INTEGER}
+    where atom_id = #{atomId,jdbcType=VARCHAR}
   </update>
 </mapper>
