@@ -3,8 +3,11 @@ package com.convergence.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+
 public class AtomDTO implements Serializable {
-    private String atomId;
+	@Id
+    private Integer atomId;
 
     private String citizenId;
 
@@ -124,29 +127,15 @@ public class AtomDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public AtomDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public Integer getAtomId() {
+        return atomId;
+    }
 
+    public void setAtomId(Integer atomId) {
+        this.atomId = atomId;
+    }
 
-    public AtomDTO(String atomId) {
-		super();
-		this.atomId = atomId;
-	}
-
-
-	public String getAtomId() {
-		return atomId;
-	}
-
-
-	public void setAtomId(String atomId) {
-		this.atomId = atomId;
-	}
-
-
-	public String getCitizenId() {
+    public String getCitizenId() {
         return citizenId;
     }
 

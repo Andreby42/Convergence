@@ -31,7 +31,6 @@ public class AtomEventHandler implements WorkHandler<AtomEvent> {
 		String id= nextId+nextId1;
 		logger.info(Thread.currentThread().getName() + Thread.currentThread().getId() + "本次执行插入开始 id为{}",
 				id);
-		event.getAtomModel().getAtomDTO().setAtomId(id);
 		event.getAtomModel().getAtomService().insertSelective(event.getAtomModel().getAtomDTO());
 	}
 

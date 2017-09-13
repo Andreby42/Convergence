@@ -22,7 +22,7 @@ public class TestDisruptor {
 	@Resource
 	private AtomHelper atomHelper;
 
-	// @PostConstruct
+	@PostConstruct
 	public void testDis() {
 		
 		for (int i = 0; i < 100000; i++) {

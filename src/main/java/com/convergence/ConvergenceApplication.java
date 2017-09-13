@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 // @EnableCaching//开启缓存	
 @EnableTransactionManagement
-@EnableAutoConfiguration
 @MapperScan("com.convergence.dao")
 public class ConvergenceApplication {
 
