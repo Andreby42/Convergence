@@ -1,12 +1,9 @@
 package com.convergence.disruptor;
 
-import java.util.UUID;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.convergence.support.util.IdUtil;
 import com.convergence.support.util.SnowFlake;
 import com.convergence.support.util.UuidUtil;
 import com.lmax.disruptor.WorkHandler;
