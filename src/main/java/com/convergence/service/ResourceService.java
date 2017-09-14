@@ -18,4 +18,15 @@ public interface ResourceService {
 	int updateByPrimaryKey(ResourceDTO record);
 
 	List<ResourceDTO> selectResourcesByRoleId(String userId);
+
+	List<ResourceDTO> findAll();
+
+	/**
+	 * 获取角色的权限树
+	 * 
+	 * @param roleId
+	 * @return
+	 */
+	List<com.convergence.domain.vo.ZtreeView> tree(int roleId);
+
 }

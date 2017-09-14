@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.convergence.dao.ResourceDao;
 import com.convergence.domain.ResourceDTO;
+import com.convergence.domain.vo.ZtreeView;
 import com.convergence.service.ResourceService;
 
 @Service
@@ -54,6 +55,18 @@ public class ResourceServiceImpl implements ResourceService {
 
 	@Override
 	public List<ResourceDTO> selectResourcesByRoleId(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ResourceDTO> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ZtreeView> tree(int roleId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

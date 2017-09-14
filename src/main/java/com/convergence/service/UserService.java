@@ -14,4 +14,13 @@ public interface UserService {
 	int updateByPrimaryKeySelective(UserDTO record);
 
 	int updateByPrimaryKey(UserDTO record);
+
+	UserDTO findByUserName(String username);
+
+	/**
+	 * 给用户分配角色
+	 * @param id 用户ID
+	 * @param roleIds 角色Ids
+	 */
+	void grant(Integer id, String[] roleIds);
 }

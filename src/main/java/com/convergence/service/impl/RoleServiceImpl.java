@@ -58,4 +58,10 @@ public class RoleServiceImpl implements RoleService {
 		return roleDao.selectRolesByUserId(userId);
 	}
 
+	@Override
+	public void grant(Integer id, String[] resourceIds) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

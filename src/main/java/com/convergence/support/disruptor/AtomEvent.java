@@ -1,4 +1,4 @@
-package com.convergence.disruptor;
+package com.convergence.support.disruptor;
 
 import java.io.Serializable;
 

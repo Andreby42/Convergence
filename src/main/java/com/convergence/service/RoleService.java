@@ -18,4 +18,12 @@ public interface RoleService {
 	int updateByPrimaryKey(RoleDTO record);
 
 	List<RoleDTO> selectRolesByUserId(String userId);
+
+	/**
+	 * 给角色分配资源
+	 * @param id 角色ID
+	 * @param resourceIds 资源ids
+	 */
+	void grant(Integer id, String[] resourceIds);
+
 }

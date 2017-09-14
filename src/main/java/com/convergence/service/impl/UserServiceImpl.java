@@ -50,4 +50,16 @@ public class UserServiceImpl implements UserService {
 		return userDao.updateByPrimaryKey(record);
 	}
 
+	@Override
+	public UserDTO findByUserName(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void grant(Integer id, String[] roleIds) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

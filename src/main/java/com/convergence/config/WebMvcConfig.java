@@ -14,6 +14,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
 
@@ -23,7 +24,6 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 import com.convergence.web.interceptor.CommonIntercepter;
 
 @Configuration
-@EnableWebMvc
 @ComponentScan("com.convergence.web")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Autowired
@@ -86,11 +86,12 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	/**
 	 * 添加拦截器
 	 */
-	/*
-	 * @Override public void addInterceptors(InterceptorRegistry registry) {
-	 * registry.addInterceptor(commonIntercepter).addPathPatterns("/**");
-	 * super.addInterceptors(registry); }
-	 */
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(commonIntercepter).addPathPatterns("/**");
+		super.addInterceptors(registry);
+	}
 
 	@Bean
 	public FilterRegistrationBean registFilter() {
