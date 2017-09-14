@@ -5,7 +5,7 @@
 	<properties>
 		<property name="LOG_HOME">./logs</property>
 		<!-- 日志备份目录 -->
-		<property name="tyLog">tyLog</property>
+		<property name="cLog">cLog</property>
 		<property name="DeBug">DeBug</property>
 	</properties>
 	<appenders>
@@ -19,7 +19,7 @@
 		</Console>
 		<!-- infoAppender输出日志到文件 ${sys:catalina.home} 为 web工程根目录 -->
 		<RollingRandomAccessFile name="file"
-			fileName="${LOG_HOME}/${tyLog}.log" filePattern="/${LOG_HOME}/${tyLog}.%d{yyyy-MM-dd-HH}.zip">
+			fileName="${LOG_HOME}/${cLog}.log" filePattern="/${LOG_HOME}/${cLog}.%d{yyyy-MM-dd-HH}.zip">
 			<PatternLayout
 				pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %class{36} %L %M -- %msg%xEx%n" />
 			<!-- pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] 
@@ -33,8 +33,8 @@
 		</RollingRandomAccessFile>
 		<!-- error日志格式 -->
 		<RollingRandomAccessFile name="error"
-			immediateFlush="false" fileName="${LOG_HOME}/${tyLog}-error.log"
-			filePattern="${LOG_HOME}/${tyLog}-error.log.%d{yyyy-MM-dd}.error.zip">
+			immediateFlush="false" fileName="${LOG_HOME}/${cLog}-error.log"
+			filePattern="${LOG_HOME}/${cLog}-error.log.%d{yyyy-MM-dd}.error.zip">
 			<PatternLayout
 				pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %class{36} %L %M -- %msg%xEx%n" />
 			<Policies>
