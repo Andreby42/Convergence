@@ -11,8 +11,8 @@ import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 import com.lmax.disruptor.util.DaemonThreadFactory;
 
-@Component
-@Scope("singleton")
+//@Component
+//@Scope("singleton")
 public class AtomHelper {
 
 	/**

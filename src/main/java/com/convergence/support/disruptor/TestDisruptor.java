@@ -20,8 +20,8 @@ public class TestDisruptor {
 	private static final Logger logger = LoggerFactory.getLogger(TestDisruptor.class);
 	@Resource
 	private AtomService atomService;
-	@Resource
-	private AtomHelper atomHelper;
+	// @Resource
+	// private AtomHelper atomHelper;
 
 	// @PostConstruct
 	public void testDis() {
@@ -31,7 +31,7 @@ public class TestDisruptor {
 			AtomModel atomModel = new AtomModel();
 			atomModel.setAtomDTO(at);
 			atomModel.setAtomService(atomService);
-			atomHelper.onData(atomModel);
+			// atomHelper.onData(atomModel);
 		}
 	}
 }
