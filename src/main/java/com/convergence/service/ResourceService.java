@@ -5,28 +5,28 @@ import java.util.List;
 import com.convergence.domain.ResourceDTO;
 
 public interface ResourceService {
-	int deleteByPrimaryKey(Integer reourceId);
+    int deleteByPrimaryKey(Integer reourceId);
 
-	int insert(ResourceDTO record);
+    int insert(ResourceDTO record);
 
-	int insertSelective(ResourceDTO record);
+    int insertSelective(ResourceDTO record);
 
-	ResourceDTO selectByPrimaryKey(Integer reourceId);
+    ResourceDTO selectByPrimaryKey(Integer reourceId);
 
-	int updateByPrimaryKeySelective(ResourceDTO record);
+    int updateByPrimaryKeySelective(ResourceDTO record);
 
-	int updateByPrimaryKey(ResourceDTO record);
+    int updateByPrimaryKey(ResourceDTO record);
 
-	List<ResourceDTO> selectResourcesByRoleId(String userId);
+    List<ResourceDTO> selectResourcesByRoleId(String userId);
 
-	List<ResourceDTO> findAll();
+    List<ResourceDTO> findAll();
 
-	/**
-	 * 获取角色的权限树
-	 * 
-	 * @param roleId
-	 * @return
-	 */
-	List<com.convergence.domain.vo.ZtreeView> tree(int roleId);
+    /**
+     * 获取角色的权限树
+     * 
+     * @param roleId
+     * @return
+     */
+    List<com.convergence.domain.vo.ZtreeView> tree(int roleId);
 
 }

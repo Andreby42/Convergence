@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 600)
 public class ConvergenceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConvergenceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConvergenceApplication.class, args);
+    }
 }

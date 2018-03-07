@@ -1,7 +1,9 @@
 package com.convergence.support.shiro.freemarker;
 
 /**
- * <p>Equivalent to {@link org.apache.shiro.web.tags.HasPermissionTag}</p>
+ * <p>
+ * Equivalent to {@link org.apache.shiro.web.tags.HasPermissionTag}
+ * </p>
  *
  * @since 0.1
  */

@@ -3,191 +3,187 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title> - Bootstrap3 表单构建器</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+<title>- Bootstrap3 表单构建器</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
-    <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+<link rel="shortcut icon" href="favicon.ico">
+<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+<link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+<link href="css/style.css?v=4.1.0" rel="stylesheet">
 
-    <style>
-        .droppable-active {
-            background-color: #ffe !important;
-        }
+<style>
+.droppable-active {
+	background-color: #ffe !important;
+}
 
-        .tools a {
-            cursor: pointer;
-            font-size: 80%;
-        }
+.tools a {
+	cursor: pointer;
+	font-size: 80%;
+}
 
-        .form-body .col-md-6,
-        .form-body .col-md-12 {
-            min-height: 400px;
-        }
+.form-body .col-md-6, .form-body .col-md-12 {
+	min-height: 400px;
+}
 
-        .draggable {
-            cursor: move;
-        }
-    </style>
+.draggable {
+	cursor: move;
+}
+</style>
 
 </head>
 
 <body class="gray-bg">
-    <div class="wrapper wrapper-content">
+	<div class="wrapper wrapper-content">
 
-        <div class="row">
-            <div class="col-sm-5">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>元素</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_editors.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="form_editors.html#">选项1</a>
-                                </li>
-                                <li><a href="form_editors.html#">选项2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-                        <div class="alert alert-info">
-                            拖拽左侧的表单元素到右侧区域，即可生成相应的HTML代码，表单代码，轻松搞定！
-                        </div>
-                        <form role="form" class="form-horizontal m-t">
-                            <div class="form-group draggable">
-                                <label class="col-sm-3 control-label">文本框：</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="" class="form-control" placeholder="请输入文本">
-                                    <span class="help-block m-b-none">说明文字</span>
-                                </div>
-                            </div>
-                            <div class="form-group draggable">
-                                <label class="col-sm-3 control-label">密码框：</label>
-                                <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="password" placeholder="请输入密码">
-                                </div>
-                            </div>
-                            <div class="form-group draggable">
-                                <label class="col-sm-3 control-label">下拉列表：</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control" name="">
-                                        <option>选项 1</option>
-                                        <option>选项 2</option>
-                                        <option>选项 3</option>
-                                        <option>选项 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group draggable">
-                                <label class="col-sm-3 control-label">文件域：</label>
-                                <div class="col-sm-9">
-                                    <input type="file" name="" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group draggable">
-                                <label class="col-sm-3 control-label">纯文本：</label>
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>元素</h5>
+						<div class="ibox-tools">
+							<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+							</a> <a class="dropdown-toggle" data-toggle="dropdown"
+								href="form_editors.html#"> <i class="fa fa-wrench"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-user">
+								<li><a href="form_editors.html#">选项1</a></li>
+								<li><a href="form_editors.html#">选项2</a></li>
+							</ul>
+							<a class="close-link"> <i class="fa fa-times"></i>
+							</a>
+						</div>
+					</div>
+					<div class="ibox-content">
+						<div class="alert alert-info">
+							拖拽左侧的表单元素到右侧区域，即可生成相应的HTML代码，表单代码，轻松搞定！</div>
+						<form role="form" class="form-horizontal m-t">
+							<div class="form-group draggable">
+								<label class="col-sm-3 control-label">文本框：</label>
+								<div class="col-sm-9">
+									<input type="text" name="" class="form-control"
+										placeholder="请输入文本"> <span class="help-block m-b-none">说明文字</span>
+								</div>
+							</div>
+							<div class="form-group draggable">
+								<label class="col-sm-3 control-label">密码框：</label>
+								<div class="col-sm-9">
+									<input type="password" class="form-control" name="password"
+										placeholder="请输入密码">
+								</div>
+							</div>
+							<div class="form-group draggable">
+								<label class="col-sm-3 control-label">下拉列表：</label>
+								<div class="col-sm-9">
+									<select class="form-control" name="">
+										<option>选项 1</option>
+										<option>选项 2</option>
+										<option>选项 3</option>
+										<option>选项 4</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group draggable">
+								<label class="col-sm-3 control-label">文件域：</label>
+								<div class="col-sm-9">
+									<input type="file" name="" class="form-control">
+								</div>
+							</div>
+							<div class="form-group draggable">
+								<label class="col-sm-3 control-label">纯文本：</label>
 
-                                <div class="col-sm-9">
-                                    <p class="form-control-static">这里是纯文字信息</p>
-                                </div>
-                            </div>
-                            <div class="form-group draggable">
-                                <label class="col-sm-3 control-label">单选框：
-                                </label>
+								<div class="col-sm-9">
+									<p class="form-control-static">这里是纯文字信息</p>
+								</div>
+							</div>
+							<div class="form-group draggable">
+								<label class="col-sm-3 control-label">单选框： </label>
 
-                                <div class="col-sm-9">
-                                    <label class="radio-inline">
-                                        <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios">选项1</label>
-                                    <label class="radio-inline">
-                                        <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">选项2</label>
+								<div class="col-sm-9">
+									<label class="radio-inline"> <input type="radio"
+										checked="" value="option1" id="optionsRadios1"
+										name="optionsRadios">选项1
+									</label> <label class="radio-inline"> <input type="radio"
+										value="option2" id="optionsRadios2" name="optionsRadios">选项2
+									</label>
 
-                                </div>
-                            </div>
-                            <div class="form-group draggable">
-                                <label class="col-sm-3 control-label">复选框：</label>
+								</div>
+							</div>
+							<div class="form-group draggable">
+								<label class="col-sm-3 control-label">复选框：</label>
 
-                                <div class="col-sm-9">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" value="option1" id="inlineCheckbox1">选项1</label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" value="option2" id="inlineCheckbox2">选项2</label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" value="option3" id="inlineCheckbox3">选项3</label>
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group draggable">
-                                <div class="col-sm-12 col-sm-offset-3">
-                                    <button class="btn btn-primary" type="submit">保存内容</button>
-                                    <button class="btn btn-white" type="submit">取消</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-7">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>拖拽左侧表单元素到此区域</h5>
-                        <div class="ibox-tools">
-                            请选择显示的列数：
-                            <select id="n-columns">
-                                <option value="1">显示1列</option>
-                                <option value="2">显示2列</option>
-                            </select>
-                        </div>
-                    </div>
+								<div class="col-sm-9">
+									<label class="checkbox-inline"> <input type="checkbox"
+										value="option1" id="inlineCheckbox1">选项1
+									</label> <label class="checkbox-inline"> <input type="checkbox"
+										value="option2" id="inlineCheckbox2">选项2
+									</label> <label class="checkbox-inline"> <input type="checkbox"
+										value="option3" id="inlineCheckbox3">选项3
+									</label>
+								</div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							<div class="form-group draggable">
+								<div class="col-sm-12 col-sm-offset-3">
+									<button class="btn btn-primary" type="submit">保存内容</button>
+									<button class="btn btn-white" type="submit">取消</button>
+								</div>
+							</div>
+						</form>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-7">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>拖拽左侧表单元素到此区域</h5>
+						<div class="ibox-tools">
+							请选择显示的列数： <select id="n-columns">
+								<option value="1">显示1列</option>
+								<option value="2">显示2列</option>
+							</select>
+						</div>
+					</div>
 
-                    <div class="ibox-content">
-                        <div class="row form-body form-horizontal m-t">
-                            <div class="col-md-12 droppable sortable">
-                            </div>
-                            <div class="col-md-6 droppable sortable" style="display: none;">
-                            </div>
-                            <div class="col-md-6 droppable sortable" style="display: none;">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-warning" data-clipboard-text="testing" id="copy-to-clipboard">复制代码</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+					<div class="ibox-content">
+						<div class="row form-body form-horizontal m-t">
+							<div class="col-md-12 droppable sortable"></div>
+							<div class="col-md-6 droppable sortable" style="display: none;">
+							</div>
+							<div class="col-md-6 droppable sortable" style="display: none;">
+							</div>
+						</div>
+						<button type="submit" class="btn btn-warning"
+							data-clipboard-text="testing" id="copy-to-clipboard">复制代码</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    </div>
+	</div>
 
-    <!-- 全局js -->
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+	<!-- 全局js -->
+	<script src="js/jquery.min.js?v=2.1.4"></script>
+	<script src="js/bootstrap.min.js?v=3.3.6"></script>
 
-    <!-- 自定义js -->
-    <script src="js/content.js?v=1.0.0"></script>
+	<!-- 自定义js -->
+	<script src="js/content.js?v=1.0.0"></script>
 
-    <!-- jQuery UI -->
-    <script src="js/jquery-ui-1.10.4.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="js/jquery-ui-1.10.4.min.js"></script>
 
-    <!-- From Builder -->
-    <script src="js/plugins/beautifyhtml/beautifyhtml.js"></script>
+	<!-- From Builder -->
+	<script src="js/plugins/beautifyhtml/beautifyhtml.js"></script>
 
-    <script>
+	<script>
         $(document).ready(function () {
             setup_draggable();
 
@@ -332,8 +328,8 @@
         });
     </script>
 
-    
-    
+
+
 </body>
 
 </html>

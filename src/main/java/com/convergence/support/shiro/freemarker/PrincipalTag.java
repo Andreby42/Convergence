@@ -13,18 +13,22 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * <p>Tag used to print out the String value of a user's default principal,
- * or a specific principal as specified by the tag's attributes.</p>
+ * <p>
+ * Tag used to print out the String value of a user's default principal, or a specific principal as
+ * specified by the tag's attributes.
+ * </p>
  *
- * <p> If no attributes are specified, the tag prints out the <tt>toString()</tt>
- * value of the user's default principal.  If the <tt>type</tt> attribute
- * is specified, the tag looks for a principal with the given type.  If the
- * <tt>property</tt> attribute is specified, the tag prints the string value of
- * the specified property of the principal.  If no principal is found or the user
- * is not authenticated, the tag displays nothing unless a <tt>defaultValue</tt>
- * is specified.</p>
+ * <p>
+ * If no attributes are specified, the tag prints out the <tt>toString()</tt> value of the user's
+ * default principal. If the <tt>type</tt> attribute is specified, the tag looks for a principal
+ * with the given type. If the <tt>property</tt> attribute is specified, the tag prints the string
+ * value of the specified property of the principal. If no principal is found or the user is not
+ * authenticated, the tag displays nothing unless a <tt>defaultValue</tt> is specified.
+ * </p>
  *
- * <p>Equivalent to {@link org.apache.shiro.web.tags.PrincipalTag}</p>
+ * <p>
+ * Equivalent to {@link org.apache.shiro.web.tags.PrincipalTag}
+ * </p>
  *
  * @since 0.2
  */
@@ -39,7 +43,8 @@ public class PrincipalTag extends SecureTag {
     }
 
     /**
-     * The property name to retrieve of the principal, or null if the <tt>toString()</tt> value should be used.
+     * The property name to retrieve of the principal, or null if the <tt>toString()</tt> value
+     * should be used.
      */
     String getProperty(Map params) {
         return getParam(params, "property");
@@ -47,7 +52,8 @@ public class PrincipalTag extends SecureTag {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void render(Environment env, Map params, TemplateDirectiveBody body) throws IOException, TemplateException {
+    public void render(Environment env, Map params, TemplateDirectiveBody body)
+            throws IOException, TemplateException {
         String result = null;
 
         if (getSubject() != null) {
@@ -77,7 +83,8 @@ public class PrincipalTag extends SecureTag {
             try {
                 env.getOut().write(result);
             } catch (IOException ex) {
-                throw new TemplateException("Error writing ["+result+"] to Freemarker.", ex, env);
+                throw new TemplateException("Error writing [" + result + "] to Freemarker.", ex,
+                        env);
             }
         }
     }
@@ -88,10 +95,10 @@ public class PrincipalTag extends SecureTag {
 
         try {
             Class cls = Class.forName(type);
-            
+
             return getSubject().getPrincipals().oneByType(cls);
         } catch (ClassNotFoundException ex) {
-            log.error("Unable to find class for name ["+type+"]", ex);
+            log.error("Unable to find class for name [" + type + "]", ex);
         }
 
         return null;
@@ -104,16 +111,19 @@ public class PrincipalTag extends SecureTag {
             // Loop through the properties to get the string value of the specified property
             for (PropertyDescriptor propertyDescriptor : beanInfo.getPropertyDescriptors()) {
                 if (propertyDescriptor.getName().equals(property)) {
-                    Object value = propertyDescriptor.getReadMethod().invoke(principal, (Object[]) null);
+                    Object value =
+                            propertyDescriptor.getReadMethod().invoke(principal, (Object[]) null);
 
                     return String.valueOf(value);
                 }
             }
 
             // property not found, throw
-            throw new TemplateModelException("Property ["+property+"] not found in principal of type ["+principal.getClass().getName()+"]");
+            throw new TemplateModelException("Property [" + property
+                    + "] not found in principal of type [" + principal.getClass().getName() + "]");
         } catch (Exception ex) {
-            throw new TemplateModelException("Error reading property ["+property+"] from principal of type ["+principal.getClass().getName()+"]", ex);
+            throw new TemplateModelException("Error reading property [" + property
+                    + "] from principal of type [" + principal.getClass().getName() + "]", ex);
         }
     }
 }

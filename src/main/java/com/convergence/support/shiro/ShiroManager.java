@@ -28,7 +28,8 @@ public class ShiroManager {
     @ConditionalOnMissingBean
     @DependsOn("lifecycleBeanPostProcessor")
     public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
+        DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator =
+                new DefaultAdvisorAutoProxyCreator();
         defaultAdvisorAutoProxyCreator.setProxyTargetClass(true);
         return defaultAdvisorAutoProxyCreator;
 
@@ -36,7 +37,8 @@ public class ShiroManager {
 
     @Bean
     @ConditionalOnMissingBean
-    public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(DefaultSecurityManager securityManager) {
+    public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(
+            DefaultSecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
         aasa.setSecurityManager(securityManager);
         return new AuthorizationAttributeSourceAdvisor();

@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * <p>Equivalent to {@link org.apache.shiro.web.tags.RoleTag}</p>
+ * <p>
+ * Equivalent to {@link org.apache.shiro.web.tags.RoleTag}
+ * </p>
  */
 public abstract class RoleTag extends SecureTag {
     String getName(Map params) {
@@ -15,7 +17,8 @@ public abstract class RoleTag extends SecureTag {
     }
 
     @Override
-    public void render(Environment env, Map params, TemplateDirectiveBody body) throws IOException, TemplateException {
+    public void render(Environment env, Map params, TemplateDirectiveBody body)
+            throws IOException, TemplateException {
         boolean show = showTagBody(getName(params));
         if (show) {
             renderBody(env, body);

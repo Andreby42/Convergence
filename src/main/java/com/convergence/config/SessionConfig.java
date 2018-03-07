@@ -15,13 +15,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SessionConfig {
 
-	@Bean
-	public EmbeddedServletContainerCustomizer containerCustomizer() {
-		return new EmbeddedServletContainerCustomizer() {
-			@Override
-			public void customize(ConfigurableEmbeddedServletContainer container) {
-				container.setSessionTimeout(6000);
-			}
-		};
-	}
+    @Bean
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                container.setSessionTimeout(6000);
+            }
+        };
+    }
 }

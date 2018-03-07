@@ -6,7 +6,7 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 
 public class AtomDTO implements Serializable {
-	@Id
+    @Id
     private Integer atomId;
 
     private String citizenId;
@@ -611,65 +611,183 @@ public class AtomDTO implements Serializable {
             return false;
         }
         AtomDTO other = (AtomDTO) that;
-        return (this.getAtomId() == null ? other.getAtomId() == null : this.getAtomId().equals(other.getAtomId()))
-            && (this.getCitizenId() == null ? other.getCitizenId() == null : this.getCitizenId().equals(other.getCitizenId()))
-            && (this.getRealName() == null ? other.getRealName() == null : this.getRealName().equals(other.getRealName()))
-            && (this.getCoptLevel() == null ? other.getCoptLevel() == null : this.getCoptLevel().equals(other.getCoptLevel()))
-            && (this.getCoptAddress() == null ? other.getCoptAddress() == null : this.getCoptAddress().equals(other.getCoptAddress()))
-            && (this.getCoptContactInfo() == null ? other.getCoptContactInfo() == null : this.getCoptContactInfo().equals(other.getCoptContactInfo()))
-            && (this.getCoptZip() == null ? other.getCoptZip() == null : this.getCoptZip().equals(other.getCoptZip()))
-            && (this.getCoptName() == null ? other.getCoptName() == null : this.getCoptName().equals(other.getCoptName()))
-            && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
-            && (this.getBirthDay() == null ? other.getBirthDay() == null : this.getBirthDay().equals(other.getBirthDay()))
-            && (this.getBirthMonth() == null ? other.getBirthMonth() == null : this.getBirthMonth().equals(other.getBirthMonth()))
-            && (this.getBirthYear() == null ? other.getBirthYear() == null : this.getBirthYear().equals(other.getBirthYear()))
-            && (this.getBirth() == null ? other.getBirth() == null : this.getBirth().equals(other.getBirth()))
-            && (this.getEducation() == null ? other.getEducation() == null : this.getEducation().equals(other.getEducation()))
-            && (this.getWorkdate() == null ? other.getWorkdate() == null : this.getWorkdate().equals(other.getWorkdate()))
-            && (this.getAddress() == null ? other.getAddress() == null : this.getAddress().equals(other.getAddress()))
-            && (this.getZip() == null ? other.getZip() == null : this.getZip().equals(other.getZip()))
-            && (this.getTel() == null ? other.getTel() == null : this.getTel().equals(other.getTel()))
-            && (this.getFax() == null ? other.getFax() == null : this.getFax().equals(other.getFax()))
-            && (this.getEcotype() == null ? other.getEcotype() == null : this.getEcotype().equals(other.getEcotype()))
-            && (this.getTradeProperty() == null ? other.getTradeProperty() == null : this.getTradeProperty().equals(other.getTradeProperty()))
-            && (this.getTradeCode() == null ? other.getTradeCode() == null : this.getTradeCode().equals(other.getTradeCode()))
-            && (this.getQq() == null ? other.getQq() == null : this.getQq().equals(other.getQq()))
-            && (this.getSh() == null ? other.getSh() == null : this.getSh().equals(other.getSh()))
-            && (this.getHip() == null ? other.getHip() == null : this.getHip().equals(other.getHip()))
-            && (this.getAge() == null ? other.getAge() == null : this.getAge().equals(other.getAge()))
-            && (this.getBust() == null ? other.getBust() == null : this.getBust().equals(other.getBust()))
-            && (this.getWeibo() == null ? other.getWeibo() == null : this.getWeibo().equals(other.getWeibo()))
-            && (this.getHobby() == null ? other.getHobby() == null : this.getHobby().equals(other.getHobby()))
-            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
-            && (this.getAstro() == null ? other.getAstro() == null : this.getAstro().equals(other.getAstro()))
-            && (this.getWeight() == null ? other.getWeight() == null : this.getWeight().equals(other.getWeight()))
-            && (this.getHeight() == null ? other.getHeight() == null : this.getHeight().equals(other.getHeight()))
-            && (this.getWeixin() == null ? other.getWeixin() == null : this.getWeixin().equals(other.getWeixin()))
-            && (this.getSchool() == null ? other.getSchool() == null : this.getSchool().equals(other.getSchool()))
-            && (this.getNation() == null ? other.getNation() == null : this.getNation().equals(other.getNation()))
-            && (this.getTptotal() == null ? other.getTptotal() == null : this.getTptotal().equals(other.getTptotal()))
-            && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-            && (this.getWaistline() == null ? other.getWaistline() == null : this.getWaistline().equals(other.getWaistline()))
-            && (this.getSpecialty() == null ? other.getSpecialty() == null : this.getSpecialty().equals(other.getSpecialty()))
-            && (this.getBirthplace() == null ? other.getBirthplace() == null : this.getBirthplace().equals(other.getBirthplace()))
-            && (this.getQuestion() == null ? other.getQuestion() == null : this.getQuestion().equals(other.getQuestion()))
-            && (this.getAnswer() == null ? other.getAnswer() == null : this.getAnswer().equals(other.getAnswer()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getContactInfo() == null ? other.getContactInfo() == null : this.getContactInfo().equals(other.getContactInfo()))
-            && (this.getIp() == null ? other.getIp() == null : this.getIp().equals(other.getIp()))
-            && (this.getMsn() == null ? other.getMsn() == null : this.getMsn().equals(other.getMsn()))
-            && (this.getPayPassword() == null ? other.getPayPassword() == null : this.getPayPassword().equals(other.getPayPassword()))
-            && (this.getHomePhone() == null ? other.getHomePhone() == null : this.getHomePhone().equals(other.getHomePhone()))
-            && (this.getDepart() == null ? other.getDepart() == null : this.getDepart().equals(other.getDepart()))
-            && (this.getAliww() == null ? other.getAliww() == null : this.getAliww().equals(other.getAliww()))
-            && (this.getIcq() == null ? other.getIcq() == null : this.getIcq().equals(other.getIcq()))
-            && (this.getYahoo() == null ? other.getYahoo() == null : this.getYahoo().equals(other.getYahoo()))
-            && (this.getSite() == null ? other.getSite() == null : this.getSite().equals(other.getSite()))
-            && (this.getLastip() == null ? other.getLastip() == null : this.getLastip().equals(other.getLastip()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getDataFrom() == null ? other.getDataFrom() == null : this.getDataFrom().equals(other.getDataFrom()))
-            && (this.getProvince() == null ? other.getProvince() == null : this.getProvince().equals(other.getProvince()));
+        return (this.getAtomId() == null
+                ? other.getAtomId() == null
+                : this.getAtomId().equals(other.getAtomId()))
+                && (this.getCitizenId() == null
+                        ? other.getCitizenId() == null
+                        : this.getCitizenId().equals(other.getCitizenId()))
+                && (this.getRealName() == null
+                        ? other.getRealName() == null
+                        : this.getRealName().equals(other.getRealName()))
+                && (this.getCoptLevel() == null
+                        ? other.getCoptLevel() == null
+                        : this.getCoptLevel().equals(other.getCoptLevel()))
+                && (this.getCoptAddress() == null
+                        ? other.getCoptAddress() == null
+                        : this.getCoptAddress().equals(other.getCoptAddress()))
+                && (this.getCoptContactInfo() == null
+                        ? other.getCoptContactInfo() == null
+                        : this.getCoptContactInfo().equals(other.getCoptContactInfo()))
+                && (this.getCoptZip() == null
+                        ? other.getCoptZip() == null
+                        : this.getCoptZip().equals(other.getCoptZip()))
+                && (this.getCoptName() == null
+                        ? other.getCoptName() == null
+                        : this.getCoptName().equals(other.getCoptName()))
+                && (this.getSex() == null
+                        ? other.getSex() == null
+                        : this.getSex().equals(other.getSex()))
+                && (this.getBirthDay() == null
+                        ? other.getBirthDay() == null
+                        : this.getBirthDay().equals(other.getBirthDay()))
+                && (this.getBirthMonth() == null
+                        ? other.getBirthMonth() == null
+                        : this.getBirthMonth().equals(other.getBirthMonth()))
+                && (this.getBirthYear() == null
+                        ? other.getBirthYear() == null
+                        : this.getBirthYear().equals(other.getBirthYear()))
+                && (this.getBirth() == null
+                        ? other.getBirth() == null
+                        : this.getBirth().equals(other.getBirth()))
+                && (this.getEducation() == null
+                        ? other.getEducation() == null
+                        : this.getEducation().equals(other.getEducation()))
+                && (this.getWorkdate() == null
+                        ? other.getWorkdate() == null
+                        : this.getWorkdate().equals(other.getWorkdate()))
+                && (this.getAddress() == null
+                        ? other.getAddress() == null
+                        : this.getAddress().equals(other.getAddress()))
+                && (this.getZip() == null
+                        ? other.getZip() == null
+                        : this.getZip().equals(other.getZip()))
+                && (this.getTel() == null
+                        ? other.getTel() == null
+                        : this.getTel().equals(other.getTel()))
+                && (this.getFax() == null
+                        ? other.getFax() == null
+                        : this.getFax().equals(other.getFax()))
+                && (this.getEcotype() == null
+                        ? other.getEcotype() == null
+                        : this.getEcotype().equals(other.getEcotype()))
+                && (this.getTradeProperty() == null
+                        ? other.getTradeProperty() == null
+                        : this.getTradeProperty().equals(other.getTradeProperty()))
+                && (this.getTradeCode() == null
+                        ? other.getTradeCode() == null
+                        : this.getTradeCode().equals(other.getTradeCode()))
+                && (this.getQq() == null
+                        ? other.getQq() == null
+                        : this.getQq().equals(other.getQq()))
+                && (this.getSh() == null
+                        ? other.getSh() == null
+                        : this.getSh().equals(other.getSh()))
+                && (this.getHip() == null
+                        ? other.getHip() == null
+                        : this.getHip().equals(other.getHip()))
+                && (this.getAge() == null
+                        ? other.getAge() == null
+                        : this.getAge().equals(other.getAge()))
+                && (this.getBust() == null
+                        ? other.getBust() == null
+                        : this.getBust().equals(other.getBust()))
+                && (this.getWeibo() == null
+                        ? other.getWeibo() == null
+                        : this.getWeibo().equals(other.getWeibo()))
+                && (this.getHobby() == null
+                        ? other.getHobby() == null
+                        : this.getHobby().equals(other.getHobby()))
+                && (this.getEmail() == null
+                        ? other.getEmail() == null
+                        : this.getEmail().equals(other.getEmail()))
+                && (this.getAstro() == null
+                        ? other.getAstro() == null
+                        : this.getAstro().equals(other.getAstro()))
+                && (this.getWeight() == null
+                        ? other.getWeight() == null
+                        : this.getWeight().equals(other.getWeight()))
+                && (this.getHeight() == null
+                        ? other.getHeight() == null
+                        : this.getHeight().equals(other.getHeight()))
+                && (this.getWeixin() == null
+                        ? other.getWeixin() == null
+                        : this.getWeixin().equals(other.getWeixin()))
+                && (this.getSchool() == null
+                        ? other.getSchool() == null
+                        : this.getSchool().equals(other.getSchool()))
+                && (this.getNation() == null
+                        ? other.getNation() == null
+                        : this.getNation().equals(other.getNation()))
+                && (this.getTptotal() == null
+                        ? other.getTptotal() == null
+                        : this.getTptotal().equals(other.getTptotal()))
+                && (this.getUserName() == null
+                        ? other.getUserName() == null
+                        : this.getUserName().equals(other.getUserName()))
+                && (this.getPassword() == null
+                        ? other.getPassword() == null
+                        : this.getPassword().equals(other.getPassword()))
+                && (this.getWaistline() == null
+                        ? other.getWaistline() == null
+                        : this.getWaistline().equals(other.getWaistline()))
+                && (this.getSpecialty() == null
+                        ? other.getSpecialty() == null
+                        : this.getSpecialty().equals(other.getSpecialty()))
+                && (this.getBirthplace() == null
+                        ? other.getBirthplace() == null
+                        : this.getBirthplace().equals(other.getBirthplace()))
+                && (this.getQuestion() == null
+                        ? other.getQuestion() == null
+                        : this.getQuestion().equals(other.getQuestion()))
+                && (this.getAnswer() == null
+                        ? other.getAnswer() == null
+                        : this.getAnswer().equals(other.getAnswer()))
+                && (this.getStatus() == null
+                        ? other.getStatus() == null
+                        : this.getStatus().equals(other.getStatus()))
+                && (this.getContactInfo() == null
+                        ? other.getContactInfo() == null
+                        : this.getContactInfo().equals(other.getContactInfo()))
+                && (this.getIp() == null
+                        ? other.getIp() == null
+                        : this.getIp().equals(other.getIp()))
+                && (this.getMsn() == null
+                        ? other.getMsn() == null
+                        : this.getMsn().equals(other.getMsn()))
+                && (this.getPayPassword() == null
+                        ? other.getPayPassword() == null
+                        : this.getPayPassword().equals(other.getPayPassword()))
+                && (this.getHomePhone() == null
+                        ? other.getHomePhone() == null
+                        : this.getHomePhone().equals(other.getHomePhone()))
+                && (this.getDepart() == null
+                        ? other.getDepart() == null
+                        : this.getDepart().equals(other.getDepart()))
+                && (this.getAliww() == null
+                        ? other.getAliww() == null
+                        : this.getAliww().equals(other.getAliww()))
+                && (this.getIcq() == null
+                        ? other.getIcq() == null
+                        : this.getIcq().equals(other.getIcq()))
+                && (this.getYahoo() == null
+                        ? other.getYahoo() == null
+                        : this.getYahoo().equals(other.getYahoo()))
+                && (this.getSite() == null
+                        ? other.getSite() == null
+                        : this.getSite().equals(other.getSite()))
+                && (this.getLastip() == null
+                        ? other.getLastip() == null
+                        : this.getLastip().equals(other.getLastip()))
+                && (this.getRemark() == null
+                        ? other.getRemark() == null
+                        : this.getRemark().equals(other.getRemark()))
+                && (this.getDataFrom() == null
+                        ? other.getDataFrom() == null
+                        : this.getDataFrom().equals(other.getDataFrom()))
+                && (this.getProvince() == null
+                        ? other.getProvince() == null
+                        : this.getProvince().equals(other.getProvince()));
     }
 
     @Override
@@ -681,7 +799,8 @@ public class AtomDTO implements Serializable {
         result = prime * result + ((getRealName() == null) ? 0 : getRealName().hashCode());
         result = prime * result + ((getCoptLevel() == null) ? 0 : getCoptLevel().hashCode());
         result = prime * result + ((getCoptAddress() == null) ? 0 : getCoptAddress().hashCode());
-        result = prime * result + ((getCoptContactInfo() == null) ? 0 : getCoptContactInfo().hashCode());
+        result = prime * result
+                + ((getCoptContactInfo() == null) ? 0 : getCoptContactInfo().hashCode());
         result = prime * result + ((getCoptZip() == null) ? 0 : getCoptZip().hashCode());
         result = prime * result + ((getCoptName() == null) ? 0 : getCoptName().hashCode());
         result = prime * result + ((getSex() == null) ? 0 : getSex().hashCode());
@@ -696,7 +815,8 @@ public class AtomDTO implements Serializable {
         result = prime * result + ((getTel() == null) ? 0 : getTel().hashCode());
         result = prime * result + ((getFax() == null) ? 0 : getFax().hashCode());
         result = prime * result + ((getEcotype() == null) ? 0 : getEcotype().hashCode());
-        result = prime * result + ((getTradeProperty() == null) ? 0 : getTradeProperty().hashCode());
+        result = prime * result
+                + ((getTradeProperty() == null) ? 0 : getTradeProperty().hashCode());
         result = prime * result + ((getTradeCode() == null) ? 0 : getTradeCode().hashCode());
         result = prime * result + ((getQq() == null) ? 0 : getQq().hashCode());
         result = prime * result + ((getSh() == null) ? 0 : getSh().hashCode());

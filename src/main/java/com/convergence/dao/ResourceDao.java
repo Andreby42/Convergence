@@ -8,17 +8,17 @@ import com.convergence.domain.ResourceDTO;
 
 @Mapper
 public interface ResourceDao {
-	int deleteByPrimaryKey(Integer reourceId);
+    int deleteByPrimaryKey(Integer reourceId);
 
-	int insert(ResourceDTO record);
+    int insert(ResourceDTO record);
 
-	int insertSelective(ResourceDTO record);
+    int insertSelective(ResourceDTO record);
 
-	ResourceDTO selectByPrimaryKey(Integer reourceId);
+    ResourceDTO selectByPrimaryKey(Integer reourceId);
 
-	int updateByPrimaryKeySelective(ResourceDTO record);
+    int updateByPrimaryKeySelective(ResourceDTO record);
 
-	int updateByPrimaryKey(ResourceDTO record);
+    int updateByPrimaryKey(ResourceDTO record);
 
-	List<ResourceDTO> selectResourcesByRoleId(String userId);
+    List<ResourceDTO> selectResourcesByRoleId(String userId);
 }

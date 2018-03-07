@@ -11,16 +11,16 @@ import com.convergence.web.filter.DemoFilter;
 
 @WebListener
 public class DemoListener implements ServletContextListener {
-	private static final Logger log = LoggerFactory.getLogger(DemoFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(DemoFilter.class);
 
-	@Override
-	public void contextInitialized(ServletContextEvent sce) {
-		log.info("convergence start .....");
-	}
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        log.info("convergence start .....");
+    }
 
-	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
-		log.info("convergence stop .....");
-	}
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        log.info("convergence stop .....");
+    }
 
 }

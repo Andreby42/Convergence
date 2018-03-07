@@ -1,729 +1,749 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.convergence.dao.AtomDao" >
-  <resultMap id="BaseResultMap" type="com.convergence.domain.AtomDTO" >
-    <id column="atom_id" property="atomId" jdbcType="INTEGER" />
-    <result column="citizen_id" property="citizenId" jdbcType="VARCHAR" />
-    <result column="real_name" property="realName" jdbcType="VARCHAR" />
-    <result column="copt_level" property="coptLevel" jdbcType="VARCHAR" />
-    <result column="copt_address" property="coptAddress" jdbcType="VARCHAR" />
-    <result column="copt_contact_info" property="coptContactInfo" jdbcType="VARCHAR" />
-    <result column="copt_zip" property="coptZip" jdbcType="VARCHAR" />
-    <result column="copt_name" property="coptName" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="birth_day" property="birthDay" jdbcType="VARCHAR" />
-    <result column="birth_month" property="birthMonth" jdbcType="VARCHAR" />
-    <result column="birth_year" property="birthYear" jdbcType="VARCHAR" />
-    <result column="birth" property="birth" jdbcType="TIMESTAMP" />
-    <result column="education" property="education" jdbcType="VARCHAR" />
-    <result column="workdate" property="workdate" jdbcType="TIMESTAMP" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="zip" property="zip" jdbcType="VARCHAR" />
-    <result column="tel" property="tel" jdbcType="VARCHAR" />
-    <result column="fax" property="fax" jdbcType="VARCHAR" />
-    <result column="ecotype" property="ecotype" jdbcType="VARCHAR" />
-    <result column="trade_property" property="tradeProperty" jdbcType="VARCHAR" />
-    <result column="trade_code" property="tradeCode" jdbcType="VARCHAR" />
-    <result column="qq" property="qq" jdbcType="VARCHAR" />
-    <result column="sh" property="sh" jdbcType="VARCHAR" />
-    <result column="hip" property="hip" jdbcType="VARCHAR" />
-    <result column="age" property="age" jdbcType="VARCHAR" />
-    <result column="bust" property="bust" jdbcType="VARCHAR" />
-    <result column="weibo" property="weibo" jdbcType="VARCHAR" />
-    <result column="hobby" property="hobby" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="astro" property="astro" jdbcType="VARCHAR" />
-    <result column="weight" property="weight" jdbcType="VARCHAR" />
-    <result column="height" property="height" jdbcType="VARCHAR" />
-    <result column="weixin" property="weixin" jdbcType="VARCHAR" />
-    <result column="school" property="school" jdbcType="VARCHAR" />
-    <result column="nation" property="nation" jdbcType="VARCHAR" />
-    <result column="tptotal" property="tptotal" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="waistline" property="waistline" jdbcType="VARCHAR" />
-    <result column="specialty" property="specialty" jdbcType="VARCHAR" />
-    <result column="birthplace" property="birthplace" jdbcType="VARCHAR" />
-    <result column="question" property="question" jdbcType="VARCHAR" />
-    <result column="answer" property="answer" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="CHAR" />
-    <result column="contact_info" property="contactInfo" jdbcType="VARCHAR" />
-    <result column="ip" property="ip" jdbcType="VARCHAR" />
-    <result column="msn" property="msn" jdbcType="VARCHAR" />
-    <result column="pay_password" property="payPassword" jdbcType="VARCHAR" />
-    <result column="home_phone" property="homePhone" jdbcType="VARCHAR" />
-    <result column="depart" property="depart" jdbcType="VARCHAR" />
-    <result column="aliww" property="aliww" jdbcType="VARCHAR" />
-    <result column="icq" property="icq" jdbcType="VARCHAR" />
-    <result column="yahoo" property="yahoo" jdbcType="VARCHAR" />
-    <result column="site" property="site" jdbcType="VARCHAR" />
-    <result column="lastip" property="lastip" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="data_from" property="dataFrom" jdbcType="VARCHAR" />
-    <result column="province" property="province" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    atom_id, citizen_id, real_name, copt_level, copt_address, copt_contact_info, copt_zip, 
-    copt_name, sex, birth_day, birth_month, birth_year, birth, education, workdate, address, 
-    zip, tel, fax, ecotype, trade_property, trade_code, qq, sh, hip, age, bust, weibo, 
-    hobby, email, astro, weight, height, weixin, school, nation, tptotal, user_name, 
-    password, waistline, specialty, birthplace, question, answer, status, contact_info, 
-    ip, msn, pay_password, home_phone, depart, aliww, icq, yahoo, site, lastip, remark, 
-    data_from, province
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from atom
-    where atom_id = #{atomId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from atom
-    where atom_id = #{atomId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.convergence.domain.AtomDTO" >
-    insert into atom (atom_id, citizen_id, real_name, 
-      copt_level, copt_address, copt_contact_info, 
-      copt_zip, copt_name, sex, 
-      birth_day, birth_month, birth_year, 
-      birth, education, workdate, 
-      address, zip, tel, 
-      fax, ecotype, trade_property, 
-      trade_code, qq, sh, 
-      hip, age, bust, weibo, 
-      hobby, email, astro, 
-      weight, height, weixin, 
-      school, nation, tptotal, 
-      user_name, password, waistline, 
-      specialty, birthplace, question, 
-      answer, status, contact_info, 
-      ip, msn, pay_password, 
-      home_phone, depart, aliww, 
-      icq, yahoo, site, lastip, 
-      remark, data_from, province
-      )
-    values (#{atomId,jdbcType=INTEGER}, #{citizenId,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
-      #{coptLevel,jdbcType=VARCHAR}, #{coptAddress,jdbcType=VARCHAR}, #{coptContactInfo,jdbcType=VARCHAR}, 
-      #{coptZip,jdbcType=VARCHAR}, #{coptName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{birthDay,jdbcType=VARCHAR}, #{birthMonth,jdbcType=VARCHAR}, #{birthYear,jdbcType=VARCHAR}, 
-      #{birth,jdbcType=TIMESTAMP}, #{education,jdbcType=VARCHAR}, #{workdate,jdbcType=TIMESTAMP}, 
-      #{address,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
-      #{fax,jdbcType=VARCHAR}, #{ecotype,jdbcType=VARCHAR}, #{tradeProperty,jdbcType=VARCHAR}, 
-      #{tradeCode,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{sh,jdbcType=VARCHAR}, 
-      #{hip,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{bust,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR}, 
-      #{hobby,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{astro,jdbcType=VARCHAR}, 
-      #{weight,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, 
-      #{school,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{tptotal,jdbcType=INTEGER}, 
-      #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{waistline,jdbcType=VARCHAR}, 
-      #{specialty,jdbcType=VARCHAR}, #{birthplace,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, 
-      #{answer,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{contactInfo,jdbcType=VARCHAR}, 
-      #{ip,jdbcType=VARCHAR}, #{msn,jdbcType=VARCHAR}, #{payPassword,jdbcType=VARCHAR}, 
-      #{homePhone,jdbcType=VARCHAR}, #{depart,jdbcType=VARCHAR}, #{aliww,jdbcType=VARCHAR}, 
-      #{icq,jdbcType=VARCHAR}, #{yahoo,jdbcType=VARCHAR}, #{site,jdbcType=VARCHAR}, #{lastip,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{dataFrom,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.convergence.domain.AtomDTO" >
-    insert into atom
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="atomId != null" >
-        atom_id,
-      </if>
-      <if test="citizenId != null" >
-        citizen_id,
-      </if>
-      <if test="realName != null" >
-        real_name,
-      </if>
-      <if test="coptLevel != null" >
-        copt_level,
-      </if>
-      <if test="coptAddress != null" >
-        copt_address,
-      </if>
-      <if test="coptContactInfo != null" >
-        copt_contact_info,
-      </if>
-      <if test="coptZip != null" >
-        copt_zip,
-      </if>
-      <if test="coptName != null" >
-        copt_name,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="birthDay != null" >
-        birth_day,
-      </if>
-      <if test="birthMonth != null" >
-        birth_month,
-      </if>
-      <if test="birthYear != null" >
-        birth_year,
-      </if>
-      <if test="birth != null" >
-        birth,
-      </if>
-      <if test="education != null" >
-        education,
-      </if>
-      <if test="workdate != null" >
-        workdate,
-      </if>
-      <if test="address != null" >
-        address,
-      </if>
-      <if test="zip != null" >
-        zip,
-      </if>
-      <if test="tel != null" >
-        tel,
-      </if>
-      <if test="fax != null" >
-        fax,
-      </if>
-      <if test="ecotype != null" >
-        ecotype,
-      </if>
-      <if test="tradeProperty != null" >
-        trade_property,
-      </if>
-      <if test="tradeCode != null" >
-        trade_code,
-      </if>
-      <if test="qq != null" >
-        qq,
-      </if>
-      <if test="sh != null" >
-        sh,
-      </if>
-      <if test="hip != null" >
-        hip,
-      </if>
-      <if test="age != null" >
-        age,
-      </if>
-      <if test="bust != null" >
-        bust,
-      </if>
-      <if test="weibo != null" >
-        weibo,
-      </if>
-      <if test="hobby != null" >
-        hobby,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="astro != null" >
-        astro,
-      </if>
-      <if test="weight != null" >
-        weight,
-      </if>
-      <if test="height != null" >
-        height,
-      </if>
-      <if test="weixin != null" >
-        weixin,
-      </if>
-      <if test="school != null" >
-        school,
-      </if>
-      <if test="nation != null" >
-        nation,
-      </if>
-      <if test="tptotal != null" >
-        tptotal,
-      </if>
-      <if test="userName != null" >
-        user_name,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="waistline != null" >
-        waistline,
-      </if>
-      <if test="specialty != null" >
-        specialty,
-      </if>
-      <if test="birthplace != null" >
-        birthplace,
-      </if>
-      <if test="question != null" >
-        question,
-      </if>
-      <if test="answer != null" >
-        answer,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="contactInfo != null" >
-        contact_info,
-      </if>
-      <if test="ip != null" >
-        ip,
-      </if>
-      <if test="msn != null" >
-        msn,
-      </if>
-      <if test="payPassword != null" >
-        pay_password,
-      </if>
-      <if test="homePhone != null" >
-        home_phone,
-      </if>
-      <if test="depart != null" >
-        depart,
-      </if>
-      <if test="aliww != null" >
-        aliww,
-      </if>
-      <if test="icq != null" >
-        icq,
-      </if>
-      <if test="yahoo != null" >
-        yahoo,
-      </if>
-      <if test="site != null" >
-        site,
-      </if>
-      <if test="lastip != null" >
-        lastip,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-      <if test="dataFrom != null" >
-        data_from,
-      </if>
-      <if test="province != null" >
-        province,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="atomId != null" >
-        #{atomId,jdbcType=INTEGER},
-      </if>
-      <if test="citizenId != null" >
-        #{citizenId,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null" >
-        #{realName,jdbcType=VARCHAR},
-      </if>
-      <if test="coptLevel != null" >
-        #{coptLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="coptAddress != null" >
-        #{coptAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="coptContactInfo != null" >
-        #{coptContactInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="coptZip != null" >
-        #{coptZip,jdbcType=VARCHAR},
-      </if>
-      <if test="coptName != null" >
-        #{coptName,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="birthDay != null" >
-        #{birthDay,jdbcType=VARCHAR},
-      </if>
-      <if test="birthMonth != null" >
-        #{birthMonth,jdbcType=VARCHAR},
-      </if>
-      <if test="birthYear != null" >
-        #{birthYear,jdbcType=VARCHAR},
-      </if>
-      <if test="birth != null" >
-        #{birth,jdbcType=TIMESTAMP},
-      </if>
-      <if test="education != null" >
-        #{education,jdbcType=VARCHAR},
-      </if>
-      <if test="workdate != null" >
-        #{workdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="zip != null" >
-        #{zip,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null" >
-        #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="fax != null" >
-        #{fax,jdbcType=VARCHAR},
-      </if>
-      <if test="ecotype != null" >
-        #{ecotype,jdbcType=VARCHAR},
-      </if>
-      <if test="tradeProperty != null" >
-        #{tradeProperty,jdbcType=VARCHAR},
-      </if>
-      <if test="tradeCode != null" >
-        #{tradeCode,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null" >
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="sh != null" >
-        #{sh,jdbcType=VARCHAR},
-      </if>
-      <if test="hip != null" >
-        #{hip,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null" >
-        #{age,jdbcType=VARCHAR},
-      </if>
-      <if test="bust != null" >
-        #{bust,jdbcType=VARCHAR},
-      </if>
-      <if test="weibo != null" >
-        #{weibo,jdbcType=VARCHAR},
-      </if>
-      <if test="hobby != null" >
-        #{hobby,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="astro != null" >
-        #{astro,jdbcType=VARCHAR},
-      </if>
-      <if test="weight != null" >
-        #{weight,jdbcType=VARCHAR},
-      </if>
-      <if test="height != null" >
-        #{height,jdbcType=VARCHAR},
-      </if>
-      <if test="weixin != null" >
-        #{weixin,jdbcType=VARCHAR},
-      </if>
-      <if test="school != null" >
-        #{school,jdbcType=VARCHAR},
-      </if>
-      <if test="nation != null" >
-        #{nation,jdbcType=VARCHAR},
-      </if>
-      <if test="tptotal != null" >
-        #{tptotal,jdbcType=INTEGER},
-      </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="waistline != null" >
-        #{waistline,jdbcType=VARCHAR},
-      </if>
-      <if test="specialty != null" >
-        #{specialty,jdbcType=VARCHAR},
-      </if>
-      <if test="birthplace != null" >
-        #{birthplace,jdbcType=VARCHAR},
-      </if>
-      <if test="question != null" >
-        #{question,jdbcType=VARCHAR},
-      </if>
-      <if test="answer != null" >
-        #{answer,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=CHAR},
-      </if>
-      <if test="contactInfo != null" >
-        #{contactInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="ip != null" >
-        #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="msn != null" >
-        #{msn,jdbcType=VARCHAR},
-      </if>
-      <if test="payPassword != null" >
-        #{payPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="homePhone != null" >
-        #{homePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="depart != null" >
-        #{depart,jdbcType=VARCHAR},
-      </if>
-      <if test="aliww != null" >
-        #{aliww,jdbcType=VARCHAR},
-      </if>
-      <if test="icq != null" >
-        #{icq,jdbcType=VARCHAR},
-      </if>
-      <if test="yahoo != null" >
-        #{yahoo,jdbcType=VARCHAR},
-      </if>
-      <if test="site != null" >
-        #{site,jdbcType=VARCHAR},
-      </if>
-      <if test="lastip != null" >
-        #{lastip,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="dataFrom != null" >
-        #{dataFrom,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null" >
-        #{province,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.convergence.domain.AtomDTO" >
-    update atom
-    <set >
-      <if test="citizenId != null" >
-        citizen_id = #{citizenId,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null" >
-        real_name = #{realName,jdbcType=VARCHAR},
-      </if>
-      <if test="coptLevel != null" >
-        copt_level = #{coptLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="coptAddress != null" >
-        copt_address = #{coptAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="coptContactInfo != null" >
-        copt_contact_info = #{coptContactInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="coptZip != null" >
-        copt_zip = #{coptZip,jdbcType=VARCHAR},
-      </if>
-      <if test="coptName != null" >
-        copt_name = #{coptName,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="birthDay != null" >
-        birth_day = #{birthDay,jdbcType=VARCHAR},
-      </if>
-      <if test="birthMonth != null" >
-        birth_month = #{birthMonth,jdbcType=VARCHAR},
-      </if>
-      <if test="birthYear != null" >
-        birth_year = #{birthYear,jdbcType=VARCHAR},
-      </if>
-      <if test="birth != null" >
-        birth = #{birth,jdbcType=TIMESTAMP},
-      </if>
-      <if test="education != null" >
-        education = #{education,jdbcType=VARCHAR},
-      </if>
-      <if test="workdate != null" >
-        workdate = #{workdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="zip != null" >
-        zip = #{zip,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null" >
-        tel = #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="fax != null" >
-        fax = #{fax,jdbcType=VARCHAR},
-      </if>
-      <if test="ecotype != null" >
-        ecotype = #{ecotype,jdbcType=VARCHAR},
-      </if>
-      <if test="tradeProperty != null" >
-        trade_property = #{tradeProperty,jdbcType=VARCHAR},
-      </if>
-      <if test="tradeCode != null" >
-        trade_code = #{tradeCode,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null" >
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="sh != null" >
-        sh = #{sh,jdbcType=VARCHAR},
-      </if>
-      <if test="hip != null" >
-        hip = #{hip,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null" >
-        age = #{age,jdbcType=VARCHAR},
-      </if>
-      <if test="bust != null" >
-        bust = #{bust,jdbcType=VARCHAR},
-      </if>
-      <if test="weibo != null" >
-        weibo = #{weibo,jdbcType=VARCHAR},
-      </if>
-      <if test="hobby != null" >
-        hobby = #{hobby,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="astro != null" >
-        astro = #{astro,jdbcType=VARCHAR},
-      </if>
-      <if test="weight != null" >
-        weight = #{weight,jdbcType=VARCHAR},
-      </if>
-      <if test="height != null" >
-        height = #{height,jdbcType=VARCHAR},
-      </if>
-      <if test="weixin != null" >
-        weixin = #{weixin,jdbcType=VARCHAR},
-      </if>
-      <if test="school != null" >
-        school = #{school,jdbcType=VARCHAR},
-      </if>
-      <if test="nation != null" >
-        nation = #{nation,jdbcType=VARCHAR},
-      </if>
-      <if test="tptotal != null" >
-        tptotal = #{tptotal,jdbcType=INTEGER},
-      </if>
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="waistline != null" >
-        waistline = #{waistline,jdbcType=VARCHAR},
-      </if>
-      <if test="specialty != null" >
-        specialty = #{specialty,jdbcType=VARCHAR},
-      </if>
-      <if test="birthplace != null" >
-        birthplace = #{birthplace,jdbcType=VARCHAR},
-      </if>
-      <if test="question != null" >
-        question = #{question,jdbcType=VARCHAR},
-      </if>
-      <if test="answer != null" >
-        answer = #{answer,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=CHAR},
-      </if>
-      <if test="contactInfo != null" >
-        contact_info = #{contactInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="ip != null" >
-        ip = #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="msn != null" >
-        msn = #{msn,jdbcType=VARCHAR},
-      </if>
-      <if test="payPassword != null" >
-        pay_password = #{payPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="homePhone != null" >
-        home_phone = #{homePhone,jdbcType=VARCHAR},
-      </if>
-      <if test="depart != null" >
-        depart = #{depart,jdbcType=VARCHAR},
-      </if>
-      <if test="aliww != null" >
-        aliww = #{aliww,jdbcType=VARCHAR},
-      </if>
-      <if test="icq != null" >
-        icq = #{icq,jdbcType=VARCHAR},
-      </if>
-      <if test="yahoo != null" >
-        yahoo = #{yahoo,jdbcType=VARCHAR},
-      </if>
-      <if test="site != null" >
-        site = #{site,jdbcType=VARCHAR},
-      </if>
-      <if test="lastip != null" >
-        lastip = #{lastip,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="dataFrom != null" >
-        data_from = #{dataFrom,jdbcType=VARCHAR},
-      </if>
-      <if test="province != null" >
-        province = #{province,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where atom_id = #{atomId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.convergence.domain.AtomDTO" >
-    update atom
-    set citizen_id = #{citizenId,jdbcType=VARCHAR},
-      real_name = #{realName,jdbcType=VARCHAR},
-      copt_level = #{coptLevel,jdbcType=VARCHAR},
-      copt_address = #{coptAddress,jdbcType=VARCHAR},
-      copt_contact_info = #{coptContactInfo,jdbcType=VARCHAR},
-      copt_zip = #{coptZip,jdbcType=VARCHAR},
-      copt_name = #{coptName,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=VARCHAR},
-      birth_day = #{birthDay,jdbcType=VARCHAR},
-      birth_month = #{birthMonth,jdbcType=VARCHAR},
-      birth_year = #{birthYear,jdbcType=VARCHAR},
-      birth = #{birth,jdbcType=TIMESTAMP},
-      education = #{education,jdbcType=VARCHAR},
-      workdate = #{workdate,jdbcType=TIMESTAMP},
-      address = #{address,jdbcType=VARCHAR},
-      zip = #{zip,jdbcType=VARCHAR},
-      tel = #{tel,jdbcType=VARCHAR},
-      fax = #{fax,jdbcType=VARCHAR},
-      ecotype = #{ecotype,jdbcType=VARCHAR},
-      trade_property = #{tradeProperty,jdbcType=VARCHAR},
-      trade_code = #{tradeCode,jdbcType=VARCHAR},
-      qq = #{qq,jdbcType=VARCHAR},
-      sh = #{sh,jdbcType=VARCHAR},
-      hip = #{hip,jdbcType=VARCHAR},
-      age = #{age,jdbcType=VARCHAR},
-      bust = #{bust,jdbcType=VARCHAR},
-      weibo = #{weibo,jdbcType=VARCHAR},
-      hobby = #{hobby,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      astro = #{astro,jdbcType=VARCHAR},
-      weight = #{weight,jdbcType=VARCHAR},
-      height = #{height,jdbcType=VARCHAR},
-      weixin = #{weixin,jdbcType=VARCHAR},
-      school = #{school,jdbcType=VARCHAR},
-      nation = #{nation,jdbcType=VARCHAR},
-      tptotal = #{tptotal,jdbcType=INTEGER},
-      user_name = #{userName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      waistline = #{waistline,jdbcType=VARCHAR},
-      specialty = #{specialty,jdbcType=VARCHAR},
-      birthplace = #{birthplace,jdbcType=VARCHAR},
-      question = #{question,jdbcType=VARCHAR},
-      answer = #{answer,jdbcType=VARCHAR},
-      status = #{status,jdbcType=CHAR},
-      contact_info = #{contactInfo,jdbcType=VARCHAR},
-      ip = #{ip,jdbcType=VARCHAR},
-      msn = #{msn,jdbcType=VARCHAR},
-      pay_password = #{payPassword,jdbcType=VARCHAR},
-      home_phone = #{homePhone,jdbcType=VARCHAR},
-      depart = #{depart,jdbcType=VARCHAR},
-      aliww = #{aliww,jdbcType=VARCHAR},
-      icq = #{icq,jdbcType=VARCHAR},
-      yahoo = #{yahoo,jdbcType=VARCHAR},
-      site = #{site,jdbcType=VARCHAR},
-      lastip = #{lastip,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR},
-      data_from = #{dataFrom,jdbcType=VARCHAR},
-      province = #{province,jdbcType=VARCHAR}
-    where atom_id = #{atomId,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.convergence.dao.AtomDao">
+	<resultMap id="BaseResultMap" type="com.convergence.domain.AtomDTO">
+		<id column="atom_id" property="atomId" jdbcType="INTEGER" />
+		<result column="citizen_id" property="citizenId" jdbcType="VARCHAR" />
+		<result column="real_name" property="realName" jdbcType="VARCHAR" />
+		<result column="copt_level" property="coptLevel" jdbcType="VARCHAR" />
+		<result column="copt_address" property="coptAddress" jdbcType="VARCHAR" />
+		<result column="copt_contact_info" property="coptContactInfo"
+			jdbcType="VARCHAR" />
+		<result column="copt_zip" property="coptZip" jdbcType="VARCHAR" />
+		<result column="copt_name" property="coptName" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="birth_day" property="birthDay" jdbcType="VARCHAR" />
+		<result column="birth_month" property="birthMonth" jdbcType="VARCHAR" />
+		<result column="birth_year" property="birthYear" jdbcType="VARCHAR" />
+		<result column="birth" property="birth" jdbcType="TIMESTAMP" />
+		<result column="education" property="education" jdbcType="VARCHAR" />
+		<result column="workdate" property="workdate" jdbcType="TIMESTAMP" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="zip" property="zip" jdbcType="VARCHAR" />
+		<result column="tel" property="tel" jdbcType="VARCHAR" />
+		<result column="fax" property="fax" jdbcType="VARCHAR" />
+		<result column="ecotype" property="ecotype" jdbcType="VARCHAR" />
+		<result column="trade_property" property="tradeProperty"
+			jdbcType="VARCHAR" />
+		<result column="trade_code" property="tradeCode" jdbcType="VARCHAR" />
+		<result column="qq" property="qq" jdbcType="VARCHAR" />
+		<result column="sh" property="sh" jdbcType="VARCHAR" />
+		<result column="hip" property="hip" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="VARCHAR" />
+		<result column="bust" property="bust" jdbcType="VARCHAR" />
+		<result column="weibo" property="weibo" jdbcType="VARCHAR" />
+		<result column="hobby" property="hobby" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="astro" property="astro" jdbcType="VARCHAR" />
+		<result column="weight" property="weight" jdbcType="VARCHAR" />
+		<result column="height" property="height" jdbcType="VARCHAR" />
+		<result column="weixin" property="weixin" jdbcType="VARCHAR" />
+		<result column="school" property="school" jdbcType="VARCHAR" />
+		<result column="nation" property="nation" jdbcType="VARCHAR" />
+		<result column="tptotal" property="tptotal" jdbcType="INTEGER" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="waistline" property="waistline" jdbcType="VARCHAR" />
+		<result column="specialty" property="specialty" jdbcType="VARCHAR" />
+		<result column="birthplace" property="birthplace" jdbcType="VARCHAR" />
+		<result column="question" property="question" jdbcType="VARCHAR" />
+		<result column="answer" property="answer" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="CHAR" />
+		<result column="contact_info" property="contactInfo" jdbcType="VARCHAR" />
+		<result column="ip" property="ip" jdbcType="VARCHAR" />
+		<result column="msn" property="msn" jdbcType="VARCHAR" />
+		<result column="pay_password" property="payPassword" jdbcType="VARCHAR" />
+		<result column="home_phone" property="homePhone" jdbcType="VARCHAR" />
+		<result column="depart" property="depart" jdbcType="VARCHAR" />
+		<result column="aliww" property="aliww" jdbcType="VARCHAR" />
+		<result column="icq" property="icq" jdbcType="VARCHAR" />
+		<result column="yahoo" property="yahoo" jdbcType="VARCHAR" />
+		<result column="site" property="site" jdbcType="VARCHAR" />
+		<result column="lastip" property="lastip" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="data_from" property="dataFrom" jdbcType="VARCHAR" />
+		<result column="province" property="province" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		atom_id, citizen_id, real_name, copt_level, copt_address, copt_contact_info,
+		copt_zip,
+		copt_name, sex, birth_day, birth_month, birth_year, birth, education, workdate,
+		address,
+		zip, tel, fax, ecotype, trade_property, trade_code, qq, sh, hip, age,
+		bust, weibo,
+		hobby, email, astro, weight, height, weixin, school, nation, tptotal,
+		user_name,
+		password, waistline, specialty, birthplace, question, answer, status,
+		contact_info,
+		ip, msn, pay_password, home_phone, depart, aliww, icq, yahoo, site,
+		lastip, remark,
+		data_from, province
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from atom
+		where atom_id = #{atomId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from atom
+		where atom_id = #{atomId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.convergence.domain.AtomDTO">
+		insert into atom (atom_id, citizen_id, real_name,
+		copt_level, copt_address, copt_contact_info,
+		copt_zip, copt_name, sex,
+		birth_day, birth_month, birth_year,
+		birth, education, workdate,
+		address, zip, tel,
+		fax, ecotype, trade_property,
+		trade_code, qq, sh,
+		hip, age, bust, weibo,
+		hobby, email, astro,
+		weight, height, weixin,
+		school, nation, tptotal,
+		user_name, password, waistline,
+		specialty, birthplace, question,
+		answer, status, contact_info,
+		ip, msn, pay_password,
+		home_phone, depart, aliww,
+		icq, yahoo, site, lastip,
+		remark, data_from, province
+		)
+		values (#{atomId,jdbcType=INTEGER}, #{citizenId,jdbcType=VARCHAR},
+		#{realName,jdbcType=VARCHAR},
+		#{coptLevel,jdbcType=VARCHAR}, #{coptAddress,jdbcType=VARCHAR}, #{coptContactInfo,jdbcType=VARCHAR},
+		#{coptZip,jdbcType=VARCHAR}, #{coptName,jdbcType=VARCHAR},
+		#{sex,jdbcType=VARCHAR},
+		#{birthDay,jdbcType=VARCHAR}, #{birthMonth,jdbcType=VARCHAR}, #{birthYear,jdbcType=VARCHAR},
+		#{birth,jdbcType=TIMESTAMP}, #{education,jdbcType=VARCHAR},
+		#{workdate,jdbcType=TIMESTAMP},
+		#{address,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR},
+		#{fax,jdbcType=VARCHAR}, #{ecotype,jdbcType=VARCHAR},
+		#{tradeProperty,jdbcType=VARCHAR},
+		#{tradeCode,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{sh,jdbcType=VARCHAR},
+		#{hip,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR},
+		#{bust,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR},
+		#{hobby,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+		#{astro,jdbcType=VARCHAR},
+		#{weight,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR},
+		#{school,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR},
+		#{tptotal,jdbcType=INTEGER},
+		#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{waistline,jdbcType=VARCHAR},
+		#{specialty,jdbcType=VARCHAR}, #{birthplace,jdbcType=VARCHAR},
+		#{question,jdbcType=VARCHAR},
+		#{answer,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{contactInfo,jdbcType=VARCHAR},
+		#{ip,jdbcType=VARCHAR}, #{msn,jdbcType=VARCHAR},
+		#{payPassword,jdbcType=VARCHAR},
+		#{homePhone,jdbcType=VARCHAR}, #{depart,jdbcType=VARCHAR}, #{aliww,jdbcType=VARCHAR},
+		#{icq,jdbcType=VARCHAR}, #{yahoo,jdbcType=VARCHAR},
+		#{site,jdbcType=VARCHAR}, #{lastip,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR}, #{dataFrom,jdbcType=VARCHAR},
+		#{province,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.convergence.domain.AtomDTO">
+		insert into atom
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="atomId != null">
+				atom_id,
+			</if>
+			<if test="citizenId != null">
+				citizen_id,
+			</if>
+			<if test="realName != null">
+				real_name,
+			</if>
+			<if test="coptLevel != null">
+				copt_level,
+			</if>
+			<if test="coptAddress != null">
+				copt_address,
+			</if>
+			<if test="coptContactInfo != null">
+				copt_contact_info,
+			</if>
+			<if test="coptZip != null">
+				copt_zip,
+			</if>
+			<if test="coptName != null">
+				copt_name,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="birthDay != null">
+				birth_day,
+			</if>
+			<if test="birthMonth != null">
+				birth_month,
+			</if>
+			<if test="birthYear != null">
+				birth_year,
+			</if>
+			<if test="birth != null">
+				birth,
+			</if>
+			<if test="education != null">
+				education,
+			</if>
+			<if test="workdate != null">
+				workdate,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="zip != null">
+				zip,
+			</if>
+			<if test="tel != null">
+				tel,
+			</if>
+			<if test="fax != null">
+				fax,
+			</if>
+			<if test="ecotype != null">
+				ecotype,
+			</if>
+			<if test="tradeProperty != null">
+				trade_property,
+			</if>
+			<if test="tradeCode != null">
+				trade_code,
+			</if>
+			<if test="qq != null">
+				qq,
+			</if>
+			<if test="sh != null">
+				sh,
+			</if>
+			<if test="hip != null">
+				hip,
+			</if>
+			<if test="age != null">
+				age,
+			</if>
+			<if test="bust != null">
+				bust,
+			</if>
+			<if test="weibo != null">
+				weibo,
+			</if>
+			<if test="hobby != null">
+				hobby,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="astro != null">
+				astro,
+			</if>
+			<if test="weight != null">
+				weight,
+			</if>
+			<if test="height != null">
+				height,
+			</if>
+			<if test="weixin != null">
+				weixin,
+			</if>
+			<if test="school != null">
+				school,
+			</if>
+			<if test="nation != null">
+				nation,
+			</if>
+			<if test="tptotal != null">
+				tptotal,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="waistline != null">
+				waistline,
+			</if>
+			<if test="specialty != null">
+				specialty,
+			</if>
+			<if test="birthplace != null">
+				birthplace,
+			</if>
+			<if test="question != null">
+				question,
+			</if>
+			<if test="answer != null">
+				answer,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="contactInfo != null">
+				contact_info,
+			</if>
+			<if test="ip != null">
+				ip,
+			</if>
+			<if test="msn != null">
+				msn,
+			</if>
+			<if test="payPassword != null">
+				pay_password,
+			</if>
+			<if test="homePhone != null">
+				home_phone,
+			</if>
+			<if test="depart != null">
+				depart,
+			</if>
+			<if test="aliww != null">
+				aliww,
+			</if>
+			<if test="icq != null">
+				icq,
+			</if>
+			<if test="yahoo != null">
+				yahoo,
+			</if>
+			<if test="site != null">
+				site,
+			</if>
+			<if test="lastip != null">
+				lastip,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="dataFrom != null">
+				data_from,
+			</if>
+			<if test="province != null">
+				province,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="atomId != null">
+				#{atomId,jdbcType=INTEGER},
+			</if>
+			<if test="citizenId != null">
+				#{citizenId,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				#{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="coptLevel != null">
+				#{coptLevel,jdbcType=VARCHAR},
+			</if>
+			<if test="coptAddress != null">
+				#{coptAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="coptContactInfo != null">
+				#{coptContactInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="coptZip != null">
+				#{coptZip,jdbcType=VARCHAR},
+			</if>
+			<if test="coptName != null">
+				#{coptName,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthDay != null">
+				#{birthDay,jdbcType=VARCHAR},
+			</if>
+			<if test="birthMonth != null">
+				#{birthMonth,jdbcType=VARCHAR},
+			</if>
+			<if test="birthYear != null">
+				#{birthYear,jdbcType=VARCHAR},
+			</if>
+			<if test="birth != null">
+				#{birth,jdbcType=TIMESTAMP},
+			</if>
+			<if test="education != null">
+				#{education,jdbcType=VARCHAR},
+			</if>
+			<if test="workdate != null">
+				#{workdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="zip != null">
+				#{zip,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="fax != null">
+				#{fax,jdbcType=VARCHAR},
+			</if>
+			<if test="ecotype != null">
+				#{ecotype,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeProperty != null">
+				#{tradeProperty,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeCode != null">
+				#{tradeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="sh != null">
+				#{sh,jdbcType=VARCHAR},
+			</if>
+			<if test="hip != null">
+				#{hip,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null">
+				#{age,jdbcType=VARCHAR},
+			</if>
+			<if test="bust != null">
+				#{bust,jdbcType=VARCHAR},
+			</if>
+			<if test="weibo != null">
+				#{weibo,jdbcType=VARCHAR},
+			</if>
+			<if test="hobby != null">
+				#{hobby,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="astro != null">
+				#{astro,jdbcType=VARCHAR},
+			</if>
+			<if test="weight != null">
+				#{weight,jdbcType=VARCHAR},
+			</if>
+			<if test="height != null">
+				#{height,jdbcType=VARCHAR},
+			</if>
+			<if test="weixin != null">
+				#{weixin,jdbcType=VARCHAR},
+			</if>
+			<if test="school != null">
+				#{school,jdbcType=VARCHAR},
+			</if>
+			<if test="nation != null">
+				#{nation,jdbcType=VARCHAR},
+			</if>
+			<if test="tptotal != null">
+				#{tptotal,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="waistline != null">
+				#{waistline,jdbcType=VARCHAR},
+			</if>
+			<if test="specialty != null">
+				#{specialty,jdbcType=VARCHAR},
+			</if>
+			<if test="birthplace != null">
+				#{birthplace,jdbcType=VARCHAR},
+			</if>
+			<if test="question != null">
+				#{question,jdbcType=VARCHAR},
+			</if>
+			<if test="answer != null">
+				#{answer,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=CHAR},
+			</if>
+			<if test="contactInfo != null">
+				#{contactInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="ip != null">
+				#{ip,jdbcType=VARCHAR},
+			</if>
+			<if test="msn != null">
+				#{msn,jdbcType=VARCHAR},
+			</if>
+			<if test="payPassword != null">
+				#{payPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="homePhone != null">
+				#{homePhone,jdbcType=VARCHAR},
+			</if>
+			<if test="depart != null">
+				#{depart,jdbcType=VARCHAR},
+			</if>
+			<if test="aliww != null">
+				#{aliww,jdbcType=VARCHAR},
+			</if>
+			<if test="icq != null">
+				#{icq,jdbcType=VARCHAR},
+			</if>
+			<if test="yahoo != null">
+				#{yahoo,jdbcType=VARCHAR},
+			</if>
+			<if test="site != null">
+				#{site,jdbcType=VARCHAR},
+			</if>
+			<if test="lastip != null">
+				#{lastip,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="dataFrom != null">
+				#{dataFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				#{province,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.convergence.domain.AtomDTO">
+		update atom
+		<set>
+			<if test="citizenId != null">
+				citizen_id = #{citizenId,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				real_name = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="coptLevel != null">
+				copt_level = #{coptLevel,jdbcType=VARCHAR},
+			</if>
+			<if test="coptAddress != null">
+				copt_address = #{coptAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="coptContactInfo != null">
+				copt_contact_info = #{coptContactInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="coptZip != null">
+				copt_zip = #{coptZip,jdbcType=VARCHAR},
+			</if>
+			<if test="coptName != null">
+				copt_name = #{coptName,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthDay != null">
+				birth_day = #{birthDay,jdbcType=VARCHAR},
+			</if>
+			<if test="birthMonth != null">
+				birth_month = #{birthMonth,jdbcType=VARCHAR},
+			</if>
+			<if test="birthYear != null">
+				birth_year = #{birthYear,jdbcType=VARCHAR},
+			</if>
+			<if test="birth != null">
+				birth = #{birth,jdbcType=TIMESTAMP},
+			</if>
+			<if test="education != null">
+				education = #{education,jdbcType=VARCHAR},
+			</if>
+			<if test="workdate != null">
+				workdate = #{workdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="zip != null">
+				zip = #{zip,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				tel = #{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="fax != null">
+				fax = #{fax,jdbcType=VARCHAR},
+			</if>
+			<if test="ecotype != null">
+				ecotype = #{ecotype,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeProperty != null">
+				trade_property = #{tradeProperty,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeCode != null">
+				trade_code = #{tradeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				qq = #{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="sh != null">
+				sh = #{sh,jdbcType=VARCHAR},
+			</if>
+			<if test="hip != null">
+				hip = #{hip,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null">
+				age = #{age,jdbcType=VARCHAR},
+			</if>
+			<if test="bust != null">
+				bust = #{bust,jdbcType=VARCHAR},
+			</if>
+			<if test="weibo != null">
+				weibo = #{weibo,jdbcType=VARCHAR},
+			</if>
+			<if test="hobby != null">
+				hobby = #{hobby,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="astro != null">
+				astro = #{astro,jdbcType=VARCHAR},
+			</if>
+			<if test="weight != null">
+				weight = #{weight,jdbcType=VARCHAR},
+			</if>
+			<if test="height != null">
+				height = #{height,jdbcType=VARCHAR},
+			</if>
+			<if test="weixin != null">
+				weixin = #{weixin,jdbcType=VARCHAR},
+			</if>
+			<if test="school != null">
+				school = #{school,jdbcType=VARCHAR},
+			</if>
+			<if test="nation != null">
+				nation = #{nation,jdbcType=VARCHAR},
+			</if>
+			<if test="tptotal != null">
+				tptotal = #{tptotal,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="waistline != null">
+				waistline = #{waistline,jdbcType=VARCHAR},
+			</if>
+			<if test="specialty != null">
+				specialty = #{specialty,jdbcType=VARCHAR},
+			</if>
+			<if test="birthplace != null">
+				birthplace = #{birthplace,jdbcType=VARCHAR},
+			</if>
+			<if test="question != null">
+				question = #{question,jdbcType=VARCHAR},
+			</if>
+			<if test="answer != null">
+				answer = #{answer,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=CHAR},
+			</if>
+			<if test="contactInfo != null">
+				contact_info = #{contactInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="ip != null">
+				ip = #{ip,jdbcType=VARCHAR},
+			</if>
+			<if test="msn != null">
+				msn = #{msn,jdbcType=VARCHAR},
+			</if>
+			<if test="payPassword != null">
+				pay_password = #{payPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="homePhone != null">
+				home_phone = #{homePhone,jdbcType=VARCHAR},
+			</if>
+			<if test="depart != null">
+				depart = #{depart,jdbcType=VARCHAR},
+			</if>
+			<if test="aliww != null">
+				aliww = #{aliww,jdbcType=VARCHAR},
+			</if>
+			<if test="icq != null">
+				icq = #{icq,jdbcType=VARCHAR},
+			</if>
+			<if test="yahoo != null">
+				yahoo = #{yahoo,jdbcType=VARCHAR},
+			</if>
+			<if test="site != null">
+				site = #{site,jdbcType=VARCHAR},
+			</if>
+			<if test="lastip != null">
+				lastip = #{lastip,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="dataFrom != null">
+				data_from = #{dataFrom,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				province = #{province,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where atom_id = #{atomId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.convergence.domain.AtomDTO">
+		update atom
+		set citizen_id = #{citizenId,jdbcType=VARCHAR},
+		real_name = #{realName,jdbcType=VARCHAR},
+		copt_level = #{coptLevel,jdbcType=VARCHAR},
+		copt_address = #{coptAddress,jdbcType=VARCHAR},
+		copt_contact_info = #{coptContactInfo,jdbcType=VARCHAR},
+		copt_zip = #{coptZip,jdbcType=VARCHAR},
+		copt_name = #{coptName,jdbcType=VARCHAR},
+		sex = #{sex,jdbcType=VARCHAR},
+		birth_day = #{birthDay,jdbcType=VARCHAR},
+		birth_month = #{birthMonth,jdbcType=VARCHAR},
+		birth_year = #{birthYear,jdbcType=VARCHAR},
+		birth = #{birth,jdbcType=TIMESTAMP},
+		education = #{education,jdbcType=VARCHAR},
+		workdate = #{workdate,jdbcType=TIMESTAMP},
+		address = #{address,jdbcType=VARCHAR},
+		zip = #{zip,jdbcType=VARCHAR},
+		tel = #{tel,jdbcType=VARCHAR},
+		fax = #{fax,jdbcType=VARCHAR},
+		ecotype = #{ecotype,jdbcType=VARCHAR},
+		trade_property = #{tradeProperty,jdbcType=VARCHAR},
+		trade_code = #{tradeCode,jdbcType=VARCHAR},
+		qq = #{qq,jdbcType=VARCHAR},
+		sh = #{sh,jdbcType=VARCHAR},
+		hip = #{hip,jdbcType=VARCHAR},
+		age = #{age,jdbcType=VARCHAR},
+		bust = #{bust,jdbcType=VARCHAR},
+		weibo = #{weibo,jdbcType=VARCHAR},
+		hobby = #{hobby,jdbcType=VARCHAR},
+		email = #{email,jdbcType=VARCHAR},
+		astro = #{astro,jdbcType=VARCHAR},
+		weight = #{weight,jdbcType=VARCHAR},
+		height = #{height,jdbcType=VARCHAR},
+		weixin = #{weixin,jdbcType=VARCHAR},
+		school = #{school,jdbcType=VARCHAR},
+		nation = #{nation,jdbcType=VARCHAR},
+		tptotal = #{tptotal,jdbcType=INTEGER},
+		user_name = #{userName,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		waistline = #{waistline,jdbcType=VARCHAR},
+		specialty = #{specialty,jdbcType=VARCHAR},
+		birthplace = #{birthplace,jdbcType=VARCHAR},
+		question = #{question,jdbcType=VARCHAR},
+		answer = #{answer,jdbcType=VARCHAR},
+		status = #{status,jdbcType=CHAR},
+		contact_info = #{contactInfo,jdbcType=VARCHAR},
+		ip = #{ip,jdbcType=VARCHAR},
+		msn = #{msn,jdbcType=VARCHAR},
+		pay_password = #{payPassword,jdbcType=VARCHAR},
+		home_phone = #{homePhone,jdbcType=VARCHAR},
+		depart = #{depart,jdbcType=VARCHAR},
+		aliww = #{aliww,jdbcType=VARCHAR},
+		icq = #{icq,jdbcType=VARCHAR},
+		yahoo = #{yahoo,jdbcType=VARCHAR},
+		site = #{site,jdbcType=VARCHAR},
+		lastip = #{lastip,jdbcType=VARCHAR},
+		remark = #{remark,jdbcType=VARCHAR},
+		data_from = #{dataFrom,jdbcType=VARCHAR},
+		province = #{province,jdbcType=VARCHAR}
+		where atom_id = #{atomId,jdbcType=INTEGER}
+	</update>
 </mapper>

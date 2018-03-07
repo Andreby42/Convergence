@@ -20,60 +20,60 @@ import com.convergence.web.BaseController;
 @RequestMapping("/admin/role")
 public class RoleController extends BaseController {
 
-	@Autowired
-	private RoleService roleService;
+    @Autowired
+    private RoleService roleService;
 
-	@Autowired
-	private ResourceService resourceService;
+    @Autowired
+    private ResourceService resourceService;
 
-	@RequestMapping(value = { "/", "/index" })
-	public String index() {
-		return "admin/role/index";
-	}
+    @RequestMapping(value = {"/", "/index"})
+    public String index() {
+        return "admin/role/index";
+    }
 
-	@RequestMapping(value = { "/list" })
-	@ResponseBody
-	public Page<RoleDTO> list() {
-		return null;
-	}
+    @RequestMapping(value = {"/list"})
+    @ResponseBody
+    public Page<RoleDTO> list() {
+        return null;
+    }
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String add(ModelMap map) {
-		return "admin/role/form";
-	}
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(ModelMap map) {
+        return "admin/role/form";
+    }
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable Integer id, ModelMap map) {
-		return "admin/role/form";
-	}
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String edit(@PathVariable Integer id, ModelMap map) {
+        return "admin/role/form";
+    }
 
-	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
-	@ResponseBody
-	public Result edit(RoleDTO role, ModelMap map) {
-		return Result.success();
-	}
+    @RequestMapping(value = {"/edit"}, method = RequestMethod.POST)
+    @ResponseBody
+    public Result edit(RoleDTO role, ModelMap map) {
+        return Result.success();
+    }
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-	@ResponseBody
-	public Result delete(@PathVariable Integer id, ModelMap map) {
-		return Result.success();
-	}
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public Result delete(@PathVariable Integer id, ModelMap map) {
+        return Result.success();
+    }
 
-	@RequestMapping(value = "/grant/{id}", method = RequestMethod.GET)
-	public String grant(@PathVariable Integer id, ModelMap map) {
-		return "admin/role/grant";
-	}
+    @RequestMapping(value = "/grant/{id}", method = RequestMethod.GET)
+    public String grant(@PathVariable Integer id, ModelMap map) {
+        return "admin/role/grant";
+    }
 
-	@RequestMapping(value = "/grant/{id}", method = RequestMethod.POST)
-	@ResponseBody
-	public Result grant(@PathVariable Integer id, @RequestParam(required = false) String[] resourceIds,
-			ModelMap map) {
-		try {
-			roleService.grant(id, resourceIds);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return Result.failure(e.getMessage());
-		}
-		return Result.success();
-	}
+    @RequestMapping(value = "/grant/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public Result grant(@PathVariable Integer id,
+            @RequestParam(required = false) String[] resourceIds, ModelMap map) {
+        try {
+            roleService.grant(id, resourceIds);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure(e.getMessage());
+        }
+        return Result.success();
+    }
 }

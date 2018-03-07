@@ -24,8 +24,7 @@ public class ConvergenceCache {
     }
 
     @CacheEvict(key = "#p0")
-    public void delete(String key) {
-    }
+    public void delete(String key) {}
 
     @CachePut(key = "#p0 + ':' +  #p1")
     public Object set(String type, String key, Object value) {
@@ -38,7 +37,6 @@ public class ConvergenceCache {
     }
 
     @CacheEvict(key = "#p0 + ':' +  #p1")
-    public void delete(String type, String key) {
-    }
+    public void delete(String type, String key) {}
 
 }

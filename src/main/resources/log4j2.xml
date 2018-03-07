@@ -47,17 +47,12 @@
 			<DefaultRolloverStrategy max="5" />
 		</RollingRandomAccessFile>
 		<!-- 自定义缓存同步日志 -->
-<!-- 		<RollingRandomAccessFile name="customLog"
-			fileName="${LOG_HOME}/${customLog}-customLog.log" filePattern="${LOG_HOME}/customLog.%d{yyyy-MM-dd-HH}.zip">
-			<PatternLayout
-				pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n" />
-			<Policies>
-				<TimeBasedTriggeringPolicy interval="1"
-					modulate="true" />
-				<SizeBasedTriggeringPolicy size="100 MB" />
-			</Policies>
-			<DefaultRolloverStrategy max="20" />
-		</RollingRandomAccessFile> -->
+		<!-- <RollingRandomAccessFile name="customLog" fileName="${LOG_HOME}/${customLog}-customLog.log" 
+			filePattern="${LOG_HOME}/customLog.%d{yyyy-MM-dd-HH}.zip"> <PatternLayout 
+			pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n" 
+			/> <Policies> <TimeBasedTriggeringPolicy interval="1" modulate="true" /> 
+			<SizeBasedTriggeringPolicy size="100 MB" /> </Policies> <DefaultRolloverStrategy 
+			max="20" /> </RollingRandomAccessFile> -->
 	</appenders>
 	<loggers>
 		<!-- 3rdparty Loggers -->
@@ -69,9 +64,8 @@
 		<logger name="org.apache.http" level="warn" />
 		<logger name="org.hibernate" level="INFO" />
 		<!-- 自定义 dataSyn logger -->
-	<!-- 	<logger name="custom" level="Info" additivity="false">
-			<appender-ref ref="customLog" />
-		</logger> -->
+		<!-- <logger name="custom" level="Info" additivity="false"> <appender-ref 
+			ref="customLog" /> </logger> -->
 		<!-- info级别的输出到日志 -->
 		<logger name="error" level="Error" additivity="true">
 			<appender-ref ref="error" />
@@ -79,7 +73,7 @@
 		<!-- Root Logger -->
 		<root level="Info" includeLocation="true">
 			<appender-ref ref="Console" />
-			<!--<appender-ref ref="file" />-->
+			<!--<appender-ref ref="file" /> -->
 		</root>
 	</loggers>
 </configuration>  

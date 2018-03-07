@@ -25,80 +25,81 @@ import com.convergence.web.interceptor.CommonIntercepter;
 @Configuration
 @ComponentScan("com.convergence.web")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
-	@Autowired
-	private CommonIntercepter commonIntercepter;
+    @Autowired
+    private CommonIntercepter commonIntercepter;
 
-	/**
-	 * fastJson相关设置
-	 */
-	private FastJsonConfig getFastJsonConfig() {
+    /**
+     * fastJson相关设置
+     */
+    private FastJsonConfig getFastJsonConfig() {
 
-		FastJsonConfig fastJsonConfig = new FastJsonConfig();
-		// 在serializerFeatureList中添加转换规则
-		List<SerializerFeature> serializerFeatureList = new ArrayList<SerializerFeature>();
-		serializerFeatureList.add(SerializerFeature.PrettyFormat);
-		serializerFeatureList.add(SerializerFeature.WriteMapNullValue);
-		serializerFeatureList.add(SerializerFeature.WriteNullStringAsEmpty);
-		serializerFeatureList.add(SerializerFeature.WriteNullListAsEmpty);
-		serializerFeatureList.add(SerializerFeature.DisableCircularReferenceDetect);
-		SerializerFeature[] serializerFeatures = serializerFeatureList
-				.toArray(new SerializerFeature[serializerFeatureList.size()]);
-		fastJsonConfig.setSerializerFeatures(serializerFeatures);
-		fastJsonConfig.setDateFormat("yyyy-MM-dd hh:mm:ss");
-		return fastJsonConfig;
-	}
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        // 在serializerFeatureList中添加转换规则
+        List<SerializerFeature> serializerFeatureList = new ArrayList<SerializerFeature>();
+        serializerFeatureList.add(SerializerFeature.PrettyFormat);
+        serializerFeatureList.add(SerializerFeature.WriteMapNullValue);
+        serializerFeatureList.add(SerializerFeature.WriteNullStringAsEmpty);
+        serializerFeatureList.add(SerializerFeature.WriteNullListAsEmpty);
+        serializerFeatureList.add(SerializerFeature.DisableCircularReferenceDetect);
+        SerializerFeature[] serializerFeatures =
+                serializerFeatureList.toArray(new SerializerFeature[serializerFeatureList.size()]);
+        fastJsonConfig.setSerializerFeatures(serializerFeatures);
+        fastJsonConfig.setDateFormat("yyyy-MM-dd hh:mm:ss");
+        return fastJsonConfig;
+    }
 
-	/**
-	 * fastJson相关设置
-	 */
-	private FastJsonHttpMessageConverter4 fastJsonHttpMessageConverter() {
+    /**
+     * fastJson相关设置
+     */
+    private FastJsonHttpMessageConverter4 fastJsonHttpMessageConverter() {
 
-		FastJsonHttpMessageConverter4 fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter4();
+        FastJsonHttpMessageConverter4 fastJsonHttpMessageConverter =
+                new FastJsonHttpMessageConverter4();
 
-		List<MediaType> supportedMediaTypes = new ArrayList<MediaType>();
-		supportedMediaTypes.add(MediaType.parseMediaType("text/html;charset=UTF-8"));
-		supportedMediaTypes.add(MediaType.parseMediaType("application/json"));
-		supportedMediaTypes.add(MediaType.parseMediaType("application/json;charset=UTF-8"));
+        List<MediaType> supportedMediaTypes = new ArrayList<MediaType>();
+        supportedMediaTypes.add(MediaType.parseMediaType("text/html;charset=UTF-8"));
+        supportedMediaTypes.add(MediaType.parseMediaType("application/json"));
+        supportedMediaTypes.add(MediaType.parseMediaType("application/json;charset=UTF-8"));
 
-		fastJsonHttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
-		fastJsonHttpMessageConverter.setFastJsonConfig(getFastJsonConfig());
-		return fastJsonHttpMessageConverter;
-	}
+        fastJsonHttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
+        fastJsonHttpMessageConverter.setFastJsonConfig(getFastJsonConfig());
+        return fastJsonHttpMessageConverter;
+    }
 
-	/**
-	 * 添加fastJsonHttpMessageConverter到converters
-	 */
-	@Override
-	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		converters.add(fastJsonHttpMessageConverter());
-		List<MediaType> supportedMediaTypes = new ArrayList<MediaType>();
-		supportedMediaTypes.add(MediaType.parseMediaType("text/html;charset=UTF-8"));
-		supportedMediaTypes.add(MediaType.parseMediaType("application/json"));
-		supportedMediaTypes.add(MediaType.parseMediaType("application/json;charset=UTF-8"));
-		MappingJackson2HttpMessageConverter m = new MappingJackson2HttpMessageConverter();
-		m.setSupportedMediaTypes(supportedMediaTypes);
-		converters.add(m);
-		converters.add(new StringHttpMessageConverter());
-		converters.add(new FormHttpMessageConverter());
-	}
+    /**
+     * 添加fastJsonHttpMessageConverter到converters
+     */
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(fastJsonHttpMessageConverter());
+        List<MediaType> supportedMediaTypes = new ArrayList<MediaType>();
+        supportedMediaTypes.add(MediaType.parseMediaType("text/html;charset=UTF-8"));
+        supportedMediaTypes.add(MediaType.parseMediaType("application/json"));
+        supportedMediaTypes.add(MediaType.parseMediaType("application/json;charset=UTF-8"));
+        MappingJackson2HttpMessageConverter m = new MappingJackson2HttpMessageConverter();
+        m.setSupportedMediaTypes(supportedMediaTypes);
+        converters.add(m);
+        converters.add(new StringHttpMessageConverter());
+        converters.add(new FormHttpMessageConverter());
+    }
 
-	/**
-	 * 添加拦截器
-	 */
+    /**
+     * 添加拦截器
+     */
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(commonIntercepter).addPathPatterns("/**");
-		super.addInterceptors(registry);
-	}
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(commonIntercepter).addPathPatterns("/**");
+        super.addInterceptors(registry);
+    }
 
-	@Bean
-	public FilterRegistrationBean registFilter() {
-		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setFilter(new ResourceUrlEncodingFilter());
-		registration.addUrlPatterns("/*");
-		registration.setOrder(1);
-		return registration;
-	}
+    @Bean
+    public FilterRegistrationBean registFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new ResourceUrlEncodingFilter());
+        registration.addUrlPatterns("/*");
+        registration.setOrder(1);
+        return registration;
+    }
 
 }

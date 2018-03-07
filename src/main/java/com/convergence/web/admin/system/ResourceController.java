@@ -24,49 +24,49 @@ import com.convergence.web.BaseController;
 @Controller
 @RequestMapping("/admin/resource")
 public class ResourceController extends BaseController {
-	@Autowired
-	private ResourceService resourceService;
+    @Autowired
+    private ResourceService resourceService;
 
-	@RequestMapping("/tree/{resourceId}")
-	@ResponseBody
-	public List<ZtreeView> tree(@PathVariable Integer resourceId) {
-		List<ZtreeView> list = resourceService.tree(resourceId);
-		return list;
-	}
+    @RequestMapping("/tree/{resourceId}")
+    @ResponseBody
+    public List<ZtreeView> tree(@PathVariable Integer resourceId) {
+        List<ZtreeView> list = resourceService.tree(resourceId);
+        return list;
+    }
 
-	@RequestMapping("/index")
-	public String index() {
-		return "admin/resource/index";
-	}
+    @RequestMapping("/index")
+    public String index() {
+        return "admin/resource/index";
+    }
 
-	@RequestMapping("/list")
-	@ResponseBody
-	public Page<ResourceDTO> list() {
-		return null;
-	}
+    @RequestMapping("/list")
+    @ResponseBody
+    public Page<ResourceDTO> list() {
+        return null;
+    }
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String add(ModelMap map) {
-		List<ResourceDTO> list = resourceService.findAll();
-		map.put("list", list);
-		return "admin/resource/form";
-	}
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(ModelMap map) {
+        List<ResourceDTO> list = resourceService.findAll();
+        map.put("list", list);
+        return "admin/resource/form";
+    }
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable Integer id, ModelMap map) {
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String edit(@PathVariable Integer id, ModelMap map) {
 
-		return "admin/resource/form";
-	}
+        return "admin/resource/form";
+    }
 
-	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
-	@ResponseBody
-	public Result edit(ResourceDTO resource, ModelMap map) {
-		return Result.success();
-	}
+    @RequestMapping(value = {"/edit"}, method = RequestMethod.POST)
+    @ResponseBody
+    public Result edit(ResourceDTO resource, ModelMap map) {
+        return Result.success();
+    }
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-	@ResponseBody
-	public Result delete(@PathVariable Integer id, ModelMap map) {
-		return Result.success();
-	}
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public Result delete(@PathVariable Integer id, ModelMap map) {
+        return Result.success();
+    }
 }

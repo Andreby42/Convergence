@@ -33,7 +33,7 @@ public class RedisConfig {
     @Bean
     public RedisCacheManager cacheManager(RedisTemplate<?, ?> redisTemplate) {
         RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
-		// cacheManager.setDefaultExpiration(216000);// 默认缓存时间
+        // cacheManager.setDefaultExpiration(216000);// 默认缓存时间
         cacheManager.setUsePrefix(true);
         return cacheManager;
     }

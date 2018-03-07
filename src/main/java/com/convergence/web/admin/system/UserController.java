@@ -19,52 +19,52 @@ import com.convergence.web.BaseController;
 @RequestMapping("/admin/user")
 public class UserController extends BaseController {
 
-	@Autowired
-	private UserService userService;
-	@Autowired
-	private RoleService roleService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
-	@RequestMapping(value = { "/", "/index" })
-	public String index() {
-		return "admin/user/index";
-	}
+    @RequestMapping(value = {"/", "/index"})
+    public String index() {
+        return "admin/user/index";
+    }
 
-	@RequestMapping(value = { "/list" })
-	@ResponseBody
-	public Page<UserDTO> list() {
-		return null;
-	}
-	
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String add(ModelMap map) {
-		return "admin/user/form";
-	}
+    @RequestMapping(value = {"/list"})
+    @ResponseBody
+    public Page<UserDTO> list() {
+        return null;
+    }
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable Integer id,ModelMap map) {
-		return "admin/user/form";
-	}
-	
-	@RequestMapping(value= {"/edit"} ,method = RequestMethod.POST)
-	@ResponseBody
-	public Result edit(UserDTO user,ModelMap map){
-		return Result.success();
-	}
-	
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-	@ResponseBody
-	public Result delete(@PathVariable Integer id,ModelMap map) {
-		return Result.success();
-	}
-	
-	@RequestMapping(value = "/grant/{id}", method = RequestMethod.GET)
-	public String grant(@PathVariable Integer id, ModelMap map) {
-		return "admin/user/grant";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/grant/{id}", method = RequestMethod.POST)
-	public Result grant(@PathVariable Integer id,String[] roleIds, ModelMap map) {
-		return Result.success();
-	}
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(ModelMap map) {
+        return "admin/user/form";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String edit(@PathVariable Integer id, ModelMap map) {
+        return "admin/user/form";
+    }
+
+    @RequestMapping(value = {"/edit"}, method = RequestMethod.POST)
+    @ResponseBody
+    public Result edit(UserDTO user, ModelMap map) {
+        return Result.success();
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public Result delete(@PathVariable Integer id, ModelMap map) {
+        return Result.success();
+    }
+
+    @RequestMapping(value = "/grant/{id}", method = RequestMethod.GET)
+    public String grant(@PathVariable Integer id, ModelMap map) {
+        return "admin/user/grant";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/grant/{id}", method = RequestMethod.POST)
+    public Result grant(@PathVariable Integer id, String[] roleIds, ModelMap map) {
+        return Result.success();
+    }
 }

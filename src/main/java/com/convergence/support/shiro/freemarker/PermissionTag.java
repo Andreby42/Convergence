@@ -8,13 +8,15 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * <p>Equivalent to {@link org.apache.shiro.web.tags.PermissionTag}</p>
+ * <p>
+ * Equivalent to {@link org.apache.shiro.web.tags.PermissionTag}
+ * </p>
  */
 public abstract class PermissionTag extends SecureTag {
     String getName(Map params) {
         return getParam(params, "name");
     }
-    
+
     @Override
     protected void verifyParameters(Map params) throws TemplateModelException {
         String permission = getName(params);
@@ -25,7 +27,8 @@ public abstract class PermissionTag extends SecureTag {
     }
 
     @Override
-    public void render(Environment env, Map params, TemplateDirectiveBody body) throws IOException, TemplateException {
+    public void render(Environment env, Map params, TemplateDirectiveBody body)
+            throws IOException, TemplateException {
         String p = getName(params);
 
         boolean show = showTagBody(p);

@@ -1,7 +1,9 @@
 package com.convergence.support.shiro.freemarker;
 
 /**
- * <p>Equivalent to {@link org.apache.shiro.web.tags.LacksRoleTag}</p>
+ * <p>
+ * Equivalent to {@link org.apache.shiro.web.tags.LacksRoleTag}
+ * </p>
  */
 public class LacksRoleTag extends RoleTag {
     protected boolean showTagBody(String roleName) {

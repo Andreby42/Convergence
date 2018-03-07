@@ -4,7 +4,7 @@ import com.convergence.domain.AtomDTO;
 
 public interface MgAtomService {
 
-	void insert(AtomDTO atomDTO);
-	
-	AtomDTO selectOne(int atomid);
+    void insert(AtomDTO atomDTO);
+
+    AtomDTO selectOne(int atomid);
 }

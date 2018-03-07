@@ -17,21 +17,21 @@ import com.convergence.service.AtomService;
  */
 @Component
 public class TestDisruptor {
-	private static final Logger logger = LoggerFactory.getLogger(TestDisruptor.class);
-	@Resource
-	private AtomService atomService;
-	// @Resource
-	// private AtomHelper atomHelper;
+    private static final Logger logger = LoggerFactory.getLogger(TestDisruptor.class);
+    @Resource
+    private AtomService atomService;
+    // @Resource
+    // private AtomHelper atomHelper;
 
-	// @PostConstruct
-	public void testDis() {
+    // @PostConstruct
+    public void testDis() {
 
-		for (int i = 0; i < 100000; i++) {
-			AtomDTO at = new AtomDTO();
-			AtomModel atomModel = new AtomModel();
-			atomModel.setAtomDTO(at);
-			atomModel.setAtomService(atomService);
-			// atomHelper.onData(atomModel);
-		}
-	}
+        for (int i = 0; i < 100000; i++) {
+            AtomDTO at = new AtomDTO();
+            AtomModel atomModel = new AtomModel();
+            atomModel.setAtomDTO(at);
+            atomModel.setAtomService(atomService);
+            // atomHelper.onData(atomModel);
+        }
+    }
 }
