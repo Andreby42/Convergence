@@ -28,8 +28,8 @@ public class test {
     // @PostConstruct
     public void testMg() {
         AtomDTO atomDTO = atomService.selectByPrimaryKey(99);
-         mgAtomService.insert(atomDTO);
-         AtomDTO selectOne = mgAtomService.selectOne(99);
+//         mgAtomService.insert(atomDTO);
+//         AtomDTO selectOne = mgAtomService.selectOne(99);
         System.out.println(JSON.toJSONString(atomDTO));
     }
 }
