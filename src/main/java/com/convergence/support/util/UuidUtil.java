@@ -12,7 +12,7 @@ public class UuidUtil {
     /**
      * 
      * @Title: getNUUID @Description: 获得N*8长度的随机串 @param @param N @param @return @return
-     * String @throws
+     *         String @throws
      *
      */
     public static String getNUUID(int N) {
