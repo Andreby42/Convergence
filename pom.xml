@@ -10,13 +10,25 @@
 
 	<name>Convergence</name>
 	<description>Demo project for Spring Boot</description>
-
+	<!-- parent way to build springboot -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.6.RELEASE</version>
 	</parent>
-
+	<!-- another way to build springBoot use no parent -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				Import dependency management from Spring Boot
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>1.5.6.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -159,6 +171,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- netty websocket -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.23.Final</version>
 		</dependency>
 
 	</dependencies>

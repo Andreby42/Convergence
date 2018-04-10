@@ -8,6 +8,8 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.convergence.web.websocket.NettyServer;
+
 @SpringBootApplication
 @EnableCaching // 开启缓存
 @EnableTransactionManagement
@@ -19,5 +21,11 @@ public class ConvergenceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ConvergenceApplication.class, args);
+        try {
+            new NettyServer().run(NettyServer.WEB_SOCKET_PORT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
