@@ -8,7 +8,19 @@
 		<property name="cLog">cLog</property>
 		<property name="DeBug">DeBug</property>
 	</properties>
+
 	<appenders>
+		<Console name="log4jdbc" target="SYSTEM_OUT" follow="true">
+
+			<ThresholdFilter level="info" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout
+				pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n" />
+		</Console>
+		<!-- log4jdbc -->
+		<File name="log4jdbc_file" fileName="${LOG_HOME}/log4jdbc.out">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %level - %m%n%ex%n" />
+		</File>
 		<!-- 定义控制台输出 --><!-- 控制台只输出level及以上级别的信息(onMatch),其他的直接拒绝(onMismatch) -->
 		<Console name="Console" target="SYSTEM_OUT" follow="true">
 
@@ -70,10 +82,32 @@
 		<logger name="error" level="Error" additivity="true">
 			<appender-ref ref="error" />
 		</logger>
+		<!-- log4jdbc4 -->
+		<logger name="log4jdbc.log4j2" level="info" additivity="false">
+			<MarkerFilter marker="LOG4JDBC_NON_STATEMENT" onMatch="DENY"
+				onMismatch="NEUTRAL" />
+			<appender-ref ref="log4jdbc_file" />
+		</logger>
 		<!-- Root Logger -->
 		<root level="Info" includeLocation="true">
 			<appender-ref ref="Console" />
 			<!--<appender-ref ref="file" /> -->
 		</root>
+		<!-- sql 以及耗费的执行时间 -->
+		<logger name="jdbc.sqltiming" level="INFO" additivity="false"></logger>
+		<!-- 执行之后的返回结果 -->
+		<logger name="jdbc.resultsettable" level="INFO"></logger>
+		<!-- 只有 sql -->
+		<logger name="jdbc.sqlonly" level="INFO"></logger>
+		<logger name="jdbc.audit" level="OFF"></logger>
+		<logger name="jdbc.resultset" level="OFF"></logger>
+		<!-- 能看到数据库的连接数 -->
+		<logger name="jdbc.connection" level="OFF"></logger>
+		
+		<logger name="log4jdbc2" level="info" additivity="false">
+			<MarkerFilter marker="LOG4JDBC_NON_STATEMENT" onMatch="DENY"
+				onMismatch="NEUTRAL" />
+			<appender-ref ref='log4jdbc' />
+		</logger>
 	</loggers>
 </configuration>  
