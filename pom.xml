@@ -39,6 +39,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
+		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.15</version>
@@ -178,12 +183,61 @@
 			<artifactId>netty-all</artifactId>
 			<version>4.1.23.Final</version>
 		</dependency>
+		<!-- 编码探测 -->
+		<!-- <dependency> <groupId>net.sourceforge.cpdetector</groupId> <artifactId>cpdetector</artifactId> 
+			<version>1.0.7</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java-util</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.protobuf-java-format</groupId>
+			<artifactId>protobuf-java-format</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven/maven-plugin-api -->
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>3.5.3</version>
+		</dependency>
 
 	</dependencies>
 
 	<build>
 		<finalName>convergence</finalName>
 		<plugins>
+			<plugin>
+				<groupId>com.google.protobuf.tools</groupId>
+				<artifactId>maven-protoc-plugin</artifactId>
+				<version>0.3.2</version>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+						<!-- proto文件目录 -->
+							<protoSourceRoot>${basedir}/src/main/proto/</protoSourceRoot>
+							<includes>
+								<param>**/proto/*.proto</param>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<protocExecutable>D:/protobuf/protoc-3.5.1-win32/bin/protoc.exe</protocExecutable><!--protoc.exe文件地址,使用2.5版本 -->
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

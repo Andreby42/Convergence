@@ -1,5 +1,6 @@
 package com.convergence.config;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
@@ -76,11 +78,17 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         supportedMediaTypes.add(MediaType.parseMediaType("text/html;charset=UTF-8"));
         supportedMediaTypes.add(MediaType.parseMediaType("application/json"));
         supportedMediaTypes.add(MediaType.parseMediaType("application/json;charset=UTF-8"));
+        supportedMediaTypes
+                .add(ProtoBufMediaType.parseMediaType("application/x-protobuf;charset=UTF-8"));
         MappingJackson2HttpMessageConverter m = new MappingJackson2HttpMessageConverter();
         m.setSupportedMediaTypes(supportedMediaTypes);
         converters.add(m);
         converters.add(new StringHttpMessageConverter());
         converters.add(new FormHttpMessageConverter());
+        ProtobufHttpMessageConverter pmc = new ProtobufHttpMessageConverter();
+        pmc.setSupportedMediaTypes(supportedMediaTypes);
+        pmc.setDefaultCharset(Charset.defaultCharset());
+        converters.add(new ProtobufHttpMessageConverter());
     }
 
     /**
