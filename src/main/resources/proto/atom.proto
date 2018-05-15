@@ -1,0 +1,121 @@
+
+syntax = "proto3";
+package com.convergence.protobuf;
+option java_package = "com.convergence.protobuf";
+option java_outer_classname = "Atom"
+message AtomMsg{
+	  int32 atomId= 99;
+
+       string citizenId=1;
+
+       string realName=2;
+
+       string coptLevel=3;
+
+       string coptAddress=4;
+
+       string coptContactInfo=5;
+
+       string coptZip=6;
+
+       string coptName=7;
+
+       string sex=8;
+
+       string birthDay=9;
+
+       string birthMonth=10;
+
+       string birthYear=11;
+
+
+       string education=13;
+
+       string address=15;
+
+       string zip=16;
+
+       string tel=17;
+
+       string fax=18;
+
+       string ecotype=19;
+
+       string tradeProperty=20;
+
+       string tradeCode=21;
+
+       string qq=22;
+
+       string sh=23;
+
+       string hip=24;
+
+       string age=25;
+
+       string bust=26;
+
+       string weibo=27;
+
+       string hobby=28;
+
+       string email=29;
+
+       string astro=30;
+
+       string weight=31;
+
+       string height=32;
+
+       string weixin=33;
+
+       string school=34;
+
+       string nation=35;
+
+       int32 tptotal=36;
+
+       string userName=37;
+
+       string password=38;
+
+       string waistline=39;
+
+       string specialty=40;
+
+       string birthplace=41;
+
+       string question=42;
+
+       string answer=43;
+
+       string status=44;
+
+       string contactInfo=45;
+
+       string ip=46;
+
+       string msn=47;
+
+       string payPassword=48;
+
+       string homePhone=49;
+
+       string depart=50;
+
+       string aliww=51;
+
+       string icq=52;
+
+       string yahoo=53;
+
+       string site=54;
+
+      string lastip=55;
+
+       string remark=56;
+
+       string dataFrom=57;
+
+       string province=58;
+		}
