@@ -90,7 +90,7 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
                 } else {
                     response.setIsSucc(true).setMessage("注册成功");
 
-                    CustomService.watchMap.forEach((reqId, callBack) -> {
+                  /*  CustomService.watchMap.forEach((reqId, callBack) -> {
                         response.getHadOnline().put(reqId, ((CustomService) callBack).getName()); // 将已经上线的人员返回
 
                         if (!reqId.equals(requestId)) {
@@ -104,7 +104,7 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
                                 logger.warn("回调发送消息给客户端异常", e);
                             }
                         }
-                    });
+                    });*/
                 }
                 sendWebSocket(response.toJson());
                 this.sessionId = requestId; // 记录会话 id，当页面刷新或浏览器关闭时，注销掉此链路
@@ -119,7 +119,7 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
                 } else {
                     response.setIsSucc(true).setMessage("发送消息成功");
 
-                    CustomService.watchMap.forEach((reqId, callBack) -> { // 将消息发送到所有机器
+                  /*  CustomService.watchMap.forEach((reqId, callBack) -> { // 将消息发送到所有机器
                         Request serviceRequest = new Request();
                         serviceRequest.setServiceId(CODE.receive_message.code);
                         serviceRequest.setRequestId(requestId);
@@ -130,7 +130,7 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
                         } catch (Exception e) {
                             logger.warn("回调发送消息给客户端异常", e);
                         }
-                    });
+                    });*/
                 }
                 sendWebSocket(response.toJson());
             } else if (CODE.downline.code.intValue() == request.getServiceId()) { // 客户端下线
@@ -177,12 +177,12 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
      */
     private void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest request) {
         // 如果 HTTP 解码失败，返回 HHTP 异常
-        if (!request.decoderResult().isSuccess()
+      /*  if (!request.decoderResult().isSuccess()
                 || (!"websocket".equals(request.headers().get("Upgrade")))) {
             sendHttpResponse(ctx, request, new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
                     HttpResponseStatus.BAD_REQUEST));
             return;
-        }
+        }*/
 
         // 正常 WebSocket 的 Http 连接请求，构造握手响应返回
         WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory(
@@ -200,8 +200,8 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
     private void sendHttpResponse(ChannelHandlerContext ctx, FullHttpRequest request,
             DefaultFullHttpResponse response) {
         // 返回应答给客户端
-        if (response.status().code() != 200) {
-            ByteBuf buf = Unpooled.copiedBuffer(response.status().toString(), CharsetUtil.UTF_8);
+        if (response.getStatus().code() != 200) {
+            ByteBuf buf = Unpooled.copiedBuffer(response.getStatus().toString(), CharsetUtil.UTF_8);
             response.content().writeBytes(buf);
             buf.release();
             HttpUtil.setContentLength(response, response.content().readableBytes());
@@ -209,7 +209,7 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
 
         // 如果是非 Keep-Alive，关闭连接
         ChannelFuture f = ctx.channel().writeAndFlush(response);
-        if (!HttpUtil.isKeepAlive(request) || response.status().code() != 200) {
+        if (!HttpUtil.isKeepAlive(request) || response.getStatus().code() != 200) {
             f.addListener(ChannelFutureListener.CLOSE);
         }
 

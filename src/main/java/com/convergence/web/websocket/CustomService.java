@@ -55,7 +55,7 @@ public class CustomService implements CustomCallBack {
      * @param requestId
      */
     public static void notifyDownline(String requestId) {
-        CustomService.watchMap.forEach((reqId, callBack) -> { // 通知有人下线
+      /*  CustomService.watchMap.forEach((reqId, callBack) -> { // 通知有人下线
             Request serviceRequest = new Request();
             serviceRequest.setServiceId(CODE.downline.code);
             serviceRequest.setRequestId(requestId);
@@ -64,7 +64,7 @@ public class CustomService implements CustomCallBack {
             } catch (Exception e) {
                 logger.warn(" 回调发送消息给客户端异常 ", e);
             }
-        });
+        });*/
     }
 
     public String getName() {

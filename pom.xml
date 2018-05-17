@@ -26,6 +26,13 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version> Camden.SR6</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<properties>
@@ -36,6 +43,10 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -222,30 +233,13 @@
 	<build>
 		<finalName>convergence</finalName>
 		<plugins>
-<!-- 			<plugin>
-				<groupId>com.google.protobuf.tools</groupId>
-				<artifactId>maven-protoc-plugin</artifactId>
-				<version>0.3.2</version>
-				<executions>
-					<execution>
-						<id>generate-sources</id>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							proto文件目录
-							<protoSourceRoot>${basedir}/src/main/proto/</protoSourceRoot>
-							<includes>
-								<param>**/proto/*.proto</param>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-				<configuration>
-					<protocExecutable>D:/protobuf/protoc-3.5.1-win32/bin/protoc.exe</protocExecutable>protoc.exe文件地址,使用2.5版本
-				</configuration>
-			</plugin> -->
+			<!-- <plugin> <groupId>com.google.protobuf.tools</groupId> <artifactId>maven-protoc-plugin</artifactId> 
+				<version>0.3.2</version> <executions> <execution> <id>generate-sources</id> 
+				<goals> <goal>compile</goal> </goals> <phase>generate-sources</phase> <configuration> 
+				proto文件目录 <protoSourceRoot>${basedir}/src/main/proto/</protoSourceRoot> <includes> 
+				<param>**/proto/*.proto</param> </includes> </configuration> </execution> 
+				</executions> <configuration> <protocExecutable>D:/protobuf/protoc-3.5.1-win32/bin/protoc.exe</protocExecutable>protoc.exe文件地址,使用2.5版本 
+				</configuration> </plugin> -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
