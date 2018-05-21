@@ -44,6 +44,11 @@
 
 	<dependencies>
 		<dependency>
+		  <groupId>xyz.spacexplore</groupId>
+		  <artifactId>algs4</artifactId>
+		  <version>0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
@@ -164,10 +169,8 @@
 			<version>3.6</version>
 		</dependency>
 		<!-- 加入mongodb -->
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-mongodb</artifactId> 
+			</dependency> -->
 		<!-- activiti -->
 		<!-- <dependency> <groupId>org.activiti</groupId> <artifactId>spring-boot-starter-basic</artifactId> 
 			<version>5.17.0</version> </dependency> -->
