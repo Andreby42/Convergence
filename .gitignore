@@ -23,3 +23,5 @@ dist/
 nbdist/
 .nb-gradle/
 /logs/
+hs_err_pid49044.log
+replay_pid49044.log
