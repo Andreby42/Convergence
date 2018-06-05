@@ -1,23 +1,61 @@
 package com.convergence.common.structure;
 
-public class Node {
-    private Node next;
-    private int data;
+public class Node<Item> {
+	
+	 Item item;
+	
+	 Node<Item> next;
+	
+	 Node<Item> pre;
 
-    public Node getNext() {
-        return next;
-    }
+	 
+	 
+	public Node() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    public void setNext(Node next) {
-        this.next = next;
-    }
+	public Node(Item item, Node<Item> next) {
+		super();
+		this.item = item;
+		this.next = next;
+	}
 
-    public int getData() {
-        return data;
-    }
+	public Node(Item item, Node<Item> next, Node<Item> pre) {
+		super();
+		this.item = item;
+		this.next = next;
+		this.pre = pre;
+	}
 
-    public void setData(int data) {
-        this.data = data;
-    }
+	public Item getItem() {
+		return item;
+	}
+	
+	public Item item() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public Node<Item> getNext() {
+		return next;
+	}
+
+	public void setNext(Node<Item> next) {
+		this.next = next;
+	}
+
+	public Node<Item> getPre() {
+		return pre;
+	}
+
+	public void setPre(Node<Item> pre) {
+		this.pre = pre;
+	}
+	
+	
 
 }
