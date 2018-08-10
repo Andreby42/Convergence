@@ -1,4 +1,4 @@
-package com.convergence.support.structrue;
+package com.convergence.common.leetcode;
 
 public class ArrayTest {
 

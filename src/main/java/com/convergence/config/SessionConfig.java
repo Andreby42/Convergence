@@ -1,8 +1,5 @@
 package com.convergence.config;
 
-import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
@@ -15,7 +12,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SessionConfig {
 
-    @Bean
+    /**
+     * 1.x版本设置session失效时间 2.x使用配置文件
+     */
+/*    @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
         return new EmbeddedServletContainerCustomizer() {
             @Override
@@ -23,5 +23,5 @@ public class SessionConfig {
                 container.setSessionTimeout(6000);
             }
         };
-    }
+    }*/
 }

@@ -2,7 +2,6 @@ package com.convergence.web;
 
 import javax.annotation.Resource;
 
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +22,8 @@ public class TestController {
 	// private MgAtomService mgAtomService;
 	@Resource
 	private AtomService atomService;
-	@Resource
-	DiscoveryClient discoveryClient;
+//	@Resource
+//	DiscoveryClient discoveryClient;
 
 	@GetMapping(value="/dc", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String dc() {

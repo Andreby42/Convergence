@@ -1,8 +1,12 @@
 package com.convergence.config;
 
+import java.time.Duration;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
@@ -30,13 +34,28 @@ public class RedisConfig {
         return template;
     }
 
-    @Bean
-    public RedisCacheManager cacheManager(RedisTemplate<?, ?> redisTemplate) {
-        RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
-        // cacheManager.setDefaultExpiration(216000);// 默认缓存时间
-        cacheManager.setUsePrefix(true);
+    /**
+     * 1.x版本
+     */
+/*     @Bean
+     public RedisCacheManager cacheManager(RedisTemplate<?, ?> redisTemplate) {
+     RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
+     // cacheManager.setDefaultExpiration(216000);// 默认缓存时间
+     cacheManager.setUsePrefix(true);
+     return cacheManager;
+     }*/
+    /**
+     * 2.0版本
+     */
+     @Bean
+    public RedisCacheManager cacheManager(RedisConnectionFactory factory) {
+        RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(factory);
+        RedisCacheConfiguration defaultCacheConfig = RedisCacheConfiguration.defaultCacheConfig();
+        // 默认超时时间,单位秒
+        defaultCacheConfig.entryTtl(Duration.ofSeconds(30));
+        RedisCacheManager cacheManager = new RedisCacheManager(redisCacheWriter, defaultCacheConfig);
         return cacheManager;
-    }
+    } 
 
 
 }
