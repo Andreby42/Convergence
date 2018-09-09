@@ -2,7 +2,11 @@ package com.convergence.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import com.convergence.domain.RoleDTO;
+import com.convergence.support.PageInfo;
 
 public interface RoleService {
     int deleteByPrimaryKey(Integer roleId);
@@ -26,5 +30,15 @@ public interface RoleService {
      * @param resourceIds 资源ids
      */
     void grant(Integer id, String[] resourceIds);
+
+	List<RoleDTO> findAll();
+
+	RoleDTO find(Integer id);
+
+	PageInfo<RoleDTO> findAll(PageRequest pageRequest);
+
+	void saveOrUpdate(RoleDTO role);
+
+	void delete(Integer id);
 
 }

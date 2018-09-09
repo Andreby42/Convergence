@@ -79,8 +79,8 @@ public class BaseController {
                     sort = new Sort(Direction.ASC, sortName);
                 }
             }
-            page = Integer.parseInt(request.getParameter("pageNumber")) - 1;
-            size = Integer.parseInt(request.getParameter("pageSize"));
+            page = Integer.parseInt(request.getParameter("pageNumber")==null?"1":request.getParameter("pageNumber")) - 1;
+            size = Integer.parseInt(request.getParameter("pageSize")==null?"10":request.getParameter("pageSize"));
         } catch (Exception e) {
             e.printStackTrace();
         }

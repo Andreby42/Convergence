@@ -1,18 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="${ctx!}/assets/layui/css/layui.css">
-</head>
-<body>
+<#include "/layout/layout.ftl">
+<@layout title="主页" active="home">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        首页
+        <small>慎独</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-cog"></i> 系统</a></li>
+        <li class="active"><i class="fa fa-home"></i> 首页</li>
+    </ol>
+</section>
 
-<div>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box box-primary">
+        <div class="box-body">
+            <ol>
+                <li>通向自由之路</li>
+            </ol>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
 
-
-</div>
-<!-- 你的HTML代码 -->
-index
-</body>
-</html>
+</section>
+<!-- /.content -->
+</@layout>

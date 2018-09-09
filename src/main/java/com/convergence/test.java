@@ -1,5 +1,6 @@
 package com.convergence;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -9,7 +10,6 @@ import com.convergence.domain.AtomDTO;
 import com.convergence.domain.UserDTO;
 import com.convergence.service.AtomService;
 import com.convergence.service.UserService;
-import com.convergence.service.mongo.MgAtomService;
 
 @Component
 public class test {
@@ -26,7 +26,7 @@ public class test {
 		System.out.println(selectByPrimaryKey);
 	}
 
-	// @PostConstruct
+	 @PostConstruct
 	public void testMg() {
 		AtomDTO atomDTO = atomService.selectByPrimaryKey(99);
 		// mgAtomService.insert(atomDTO);

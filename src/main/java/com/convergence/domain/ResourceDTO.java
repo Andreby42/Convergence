@@ -2,234 +2,262 @@ package com.convergence.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
 
 public class ResourceDTO implements Serializable {
-    private Integer reourceId;
+	private Integer resourceId;
 
-    private Date createTime;
+	private Date createTime;
 
-    private String description;
+	private String description;
 
-    private String icon;
+	private String icon;
 
-    private Integer isHide;
+	private Integer isHide;
 
-    private Integer level;
+	private Integer level;
 
-    private String name;
+	private String name;
 
-    private Integer sort;
+	private Integer sort;
 
-    private String sourceKey;
+	private String sourceKey;
 
-    private String sourceUrl;
+	private String sourceUrl;
 
-    private Integer type;
+	private Integer type;
 
-    private Date updateTime;
+	private Date updateTime;
 
-    private Integer parentId;
+	private Integer parentId;
 
-    private static final long serialVersionUID = 1L;
+	private   ResourceDTO parent;
 
-    public Integer getReourceId() {
-        return reourceId;
-    }
+	private static final long serialVersionUID = 1L;
 
-    public void setReourceId(Integer reourceId) {
-        this.reourceId = reourceId;
-    }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public ResourceDTO getParent() {
+		return parent;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setParent(ResourceDTO parent) {
+		this.parent = parent;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public Integer getResourceId() {
+		return resourceId;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public void setResourceId(Integer resourceId) {
+		this.resourceId = resourceId;
+	}
 
-    public String getIcon() {
-        return icon;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public void setIcon(String icon) {
-        this.icon = icon == null ? null : icon.trim();
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public Integer getIsHide() {
-        return isHide;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setIsHide(Integer isHide) {
-        this.isHide = isHide;
-    }
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
 
-    public Integer getLevel() {
-        return level;
-    }
+	public String getIcon() {
+		return icon;
+	}
 
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
+	public void setIcon(String icon) {
+		this.icon = icon == null ? null : icon.trim();
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Integer getIsHide() {
+		return isHide;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public void setIsHide(Integer isHide) {
+		this.isHide = isHide;
+	}
 
-    public Integer getSort() {
-        return sort;
-    }
+	public Integer getLevel() {
+		return level;
+	}
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
 
-    public String getSourceKey() {
-        return sourceKey;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setSourceKey(String sourceKey) {
-        this.sourceKey = sourceKey == null ? null : sourceKey.trim();
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public String getSourceUrl() {
-        return sourceUrl;
-    }
+	public Integer getSort() {
+		return sort;
+	}
 
-    public void setSourceUrl(String sourceUrl) {
-        this.sourceUrl = sourceUrl == null ? null : sourceUrl.trim();
-    }
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 
-    public Integer getType() {
-        return type;
-    }
+	public String getSourceKey() {
+		return sourceKey;
+	}
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
+	public void setSourceKey(String sourceKey) {
+		this.sourceKey = sourceKey == null ? null : sourceKey.trim();
+	}
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
+	public String getSourceUrl() {
+		return sourceUrl;
+	}
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+	public void setSourceUrl(String sourceUrl) {
+		this.sourceUrl = sourceUrl == null ? null : sourceUrl.trim();
+	}
 
-    public Integer getParentId() {
-        return parentId;
-    }
+	public Integer getType() {
+		return type;
+	}
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
+	public void setType(Integer type) {
+		this.type = type;
+	}
 
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        ResourceDTO other = (ResourceDTO) that;
-        return (this.getReourceId() == null
-                ? other.getReourceId() == null
-                : this.getReourceId().equals(other.getReourceId()))
-                && (this.getCreateTime() == null
-                        ? other.getCreateTime() == null
-                        : this.getCreateTime().equals(other.getCreateTime()))
-                && (this.getDescription() == null
-                        ? other.getDescription() == null
-                        : this.getDescription().equals(other.getDescription()))
-                && (this.getIcon() == null
-                        ? other.getIcon() == null
-                        : this.getIcon().equals(other.getIcon()))
-                && (this.getIsHide() == null
-                        ? other.getIsHide() == null
-                        : this.getIsHide().equals(other.getIsHide()))
-                && (this.getLevel() == null
-                        ? other.getLevel() == null
-                        : this.getLevel().equals(other.getLevel()))
-                && (this.getName() == null
-                        ? other.getName() == null
-                        : this.getName().equals(other.getName()))
-                && (this.getSort() == null
-                        ? other.getSort() == null
-                        : this.getSort().equals(other.getSort()))
-                && (this.getSourceKey() == null
-                        ? other.getSourceKey() == null
-                        : this.getSourceKey().equals(other.getSourceKey()))
-                && (this.getSourceUrl() == null
-                        ? other.getSourceUrl() == null
-                        : this.getSourceUrl().equals(other.getSourceUrl()))
-                && (this.getType() == null
-                        ? other.getType() == null
-                        : this.getType().equals(other.getType()))
-                && (this.getUpdateTime() == null
-                        ? other.getUpdateTime() == null
-                        : this.getUpdateTime().equals(other.getUpdateTime()))
-                && (this.getParentId() == null
-                        ? other.getParentId() == null
-                        : this.getParentId().equals(other.getParentId()));
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getReourceId() == null) ? 0 : getReourceId().hashCode());
-        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
-        result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
-        result = prime * result + ((getIcon() == null) ? 0 : getIcon().hashCode());
-        result = prime * result + ((getIsHide() == null) ? 0 : getIsHide().hashCode());
-        result = prime * result + ((getLevel() == null) ? 0 : getLevel().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getSort() == null) ? 0 : getSort().hashCode());
-        result = prime * result + ((getSourceKey() == null) ? 0 : getSourceKey().hashCode());
-        result = prime * result + ((getSourceUrl() == null) ? 0 : getSourceUrl().hashCode());
-        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
-        result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
-        result = prime * result + ((getParentId() == null) ? 0 : getParentId().hashCode());
-        return result;
-    }
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", reourceId=").append(reourceId);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", description=").append(description);
-        sb.append(", icon=").append(icon);
-        sb.append(", isHide=").append(isHide);
-        sb.append(", level=").append(level);
-        sb.append(", name=").append(name);
-        sb.append(", sort=").append(sort);
-        sb.append(", sourceKey=").append(sourceKey);
-        sb.append(", sourceUrl=").append(sourceUrl);
-        sb.append(", type=").append(type);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", parentId=").append(parentId);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+	public Integer getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((icon == null) ? 0 : icon.hashCode());
+		result = prime * result + ((isHide == null) ? 0 : isHide.hashCode());
+		result = prime * result + ((level == null) ? 0 : level.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((parentId == null) ? 0 : parentId.hashCode());
+		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
+		result = prime * result + ((sort == null) ? 0 : sort.hashCode());
+		result = prime * result + ((sourceKey == null) ? 0 : sourceKey.hashCode());
+		result = prime * result + ((sourceUrl == null) ? 0 : sourceUrl.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + ((updateTime == null) ? 0 : updateTime.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ResourceDTO other = (ResourceDTO) obj;
+		if (createTime == null) {
+			if (other.createTime != null)
+				return false;
+		} else if (!createTime.equals(other.createTime))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (icon == null) {
+			if (other.icon != null)
+				return false;
+		} else if (!icon.equals(other.icon))
+			return false;
+		if (isHide == null) {
+			if (other.isHide != null)
+				return false;
+		} else if (!isHide.equals(other.isHide))
+			return false;
+		if (level == null) {
+			if (other.level != null)
+				return false;
+		} else if (!level.equals(other.level))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (parent == null) {
+			if (other.parent != null)
+				return false;
+		} else if (!parent.equals(other.parent))
+			return false;
+		if (parentId == null) {
+			if (other.parentId != null)
+				return false;
+		} else if (!parentId.equals(other.parentId))
+			return false;
+		if (resourceId == null) {
+			if (other.resourceId != null)
+				return false;
+		} else if (!resourceId.equals(other.resourceId))
+			return false;
+		if (sort == null) {
+			if (other.sort != null)
+				return false;
+		} else if (!sort.equals(other.sort))
+			return false;
+		if (sourceKey == null) {
+			if (other.sourceKey != null)
+				return false;
+		} else if (!sourceKey.equals(other.sourceKey))
+			return false;
+		if (sourceUrl == null) {
+			if (other.sourceUrl != null)
+				return false;
+		} else if (!sourceUrl.equals(other.sourceUrl))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		if (updateTime == null) {
+			if (other.updateTime != null)
+				return false;
+		} else if (!updateTime.equals(other.updateTime))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ResourceDTO [resourceId=" + resourceId + ", createTime=" + createTime + ", description=" + description
+				+ ", icon=" + icon + ", isHide=" + isHide + ", level=" + level + ", name=" + name + ", sort=" + sort
+				+ ", sourceKey=" + sourceKey + ", sourceUrl=" + sourceUrl + ", type=" + type + ", updateTime="
+				+ updateTime + ", parentId=" + parentId + ", parent=" + parent + "]";
+	}
+
 }

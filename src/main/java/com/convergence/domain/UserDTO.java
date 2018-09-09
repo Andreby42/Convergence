@@ -3,6 +3,7 @@ package com.convergence.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class UserDTO implements Serializable {
     private Integer userId;
@@ -31,7 +32,7 @@ public class UserDTO implements Serializable {
 
     private String userName;
 
-    private List<RoleDTO> roles;
+    private Set<RoleDTO> roles;
 
     private static final long serialVersionUID = 1L;
 
@@ -139,11 +140,11 @@ public class UserDTO implements Serializable {
         this.userName = userName == null ? null : userName.trim();
     }
 
-    public List<RoleDTO> getRoles() {
+    public Set<RoleDTO> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<RoleDTO> roles) {
+    public void setRoles(Set<RoleDTO> roles) {
         this.roles = roles;
     }
 

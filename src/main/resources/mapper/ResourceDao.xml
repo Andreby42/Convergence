@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.convergence.dao.ResourceDao">
 	<resultMap id="BaseResultMap" type="com.convergence.domain.ResourceDTO">
-		<id column="reource_id" property="reourceId" jdbcType="INTEGER" />
+		<id column="resource_id" property="resourceId" jdbcType="INTEGER" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="description" property="description" jdbcType="VARCHAR" />
 		<result column="icon" property="icon" jdbcType="VARCHAR" />
@@ -16,8 +16,26 @@
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 		<result column="parent_id" property="parentId" jdbcType="INTEGER" />
 	</resultMap>
+	<resultMap type="com.convergence.domain.ResourceDTO" id="BaseResultMapExpand">
+		<id column="resource_id" property="resourceId" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="icon" property="icon" jdbcType="VARCHAR" />
+		<result column="is_hide" property="isHide" jdbcType="INTEGER" />
+		<result column="level" property="level" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="source_key" property="sourceKey" jdbcType="VARCHAR" />
+		<result column="source_url" property="sourceUrl" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="parent_id" property="parentId" jdbcType="INTEGER" />
+	<!-- 	<collection property="resources" column="resource_id"
+			ofType="com.convergence.domain.ResourceDTO" select="com.convergence.dao.ResourceDao.selectResourcesByParentId"></collection> -->
+		<association property="parent" column="parent_id"  javaType="com.convergence.domain.ResourceDTO" select="com.convergence.dao.ResourceDao.selectResourcesByParentId" />
+	</resultMap>
 	<sql id="Base_Column_List">
-		reource_id, create_time, description, icon, is_hide, level, name, sort,
+		resource_id, create_time, description, icon, is_hide, level, name, sort,
 		source_key,
 		source_url, type, update_time, parent_id
 	</sql>
@@ -26,19 +44,19 @@
 		select
 		<include refid="Base_Column_List" />
 		from resource
-		where reource_id = #{reourceId,jdbcType=INTEGER}
+		where resource_id = #{resourceId,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from resource
-		where reource_id = #{reourceId,jdbcType=INTEGER}
+		where resource_id = #{resourceId,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.convergence.domain.ResourceDTO">
-		insert into resource (reource_id, create_time, description,
+		insert into resource (resource_id, create_time, description,
 		icon, is_hide, level,
 		name, sort, source_key,
 		source_url, type, update_time,
 		parent_id)
-		values (#{reourceId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+		values (#{resourceId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
 		#{description,jdbcType=VARCHAR},
 		#{icon,jdbcType=VARCHAR}, #{isHide,jdbcType=INTEGER}, #{level,jdbcType=INTEGER},
 		#{name,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER},
@@ -49,8 +67,8 @@
 	<insert id="insertSelective" parameterType="com.convergence.domain.ResourceDTO">
 		insert into resource
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="reourceId != null">
-				reource_id,
+			<if test="resourceId != null">
+				resource_id,
 			</if>
 			<if test="createTime != null">
 				create_time,
@@ -90,8 +108,8 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="reourceId != null">
-				#{reourceId,jdbcType=INTEGER},
+			<if test="resourceId != null">
+				#{resourceId,jdbcType=INTEGER},
 			</if>
 			<if test="createTime != null">
 				#{createTime,jdbcType=TIMESTAMP},
@@ -171,7 +189,7 @@
 				parent_id = #{parentId,jdbcType=INTEGER},
 			</if>
 		</set>
-		where reource_id = #{reourceId,jdbcType=INTEGER}
+		where resource_id = #{resourceId,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.convergence.domain.ResourceDTO">
 		update resource
@@ -187,10 +205,135 @@
 		type = #{type,jdbcType=INTEGER},
 		update_time = #{updateTime,jdbcType=TIMESTAMP},
 		parent_id = #{parentId,jdbcType=INTEGER}
-		where reource_id = #{reourceId,jdbcType=INTEGER}
+		where resource_id = #{resourceId,jdbcType=INTEGER}
 	</update>
 	<select id="selectResourcesByRoleId" resultMap="BaseResultMap">
 		select rs.* from resource rs, role_resource rr where
 		rr.role_id=#{roleId} and rr.resource_id=rs.resource_id
+	</select>
+	<select id="findAllWithParams" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" />
+			  from resource order by create_time desc limit #{offset},#{pageSize}
+	</select>
+	<select id="findTotalCount" resultType="java.lang.Integer">
+		select count(0) from resource
+	</select>
+	<insert id="insertOrUpdate">
+	insert into resource
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="resourceId != null">
+				resource_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="description != null">
+				description,
+			</if>
+			<if test="icon != null">
+				icon,
+			</if>
+			<if test="isHide != null">
+				is_hide,
+			</if>
+			<if test="level != null">
+				level,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="sort != null">
+				sort,
+			</if>
+			<if test="sourceKey != null">
+				source_key,
+			</if>
+			<if test="sourceUrl != null">
+				source_url,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="resourceId != null">
+				#{resourceId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="description != null">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="icon != null">
+				#{icon,jdbcType=VARCHAR},
+			</if>
+			<if test="isHide != null">
+				#{isHide,jdbcType=INTEGER},
+			</if>
+			<if test="level != null">
+				#{level,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="sort != null">
+				#{sort,jdbcType=INTEGER},
+			</if>
+			<if test="sourceKey != null">
+				#{sourceKey,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceUrl != null">
+				#{sourceUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=INTEGER},
+			</if>
+		</trim>
+			dbResource.setUpdateTime(new Date());
+			dbResource.setName(resource.getName());
+			dbResource.setSourceKey(resource.getSourceKey());
+			dbResource.setType(resource.getType());
+			dbResource.setSourceUrl(resource.getSourceUrl());
+			dbResource.setLevel(resource.getLevel());
+			dbResource.setSort(resource.getSort());
+			dbResource.setIsHide(resource.getIsHide());
+			dbResource.setIcon(resource.getIcon());
+			dbResource.setDescription(resource.getDescription());
+			dbResource.setUpdateTime(new Date());
+		    dbResource.setParentId(resource.getParentId()); 
+		ON DUPLICATE KEY UPDATE
+			update_time=values(update_time),
+			name=VALUES(name),
+			source_key=VALUES(source_key),
+			source_url=VALUES(source_url),
+			type=VALUES(type),
+			level=VALUES(level),
+			sort=VALUES(sort),
+			is_hide=VALUES(is_hide),
+			icon=VALUES(icon),
+			description=VALUES(description),
+			parent_id=VALUES(parent_id)
+	</insert>
+	<select id="selectResourcesByParentId" resultMap="BaseResultMap">
+		select * from resource where resource_id=#{parentId}
+	</select>
+	<select id="findAll" resultMap="BaseResultMapExpand">
+	select * from resource
+	</select>
+	<select id="findAllForShiro"  resultMap="BaseResultMap">
+		select * from resource
 	</select>
 </mapper>
