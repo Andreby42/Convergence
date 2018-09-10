@@ -1,6 +1,7 @@
 package com.convergence.service;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -23,7 +24,7 @@ public interface ResourceService {
 
     int updateByPrimaryKey(ResourceDTO record);
 
-    List<ResourceDTO> selectResourcesByRoleId(String userId);
+    Set<ResourceDTO> selectResourcesByRoleId(String userId);
 
     PageInfo<ResourceDTO> findAll(PageRequest pageRequest);
 

@@ -302,18 +302,6 @@
 				#{parentId,jdbcType=INTEGER},
 			</if>
 		</trim>
-			dbResource.setUpdateTime(new Date());
-			dbResource.setName(resource.getName());
-			dbResource.setSourceKey(resource.getSourceKey());
-			dbResource.setType(resource.getType());
-			dbResource.setSourceUrl(resource.getSourceUrl());
-			dbResource.setLevel(resource.getLevel());
-			dbResource.setSort(resource.getSort());
-			dbResource.setIsHide(resource.getIsHide());
-			dbResource.setIcon(resource.getIcon());
-			dbResource.setDescription(resource.getDescription());
-			dbResource.setUpdateTime(new Date());
-		    dbResource.setParentId(resource.getParentId()); 
 		ON DUPLICATE KEY UPDATE
 			update_time=values(update_time),
 			name=VALUES(name),
@@ -324,8 +312,10 @@
 			sort=VALUES(sort),
 			is_hide=VALUES(is_hide),
 			icon=VALUES(icon),
-			description=VALUES(description),
-			parent_id=VALUES(parent_id)
+			description=VALUES(description)
+			<if test="parentId != null">
+			,parent_id=VALUES(parent_id)
+			</if>
 	</insert>
 	<select id="selectResourcesByParentId" resultMap="BaseResultMap">
 		select * from resource where resource_id=#{parentId}

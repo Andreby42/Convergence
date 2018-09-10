@@ -48,7 +48,7 @@ public class MyRealm extends AuthorizingRealm {
 		Set<String> roleSet = new HashSet<String>();
 		Set<RoleDTO> roles = dbUser.getRoles();
 		for (RoleDTO role : roles) {
-			List<ResourceDTO> resources = role.getResources();
+			Set<ResourceDTO> resources = role.getResources();
 			for (ResourceDTO resource : resources) {
 				shiroPermissions.add(resource.getSourceKey());
 

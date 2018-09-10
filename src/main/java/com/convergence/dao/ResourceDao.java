@@ -1,6 +1,7 @@
 package com.convergence.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -21,7 +22,7 @@ public interface ResourceDao {
 
 	int updateByPrimaryKey(ResourceDTO record);
 
-	List<ResourceDTO> selectResourcesByRoleId(String userId);
+	Set<ResourceDTO> selectResourcesByRoleId(String userId);
 
 	List<ResourceDTO> findAllWithParams(@Param("offset") int offset, @Param("pageSize") int pageSize);
 

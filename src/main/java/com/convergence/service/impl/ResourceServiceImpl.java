@@ -1,7 +1,9 @@
 package com.convergence.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.convergence.dao.ResourceDao;
+import com.convergence.dao.RoleDao;
 import com.convergence.domain.ResourceDTO;
+import com.convergence.domain.RoleDTO;
 import com.convergence.domain.vo.ZtreeView;
 import com.convergence.service.ResourceService;
 import com.convergence.support.PageInfo;
@@ -19,6 +23,8 @@ import com.convergence.support.PageInfo;
 public class ResourceServiceImpl implements ResourceService {
 	@Resource
 	private ResourceDao resourceDao;
+	@Resource
+	private RoleDao roleDao;
 
 	@Override
 	@Transactional
@@ -57,14 +63,33 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	@Override
-	public List<ResourceDTO> selectResourcesByRoleId(String userId) {
+	public Set<ResourceDTO> selectResourcesByRoleId(String userId) {
 		return resourceDao.selectResourcesByRoleId(userId);
 	}
 
 	@Override
 	public List<ZtreeView> tree(int roleId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<ZtreeView> resultTreeNodes = new ArrayList<ZtreeView>();
+		RoleDTO role = roleDao.selectByPrimaryKey(roleId);
+		Set<ResourceDTO> roleResources = role.getResources();
+		resultTreeNodes.add(new ZtreeView(-1L, null, "系统菜单", true));
+		ZtreeView node;
+		List<ResourceDTO> all = resourceDao.findAllByOrderByParentAscIdAscSortAsc();
+		for (ResourceDTO resource : all) {
+			node = new ZtreeView();
+			node.setId(Long.valueOf(resource.getResourceId()));
+			if (resource.getParent() == null) {
+				node.setpId(-1L);
+			} else {
+				node.setpId(Long.valueOf(resource.getParent().getResourceId()));
+			}
+			node.setName(resource.getName());
+			if (roleResources != null && roleResources.contains(resource)) {
+				node.setChecked(true);
+			}
+			resultTreeNodes.add(node);
+		}
+		return resultTreeNodes;
 	}
 
 	@Override

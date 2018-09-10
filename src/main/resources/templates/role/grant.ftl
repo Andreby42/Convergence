@@ -22,7 +22,7 @@
     };
     $.ajax({
         type: "POST",
-        url: "${ctx!}/resource/tree/" + ${role.id},
+        url: "${ctx!}/resource/tree/" + ${role.roleId},
         dataType: 'json',
         success: function (msg) {
             $.fn.zTree.init($("#tree"), setting, msg);
@@ -36,10 +36,10 @@
         var selectIds = [];
         for (var index in nodes) {
             var item = nodes[index];
-            selectIds.push(item.id)
+            selectIds.push(item.roleId)
         }
         $.ajax({
-            url: "${ctx!}/role/grant/${role.id}?t=" + Math.random(),
+            url: "${ctx!}/role/grant/${role.roleId}?t=" + Math.random(),
             type: "post",
             dataType: "json",
             data: {"resourceIds": selectIds.join(",")},

@@ -13,9 +13,9 @@
             dataType: "JSON",
             success: function (res) {
                 layer.msg(res.message, {
-                    time: 2000
+                    time: 1000
                 }, function () {
-                    location.reload();
+                      top.location.href="${ctx!}/resource/index";
                 });
             }
         });
@@ -43,15 +43,15 @@
             <div class="box  box-primary">
                 <form class="form-horizontal form-edit" method="post" action="${ctx!}/resource/edit">
                     <div class="box-body">
-                        <input type="hidden" id="id" name="id" value="${resource.id}">
+                        <input type="hidden" id="id" name="resourceId" value="${resource.resourceId}">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">上级资源：</label>
                             <div class="col-sm-8">
                                 <select name="parentId" class="form-control">
                                     <option value="">菜单</option>
                                     <#list list as r>
-                                        <option value="${r.id}"
-                                                <#if resource.parent.id == r.id>selected="selected"</#if>>
+                                        <option value="${r.resourceId}"
+                                                <#if resource.parent.resourceId == r.resourceId>selected="selected"</#if>>
                                             <#if r.level == 1>|-<#elseif  r.level == 2>　|-<#else>　　|-</#if>${r.name}
                                         </option>
                                     </#list>

@@ -45,7 +45,7 @@ public class ResourceController extends BaseController {
 	public String add(ModelMap map) {
 		List<ResourceDTO> list = resourceService.findAll();
 		map.put("list", list);
-		return "resource/form";
+		return "resource/addform";
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

@@ -50,8 +50,8 @@
                                 <select name="parentId" class="form-control">
                                     <option value="">菜单</option>
                                     <#list list as r>
-                                        <option value="${r.id}"
-                                                <#if resource.parent.id == r.id>selected="selected"</#if>>
+                                        <option value="${r.resourceId}"
+                                                <#if resource.parent.resourceId== r.resourceId>selected="selected"</#if>>
                                             <#if r.level == 1>|-<#elseif  r.level == 2>　|-<#else>　　|-</#if>${r.name}
                                         </option>
                                     </#list>
