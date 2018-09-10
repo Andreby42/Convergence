@@ -7,9 +7,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.convergence.support.shiro.freemarker.ShiroTags;
 
-/**
- * create by SPPan
- */
 @Configuration
 public class FreeMarkerConfig {
 

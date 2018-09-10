@@ -6,9 +6,6 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * create by SPPan
- */
 public class MD5Utils {
     /**
      * 对字符串进行Md5加密

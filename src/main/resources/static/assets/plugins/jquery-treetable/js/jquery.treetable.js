@@ -546,7 +546,7 @@
       return this;
     },
 
-    node: function(id) {
+    node: function(resourceId) {
       return this.data("treetable").tree[resourceId];
     },
 
@@ -562,7 +562,7 @@
       return this;
     },
 
-    reveal: function(id) {
+    reveal: function(resourceId) {
       var node = this.data("treetable").tree[resourceId];
 
       if (node) {

@@ -21,9 +21,6 @@ import com.convergence.support.JsonResult;
 import com.convergence.support.PageInfo;
 import com.convergence.web.BaseController;
 
-/**
- * create by SPPan
- */
 @Controller
 @RequestMapping("/resource")
 public class ResourceController extends BaseController {

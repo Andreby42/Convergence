@@ -26,11 +26,6 @@ import com.convergence.domain.UserDTO;
 import com.convergence.service.UserService;
 import com.convergence.support.MD5Utils;
 
-/**
- * 
- * @author SPPan
- *
- */
 public class MyRealm extends AuthorizingRealm {
 
 	public MyRealm() {

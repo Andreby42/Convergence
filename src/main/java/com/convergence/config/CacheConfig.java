@@ -7,11 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
-/**
- * create by SPPan
- */
 @Configuration
-//标注启动了缓存
 @EnableCaching
 public class CacheConfig {
 
