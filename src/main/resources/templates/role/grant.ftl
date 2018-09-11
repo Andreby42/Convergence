@@ -36,7 +36,7 @@
         var selectIds = [];
         for (var index in nodes) {
             var item = nodes[index];
-            selectIds.push(item.roleId)
+            selectIds.push(item.id)
         }
         $.ajax({
             url: "${ctx!}/role/grant/${role.roleId}?t=" + Math.random(),
@@ -44,9 +44,8 @@
             dataType: "json",
             data: {"resourceIds": selectIds.join(",")},
             success: function (msg) {
-                layer.msg(msg.message, {time: 2000}, function () {
-                    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                    parent.layer.close(index);
+                layer.msg(msg.message, {time: 1000}, function () {
+                    top.location.href="${ctx!}/role/index";
                 });
             },
             error: function (r, s, m) {

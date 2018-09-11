@@ -2,8 +2,6 @@ package com.convergence.web.admin.system;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.convergence.domain.ResourceDTO;
-import com.convergence.domain.UserDTO;
-import com.convergence.domain.model.ResourceModel;
 import com.convergence.domain.vo.ZtreeView;
 import com.convergence.service.ResourceService;
 import com.convergence.support.JsonResult;
-import com.convergence.support.PageInfo;
 import com.convergence.web.BaseController;
 
 @Controller

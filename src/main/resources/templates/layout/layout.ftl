@@ -126,6 +126,10 @@
                 <li <#if active=="resource">class="active"</#if>><a href="${ctx!}/resource/index"><i
                         class="fa fa-file-o"></i> 资源管理</a></li>
             </@shiro.hasPermission>
+                <@shiro.hasPermission name="system:test:index">
+                <li <#if active=="test">class="active"</#if>><a href="${ctx!}/test/index"><i
+                        class="fa fa-user-circle-o"></i> 測試頁面</a></li>
+            	</@shiro.hasPermission>
                     </ul>
                 </li>
 

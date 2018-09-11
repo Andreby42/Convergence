@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.data.domain.PageRequest;
 
 import com.convergence.domain.ResourceDTO;
-import com.convergence.domain.model.ResourceModel;
 import com.convergence.support.PageInfo;
 
 public interface ResourceService {

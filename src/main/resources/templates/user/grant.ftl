@@ -9,11 +9,11 @@
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "${ctx!}/user/grant/" + ${user.id},
+            url: "${ctx!}/user/grant/" + ${user.userId?c},
             data: $(".form-grant").serialize(),
             success: function (res) {
-                layer.msg(res.message, {time: 2000}, function () {
-                    location.reload();
+                layer.msg(res.message, {time: 1000}, function () {
+                    top.location.href="${ctx!}/user/index";
                 });
             }
         });
@@ -39,19 +39,19 @@
         <div class="col-md-10">
             <!-- Default box -->
             <div class="box  box-primary">
-                <form class="form-horizontal form-grant" method="post" action="${ctx!}/user/save">
+                <form class="form-horizontal form-grant" method="post">
                     <div class="box-body">
-                        <input type="hidden" id="id" name="id" value="${user.id}">
+                        <input type="hidden" id="id" name="userId" value="${user.userId}">
                         <div class="form-group">
                             <#list roles as role>
                                 <div class="col-sm-12">
                                     <div class="checkbox i-checks">
                                         <label>
-                                        <#if roleIds?seq_contains(role.id)>
-                                            <input type="checkbox" value="${role.id}" name="roleIds" checked="checked">
+                                        <#if roleIds?seq_contains(role.roleId)>
+                                            <input type="checkbox" value="${role.roleId}" name="roleIds" checked="checked">
                                             <i></i> ${role.name}
                                         <#else>
-                                            <input type="checkbox" value="${role.id}" name="roleIds">
+                                            <input type="checkbox" value="${role.roleId}" name="roleIds">
                                             <i></i> ${role.name}
                                         </#if>
                                         </label>

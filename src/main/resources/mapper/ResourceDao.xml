@@ -326,4 +326,7 @@
 	<select id="findAllForShiro"  resultMap="BaseResultMap">
 		select * from resource
 	</select>
+	<select id="findAllByOrderByParentAscIdAscSortAsc" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from resource order by parent_id asc, resource_id asc 
+	</select>
 </mapper>

@@ -1,11 +1,13 @@
 package com.convergence.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.convergence.domain.UserDTO;
+import com.convergence.domain.UserRoleDTO;
 
 @Mapper
 public interface UserDao {
@@ -28,4 +30,8 @@ public interface UserDao {
 	int findTotalCount();
 
 	void insertOrUpdate(UserDTO user);
+
+	void deleteUserRoleByUserId(@Param("userId")Integer userId);
+
+	void insertUserRoles(@Param("set")Set<UserRoleDTO> userRoles);
 }

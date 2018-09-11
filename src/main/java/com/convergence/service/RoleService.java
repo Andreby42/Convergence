@@ -1,6 +1,7 @@
 package com.convergence.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,7 +22,7 @@ public interface RoleService {
 
     int updateByPrimaryKey(RoleDTO record);
 
-    List<RoleDTO> selectRolesByUserId(String userId);
+    Set<RoleDTO> selectRolesByUserId(String userId);
 
     /**
      * 给角色分配资源

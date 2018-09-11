@@ -1,11 +1,13 @@
 package com.convergence.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.convergence.domain.RoleDTO;
+import com.convergence.domain.RoleResourceDTO;
 
 @Mapper
 public interface RoleDao {
@@ -21,11 +23,19 @@ public interface RoleDao {
 
     int updateByPrimaryKey(RoleDTO record);
 
-    List<RoleDTO> selectRolesByUserId(String userId);
+    Set<RoleDTO> selectRolesByUserId(String userId);
 
 	int findTotalCount();
 
-	List<RoleDTO> findAll(@Param("offset")int offset,@Param("pageSize") int pageSize);
+	List<RoleDTO> findAllByPage(@Param("offset")int offset,@Param("pageSize") int pageSize);
 
 	void insertOrUpdate(RoleDTO role);
+	
+	void insertRoleAndResource(@Param("set")Set<RoleResourceDTO> resources);
+
+	Set<RoleResourceDTO> selectResourceByRoleId(@Param("roleId")Integer roleId);
+
+	void deleteRoleAndResources(@Param("roleId")Integer roleId);
+
+	List<RoleDTO> findAll();
 }

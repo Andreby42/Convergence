@@ -11,7 +11,7 @@
             url: "${ctx!}/user/updatePwd",
             data: $(".form-edit").serialize(),
             success: function (msg) {
-                layer.msg(msg.message, {time: 2000}, function () {
+                layer.msg(msg.message, {time: 1000}, function () {
                     if (msg.code == 0) {
                         window.location.href = "${ctx!}/logout";
                     } else {

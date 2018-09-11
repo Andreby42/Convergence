@@ -1,10 +1,13 @@
 package com.convergence.web.admin.system;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.convergence.domain.RoleDTO;
 import com.convergence.service.RoleService;
@@ -75,7 +78,7 @@ public class RoleController extends BaseController {
     public JsonResult grant(@PathVariable Integer id,
                             @RequestParam(required = false) String[] resourceIds, ModelMap map) {
         try {
-            roleService.grant(id, resourceIds);
+        	roleService.grant(id, resourceIds);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.failure(e.getMessage());

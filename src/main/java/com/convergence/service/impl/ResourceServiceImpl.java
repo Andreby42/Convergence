@@ -91,7 +91,7 @@ public class ResourceServiceImpl implements ResourceService {
 		}
 		return resultTreeNodes;
 	}
-
+	
 	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub

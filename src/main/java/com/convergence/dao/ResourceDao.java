@@ -35,4 +35,6 @@ public interface ResourceDao {
 	List<ResourceDTO> findAll();
 
 	List<ResourceDTO> findAllForShiro();
+
+	List<ResourceDTO> findAllByOrderByParentAscIdAscSortAsc();
 }

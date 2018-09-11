@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.convergence.dao.UserDao">
-	<resultMap id="BaseResultMap" type="com.convergence.domain.UserDTO">
+	<resultMap id="BaseResultMap"
+		type="com.convergence.domain.UserDTO">
 		<id column="user_id" property="userId" jdbcType="INTEGER" />
-		<result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
-		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="birthday" property="birthday"
+			jdbcType="TIMESTAMP" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
 		<result column="status" property="status" jdbcType="VARCHAR" />
-		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="description" property="description"
+			jdbcType="VARCHAR" />
 		<result column="email" property="email" jdbcType="VARCHAR" />
 		<result column="locked" property="locked" jdbcType="INTEGER" />
-		<result column="nick_name" property="nickName" jdbcType="VARCHAR" />
-		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="nick_name" property="nickName"
+			jdbcType="VARCHAR" />
+		<result column="password" property="password"
+			jdbcType="VARCHAR" />
 		<result column="sex" property="sex" jdbcType="INTEGER" />
-		<result column="telephone" property="telephone" jdbcType="VARCHAR" />
-		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="telephone" property="telephone"
+			jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="user_name" property="userName"
+			jdbcType="VARCHAR" />
 		<collection property="roles" column="user_id"
-			ofType="com.convergence.domain.RoleDTO" select="com.convergence.dao.RoleDao.selectRolesByUserId"></collection>
+			ofType="com.convergence.domain.RoleDTO"
+			select="com.convergence.dao.RoleDao.selectRolesByUserId"></collection>
 	</resultMap>
 	<sql id="Base_Column_List">
-		user_id, birthday, create_time, status, description, email, locked, nick_name,
+		user_id, birthday, create_time, status, description, email,
+		locked, nick_name,
 		password,
 		sex, telephone, update_time, user_name
 	</sql>
@@ -30,25 +41,34 @@
 		from user
 		where user_id = #{userId,jdbcType=INTEGER}
 	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
 		delete from user
-		where user_id = #{userId,jdbcType=INTEGER}
+		where user_id =
+		#{userId,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="com.convergence.domain.UserDTO">
+	<insert id="insert"
+		parameterType="com.convergence.domain.UserDTO">
 		insert into user (user_id, birthday, create_time,
 		status, description, email,
 		locked, nick_name, password,
-		sex, telephone, update_time,
+		sex, telephone,
+		update_time,
 		user_name)
-		values (#{userId,jdbcType=INTEGER}, #{birthday,jdbcType=TIMESTAMP},
+		values (#{userId,jdbcType=INTEGER},
+		#{birthday,jdbcType=TIMESTAMP},
 		#{createTime,jdbcType=TIMESTAMP},
-		#{status,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
-		#{locked,jdbcType=INTEGER}, #{nickName,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR},
+		#{locked,jdbcType=INTEGER},
+		#{nickName,jdbcType=VARCHAR},
 		#{password,jdbcType=VARCHAR},
-		#{sex,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP},
+		#{sex,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
 		#{userName,jdbcType=VARCHAR})
 	</insert>
-	<insert id="insertSelective" parameterType="com.convergence.domain.UserDTO">
+	<insert id="insertSelective"
+		parameterType="com.convergence.domain.UserDTO">
 		insert into user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="userId != null">
@@ -133,7 +153,8 @@
 			</if>
 		</trim>
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.convergence.domain.UserDTO">
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.convergence.domain.UserDTO">
 		update user
 		<set>
 			<if test="birthday != null">
@@ -175,31 +196,41 @@
 		</set>
 		where user_id = #{userId,jdbcType=INTEGER}
 	</update>
-	<update id="updateByPrimaryKey" parameterType="com.convergence.domain.UserDTO">
+	<update id="updateByPrimaryKey"
+		parameterType="com.convergence.domain.UserDTO">
 		update user
-		set birthday = #{birthday,jdbcType=TIMESTAMP},
-		create_time = #{createTime,jdbcType=TIMESTAMP},
+		set birthday =
+		#{birthday,jdbcType=TIMESTAMP},
+		create_time =
+		#{createTime,jdbcType=TIMESTAMP},
 		status = #{status,jdbcType=VARCHAR},
 		description = #{description,jdbcType=VARCHAR},
-		email = #{email,jdbcType=VARCHAR},
+		email =
+		#{email,jdbcType=VARCHAR},
 		locked = #{locked,jdbcType=INTEGER},
 		nick_name = #{nickName,jdbcType=VARCHAR},
-		password = #{password,jdbcType=VARCHAR},
+		password =
+		#{password,jdbcType=VARCHAR},
 		sex = #{sex,jdbcType=INTEGER},
-		telephone = #{telephone,jdbcType=VARCHAR},
-		update_time = #{updateTime,jdbcType=TIMESTAMP},
-		user_name = #{userName,jdbcType=VARCHAR}
+		telephone =
+		#{telephone,jdbcType=VARCHAR},
+		update_time =
+		#{updateTime,jdbcType=TIMESTAMP},
+		user_name =
+		#{userName,jdbcType=VARCHAR}
 		where user_id = #{userId,jdbcType=INTEGER}
 	</update>
 	<select id="findByUserName" resultMap="BaseResultMap">
-		select 	<include refid="Base_Column_List" />
-			from user where user_name=#{username}
+		select
+		<include refid="Base_Column_List" />
+		from user where user_name=#{username}
 	</select>
 	<select id="findAll" resultMap="BaseResultMap">
-		select * from user order by create_time desc limit #{offset},#{pageSize}
+		select * from user order by
+		create_time desc limit #{offset},#{pageSize}
 	</select>
 	<select id="findTotalCount" resultType="java.lang.Integer">
-		select count(0) from user 
+		select count(0) from user
 	</select>
 	<insert id="insertOrUpdate">
 		insert into user
@@ -285,15 +316,29 @@
 				#{userName,jdbcType=VARCHAR},
 			</if>
 		</trim>
-	ON DUPLICATE KEY UPDATE
-			update_time=values(update_time),
-			nick_name=VALUES(nick_name),
-			sex=VALUES(sex),
-			birthday=VALUES(birthday),
-			telephone=VALUES(telephone),
-			email=VALUES(email),
-			locked=VALUES(locked),
-			description=VALUES(description),
-			status=VALUES(status)
+		ON DUPLICATE KEY UPDATE
+		update_time=values(update_time),
+		nick_name=VALUES(nick_name),
+		sex=VALUES(sex),
+		birthday=VALUES(birthday),
+		telephone=VALUES(telephone),
+		email=VALUES(email),
+		locked=VALUES(locked),
+		description=VALUES(description),
+		status=VALUES(status)
+	</insert>
+	<delete id="deleteUserRoleByUserId"> 
+		delete from user_role where user_id=#{userId}
+	</delete>
+	<insert id="insertUserRoles" parameterType="java.util.Set">
+		insert into user_role
+		(user_id, role_id)
+		values
+		<foreach collection="set" item="item" separator=",">
+			(#{item.userId}, #{item.roleId})
+		</foreach>
+			ON DUPLICATE KEY UPDATE
+			user_id=values(user_id),
+			role_id=values(role_id)
 	</insert>
 </mapper>

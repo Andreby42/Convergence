@@ -15,7 +15,7 @@ import com.convergence.protobuf.Atom;
 import com.convergence.protobuf.Atom.AtomMsg.Builder;
 import com.convergence.service.AtomService;
 
-@RestController
+//@RestController
 public class TestController {
 
 	// @Resource

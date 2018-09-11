@@ -1,18 +1,23 @@
 package com.convergence.service.impl;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.springframework.data.domain.Page;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
+import com.convergence.dao.ResourceDao;
 import com.convergence.dao.RoleDao;
+import com.convergence.domain.ResourceDTO;
 import com.convergence.domain.RoleDTO;
-import com.convergence.domain.UserDTO;
+import com.convergence.domain.RoleResourceDTO;
 import com.convergence.service.RoleService;
 import com.convergence.support.PageInfo;
 
@@ -20,6 +25,8 @@ import com.convergence.support.PageInfo;
 public class RoleServiceImpl implements RoleService {
 	@Resource
 	private RoleDao roleDao;
+	@Resource
+	private ResourceDao resourceDao;
 
 	@Override
 	@Transactional
@@ -59,20 +66,37 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<RoleDTO> selectRolesByUserId(String userId) {
+	public Set<RoleDTO> selectRolesByUserId(String userId) {
 		return roleDao.selectRolesByUserId(userId);
 	}
 
 	@Override
-	public void grant(Integer id, String[] resourceIds) {
-		// TODO Auto-generated method stub
+	public void grant(Integer roleId, String[] resourceIds) {
+		RoleDTO role = find(roleId);
 
+		Assert.notNull(role, "角色不存在");
+		// Assert.state(!"administrator".equals(role.getRoleKey()), "超级管理员角色不能进行资源分配");
+		// 暴力点先 干掉之前的所有的权限资源。
+		roleDao.deleteRoleAndResources(roleId);
+		Set<RoleResourceDTO> resources = new HashSet<RoleResourceDTO>();
+		if (resourceIds != null) {
+			for (int i = 0; i < resourceIds.length; i++) {
+				RoleResourceDTO rr = new RoleResourceDTO();
+				if (StringUtils.isBlank(resourceIds[i]) || "-1".equals(resourceIds[i])) {
+					continue;
+				}
+				Integer resourceId = Integer.parseInt(resourceIds[i]);
+				rr.setResourceId(resourceId);
+				rr.setRoleId(roleId);
+				resources.add(rr);
+			}
+		}
+		roleDao.insertRoleAndResource(resources);
 	}
 
 	@Override
 	public List<RoleDTO> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return roleDao.findAll();
 	}
 
 	@Override
@@ -86,7 +110,7 @@ public class RoleServiceImpl implements RoleService {
 		int offset = pageRequest.getPageSize();
 		offset = (pageNo) * offset;
 		int totalPages = roleDao.findTotalCount();
-		List<RoleDTO> users = roleDao.findAll(offset, pageRequest.getPageSize());
+		List<RoleDTO> users = roleDao.findAllByPage(offset, pageRequest.getPageSize());
 		PageInfo<RoleDTO> page = new PageInfo<>();
 		page.setContent(users);
 		page.setNumber(offset);
@@ -111,7 +135,6 @@ public class RoleServiceImpl implements RoleService {
 			role.setStatus(0);
 			roleDao.insertOrUpdate(role);
 		}
-		
 
 	}
 
