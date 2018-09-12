@@ -43,15 +43,15 @@
             <div class="box  box-primary">
                 <form class="form-horizontal form-edit" method="post" action="${ctx!}/resource/edit">
                     <div class="box-body">
-                        <input type="hidden" id="id" name="resourceId" value="${resource.resourceId?c}">
+                        <input type="hidden" id="id" name="id" value="${resource.id?c}">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">上级资源：</label>
                             <div class="col-sm-8">
                                 <select name="parentId" class="form-control">
                                     <option value="">菜单</option>
                                     <#list list as r>
-                                        <option value="${r.resourceId}"
-                                                <#if resource.parent.resourceId== r.resourceId>selected="selected"</#if>>
+                                        <option value="${r.id}"
+                                                <#if resource.parent.id== r.id>selected="selected"</#if>>
                                             <#if r.level == 1>|-<#elseif  r.level == 2>　|-<#else>　　|-</#if>${r.name}
                                         </option>
                                     </#list>

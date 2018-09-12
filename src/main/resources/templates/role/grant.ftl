@@ -25,6 +25,7 @@
         url: "${ctx!}/resource/tree/" + ${role.roleId},
         dataType: 'json',
         success: function (msg) {
+        	console.log(msg)
             $.fn.zTree.init($("#tree"), setting, msg);
         }
     });

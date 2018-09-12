@@ -17,7 +17,8 @@
 			ofType="com.convergence.domain.ResourceDTO"
 			select="com.convergence.dao.ResourceDao.selectResourcesByRoleId"></collection>
 	</resultMap>
-	<resultMap type="com.convergence.domain.RoleResourceDTO" id="RoleAndResourceMap">
+	<resultMap type="com.convergence.domain.RoleResourceDTO"
+		id="RoleAndResourceMap">
 		<id column="role_id" property="roleId" jdbcType="INTEGER" />
 		<result column="role_id" property="roleId" jdbcType="INTEGER" />
 	</resultMap>
@@ -150,10 +151,11 @@
 		select count(0) from role
 	</select>
 	<select id="findAllByPage" resultMap="BaseResultMap">
-		select * from role order by create_time desc limit #{offset},#{pageSize}
+		select * from role order by
+		create_time desc limit #{offset},#{pageSize}
 	</select>
 	<select id="findAll" resultMap="BaseResultMap">
-		select * from role  
+		select * from role
 	</select>
 	<insert id="insertOrUpdate">
 		insert into role
@@ -216,15 +218,17 @@
 		<foreach collection="set" item="item" separator=",">
 			(#{item.roleId}, #{item.resourceId})
 		</foreach>
-			ON DUPLICATE KEY UPDATE
-			role_id=values(role_id),
-			resource_id=values(resource_id)
+		ON DUPLICATE KEY UPDATE
+		role_id=values(role_id),
+		resource_id=values(resource_id)
 	</insert>
-	<select id="selectResourceByRoleId" resultMap="RoleAndResourceMap">
+	<select id="selectResourceByRoleId"
+		resultMap="RoleAndResourceMap">
 		select * from role_resource where role_id=#{roleId}
 	</select>
-    <delete id="deleteRoleAndResources"  >
-		delete   from role_resource   where 
-	 	 		 role_id=#{roleId}
+	<delete id="deleteRoleAndResources">
+		delete from role_resource
+		where
+		role_id=#{roleId}
 	</delete>
 </mapper>

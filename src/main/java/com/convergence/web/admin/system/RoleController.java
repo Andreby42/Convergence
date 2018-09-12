@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.convergence.domain.RoleDTO;
 import com.convergence.service.RoleService;
 import com.convergence.support.JsonResult;
@@ -69,6 +70,7 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "/grant/{id}", method = RequestMethod.GET)
     public String grant(@PathVariable Integer id, ModelMap map) {
         RoleDTO role = roleService.find(id);
+        System.out.println(JSON.toJSONString(role.getResources()));
         map.put("role", role);
         return "role/grant";
     }

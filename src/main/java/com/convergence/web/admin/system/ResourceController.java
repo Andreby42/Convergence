@@ -22,10 +22,10 @@ public class ResourceController extends BaseController {
 	@Autowired
 	private ResourceService resourceService;
 
-	@RequestMapping("/tree/{resourceId}")
+	@RequestMapping("/tree/{id}")
 	@ResponseBody
-	public List<ZtreeView> tree(@PathVariable Integer resourceId) {
-		List<ZtreeView> list = resourceService.tree(resourceId);
+	public List<ZtreeView> tree(@PathVariable Integer id) {
+		List<ZtreeView> list = resourceService.tree(id);
 		return list;
 	}
 

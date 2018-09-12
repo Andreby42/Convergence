@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.convergence.dao.ResourceDao">
 	<resultMap id="BaseResultMap" type="com.convergence.domain.ResourceDTO">
-		<id column="resource_id" property="resourceId" jdbcType="INTEGER" />
+		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="description" property="description" jdbcType="VARCHAR" />
 		<result column="icon" property="icon" jdbcType="VARCHAR" />
@@ -17,7 +17,7 @@
 		<result column="parent_id" property="parentId" jdbcType="INTEGER" />
 	</resultMap>
 	<resultMap type="com.convergence.domain.ResourceDTO" id="BaseResultMapExpand">
-		<id column="resource_id" property="resourceId" jdbcType="INTEGER" />
+		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="description" property="description" jdbcType="VARCHAR" />
 		<result column="icon" property="icon" jdbcType="VARCHAR" />
@@ -30,12 +30,12 @@
 		<result column="type" property="type" jdbcType="INTEGER" />
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 		<result column="parent_id" property="parentId" jdbcType="INTEGER" />
-	<!-- 	<collection property="resources" column="resource_id"
+	<!-- 	<collection property="resources" column="id"
 			ofType="com.convergence.domain.ResourceDTO" select="com.convergence.dao.ResourceDao.selectResourcesByParentId"></collection> -->
 		<association property="parent" column="parent_id"  javaType="com.convergence.domain.ResourceDTO" select="com.convergence.dao.ResourceDao.selectResourcesByParentId" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		resource_id, create_time, description, icon, is_hide, level, name, sort,
+		id, create_time, description, icon, is_hide, level, name, sort,
 		source_key,
 		source_url, type, update_time, parent_id
 	</sql>
@@ -44,19 +44,19 @@
 		select
 		<include refid="Base_Column_List" />
 		from resource
-		where resource_id = #{resourceId,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from resource
-		where resource_id = #{resourceId,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.convergence.domain.ResourceDTO">
-		insert into resource (resource_id, create_time, description,
+		insert into resource (id, create_time, description,
 		icon, is_hide, level,
 		name, sort, source_key,
 		source_url, type, update_time,
 		parent_id)
-		values (#{resourceId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+		values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
 		#{description,jdbcType=VARCHAR},
 		#{icon,jdbcType=VARCHAR}, #{isHide,jdbcType=INTEGER}, #{level,jdbcType=INTEGER},
 		#{name,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER},
@@ -67,8 +67,8 @@
 	<insert id="insertSelective" parameterType="com.convergence.domain.ResourceDTO">
 		insert into resource
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="resourceId != null">
-				resource_id,
+			<if test="id != null">
+				id,
 			</if>
 			<if test="createTime != null">
 				create_time,
@@ -108,8 +108,8 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="resourceId != null">
-				#{resourceId,jdbcType=INTEGER},
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
 			</if>
 			<if test="createTime != null">
 				#{createTime,jdbcType=TIMESTAMP},
@@ -189,7 +189,7 @@
 				parent_id = #{parentId,jdbcType=INTEGER},
 			</if>
 		</set>
-		where resource_id = #{resourceId,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.convergence.domain.ResourceDTO">
 		update resource
@@ -205,11 +205,28 @@
 		type = #{type,jdbcType=INTEGER},
 		update_time = #{updateTime,jdbcType=TIMESTAMP},
 		parent_id = #{parentId,jdbcType=INTEGER}
-		where resource_id = #{resourceId,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
 	</update>
-	<select id="selectResourcesByRoleId" resultMap="BaseResultMap">
-		select rs.* from resource rs, role_resource rr where
-		rr.role_id=#{roleId} and rr.resource_id=rs.resource_id
+	<select id="selectResourcesByRoleId" resultMap="BaseResultMapExpand">
+		SELECT
+		res.id as id,
+		res.create_time,  
+		res.description, 
+		res.icon, 
+		res.is_hide, 
+		res.LEVEL,
+		res.NAME,
+		res.parent_id,
+		res.sort,
+		res.source_key,
+		res.source_url,
+		res.type,
+		res.update_time  
+		FROM
+			role_resource rr
+			INNER JOIN resource res ON rr.resource_id = res.id 
+		WHERE
+			rr.role_id =#{roleId}
 	</select>
 	<select id="findAllWithParams" resultMap="BaseResultMap">
 		select <include refid="Base_Column_List" />
@@ -221,8 +238,8 @@
 	<insert id="insertOrUpdate">
 	insert into resource
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="resourceId != null">
-				resource_id,
+			<if test="id != null">
+				id,
 			</if>
 			<if test="createTime != null">
 				create_time,
@@ -262,8 +279,8 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="resourceId != null">
-				#{resourceId,jdbcType=INTEGER},
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
 			</if>
 			<if test="createTime != null">
 				#{createTime,jdbcType=TIMESTAMP},
@@ -318,7 +335,7 @@
 			</if>
 	</insert>
 	<select id="selectResourcesByParentId" resultMap="BaseResultMap">
-		select * from resource where resource_id=#{parentId}
+		select * from resource where id=#{parentId}
 	</select>
 	<select id="findAll" resultMap="BaseResultMapExpand">
 	select * from resource
@@ -326,7 +343,27 @@
 	<select id="findAllForShiro"  resultMap="BaseResultMap">
 		select * from resource
 	</select>
-	<select id="findAllByOrderByParentAscIdAscSortAsc" resultMap="BaseResultMap">
-		select <include refid="Base_Column_List"/> from resource order by parent_id asc, resource_id asc 
-	</select>
+	<select id="findAllByOrderByParentAscIdAscSortAsc" resultMap="BaseResultMapExpand">
+	SELECT
+		r1.id,
+		r1.create_time,
+		r1.description,
+		r1.icon,
+		r1.is_hide,
+		r1.LEVEL,
+		r1.NAME,
+		r1.parent_id,
+		r1.sort,
+		r1.source_key,
+		r1.source_url,
+		r1.type,
+		r1.update_time 
+	FROM
+		resource r1
+		LEFT OUTER JOIN resource r2 ON r1.parent_id = r2.id 
+	ORDER BY
+		r2.id ASC,
+		r1.id ASC,
+		r1.sort ASC
+</select>
 </mapper>

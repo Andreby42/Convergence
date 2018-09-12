@@ -23,7 +23,7 @@ public interface ResourceService {
 
     int updateByPrimaryKey(ResourceDTO record);
 
-    Set<ResourceDTO> selectResourcesByRoleId(String userId);
+    Set<ResourceDTO> selectResourcesByRoleId(String roleId);
 
     PageInfo<ResourceDTO> findAll(PageRequest pageRequest);
 

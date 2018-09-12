@@ -16,13 +16,13 @@ public interface ResourceDao {
 
 	int insertSelective(ResourceDTO record);
 
-	ResourceDTO selectByPrimaryKey(Integer reourceId);
+	ResourceDTO selectByPrimaryKey(Integer id);
 
 	int updateByPrimaryKeySelective(ResourceDTO record);
 
 	int updateByPrimaryKey(ResourceDTO record);
 
-	Set<ResourceDTO> selectResourcesByRoleId(String userId);
+	Set<ResourceDTO> selectResourcesByRoleId(String roleId);
 
 	List<ResourceDTO> findAllWithParams(@Param("offset") int offset, @Param("pageSize") int pageSize);
 

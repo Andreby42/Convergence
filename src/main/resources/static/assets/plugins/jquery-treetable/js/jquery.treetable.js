@@ -474,13 +474,13 @@
       return this;
     },
 
-    collapseNode: function(resourceId) {
-      var node = this.data("treetable").tree[resourceId];
+    collapseNode: function(id) {
+      var node = this.data("treetable").tree[id];
 
       if (node) {
         node.collapse();
       } else {
-        throw new Error("Unknown node '" + resourceId + "'");
+        throw new Error("Unknown node '" + id + "'");
       }
 
       return this;
@@ -491,8 +491,8 @@
       return this;
     },
 
-    expandNode: function(resourceId) {
-      var node = this.data("treetable").tree[resourceId];
+    expandNode: function(id) {
+      var node = this.data("treetable").tree[id];
 
       if (node) {
         if (!node.initialized) {
@@ -501,7 +501,7 @@
 
         node.expand();
       } else {
-        throw new Error("Unknown node '" + resourceId + "'");
+        throw new Error("Unknown node '" + id + "'");
       }
 
       return this;
@@ -546,29 +546,29 @@
       return this;
     },
 
-    node: function(resourceId) {
-      return this.data("treetable").tree[resourceId];
+    node: function(id) {
+      return this.data("treetable").tree[id];
     },
 
     removeNode: function(id) {
-      var node = this.data("treetable").tree[resourceId];
+      var node = this.data("treetable").tree[id];
 
       if (node) {
         this.data("treetable").removeNode(node);
       } else {
-        throw new Error("Unknown node '" + resourceId + "'");
+        throw new Error("Unknown node '" + id + "'");
       }
 
       return this;
     },
 
-    reveal: function(resourceId) {
-      var node = this.data("treetable").tree[resourceId];
+    reveal: function(id) {
+      var node = this.data("treetable").tree[id];
 
       if (node) {
         node.reveal();
       } else {
-        throw new Error("Unknown node '" + resourceId + "'");
+        throw new Error("Unknown node '" + id + "'");
       }
 
       return this;

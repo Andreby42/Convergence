@@ -77,11 +77,11 @@ public class ResourceServiceImpl implements ResourceService {
 		List<ResourceDTO> all = resourceDao.findAllByOrderByParentAscIdAscSortAsc();
 		for (ResourceDTO resource : all) {
 			node = new ZtreeView();
-			node.setId(Long.valueOf(resource.getResourceId()));
+			node.setId(Long.valueOf(resource.getId()));
 			if (resource.getParent() == null) {
 				node.setpId(-1L);
 			} else {
-				node.setpId(Long.valueOf(resource.getParent().getResourceId()));
+				node.setpId(Long.valueOf(resource.getParent().getId()));
 			}
 			node.setName(resource.getName());
 			if (roleResources != null && roleResources.contains(resource)) {
@@ -91,17 +91,16 @@ public class ResourceServiceImpl implements ResourceService {
 		}
 		return resultTreeNodes;
 	}
-	
+
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void saveOrUpdate(ResourceDTO resource) {
-		if (resource.getResourceId() != null) {
-			ResourceDTO dbResource = find(resource.getResourceId());
+		if (resource.getId() != null) {
+			ResourceDTO dbResource = find(resource.getId());
 			dbResource.setUpdateTime(new Date());
 			dbResource.setName(resource.getName());
 			dbResource.setSourceKey(resource.getSourceKey());

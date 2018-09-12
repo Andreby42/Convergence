@@ -2,12 +2,9 @@ package com.convergence.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
-import javax.annotation.Resource;
 
 public class ResourceDTO implements Serializable {
-	private Integer resourceId;
+	private Integer id;
 
 	private Date createTime;
 
@@ -46,12 +43,13 @@ public class ResourceDTO implements Serializable {
 		this.parent = parent;
 	}
 
-	public Integer getResourceId() {
-		return resourceId;
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setResourceId(Integer resourceId) {
-		this.resourceId = resourceId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Date getCreateTime() {
@@ -157,11 +155,12 @@ public class ResourceDTO implements Serializable {
 		result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((icon == null) ? 0 : icon.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((isHide == null) ? 0 : isHide.hashCode());
 		result = prime * result + ((level == null) ? 0 : level.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((parent == null) ? 0 : parent.hashCode());
 		result = prime * result + ((parentId == null) ? 0 : parentId.hashCode());
-		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
 		result = prime * result + ((sort == null) ? 0 : sort.hashCode());
 		result = prime * result + ((sourceKey == null) ? 0 : sourceKey.hashCode());
 		result = prime * result + ((sourceUrl == null) ? 0 : sourceUrl.hashCode());
@@ -194,6 +193,11 @@ public class ResourceDTO implements Serializable {
 				return false;
 		} else if (!icon.equals(other.icon))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (isHide == null) {
 			if (other.isHide != null)
 				return false;
@@ -218,11 +222,6 @@ public class ResourceDTO implements Serializable {
 			if (other.parentId != null)
 				return false;
 		} else if (!parentId.equals(other.parentId))
-			return false;
-		if (resourceId == null) {
-			if (other.resourceId != null)
-				return false;
-		} else if (!resourceId.equals(other.resourceId))
 			return false;
 		if (sort == null) {
 			if (other.sort != null)
@@ -254,8 +253,8 @@ public class ResourceDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ResourceDTO [resourceId=" + resourceId + ", createTime=" + createTime + ", description=" + description
-				+ ", icon=" + icon + ", isHide=" + isHide + ", level=" + level + ", name=" + name + ", sort=" + sort
+		return "ResourceDTO [id=" + id + ", createTime=" + createTime + ", description=" + description + ", icon="
+				+ icon + ", isHide=" + isHide + ", level=" + level + ", name=" + name + ", sort=" + sort
 				+ ", sourceKey=" + sourceKey + ", sourceUrl=" + sourceUrl + ", type=" + type + ", updateTime="
 				+ updateTime + ", parentId=" + parentId + ", parent=" + parent + "]";
 	}

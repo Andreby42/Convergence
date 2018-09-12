@@ -70,9 +70,9 @@
                     <th>操作</th>
                 </tr>
                 <#list list as resourceInfo>
-                <tr data-tt-id="${resourceInfo.resourceId?c}" <#if resourceInfo.parent !=null>data-tt-parent-id="${resourceInfo.parent.resourceId?c}"</#if>>
+                <tr data-tt-id="${resourceInfo.id?c}" <#if resourceInfo.parent !=null>data-tt-parent-id="${resourceInfo.parent.id?c}"</#if>>
                     <td>${resourceInfo.name}</td>
-                    <td>${resourceInfo.resourceId?c}</td>
+                    <td>${resourceInfo.id?c}</td>
                     <td>${resourceInfo.sourceKey}</td>
                     <td>
                         <#if resourceInfo.type == 0>
@@ -98,10 +98,10 @@
                     <td>${resourceInfo.updateTime?string('yyyy-MM-dd HH:mm:ss')}</td>
                     <td>
 					<@shiro.hasPermission name="system:resource:edit">
-					<a class="btn btn-sm btn-primary" href="${ctx!}/resource/edit/${resourceInfo.resourceId?c}">编辑</a>
+					<a class="btn btn-sm btn-primary" href="${ctx!}/resource/edit/${resourceInfo.id?c}">编辑</a>
                     </@shiro.hasPermission>
                     <@shiro.hasPermission name="system:resource:delete">
-                        <button class="btn btn-sm btn-danger" onclick="del(${resourceInfo.resourceId?c})">删除</button>
+                        <button class="btn btn-sm btn-danger" onclick="del(${resourceInfo.id?c})">删除</button>
                     </@shiro.hasPermission>
                     </td>
                 </tr>
