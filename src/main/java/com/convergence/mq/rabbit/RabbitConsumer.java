@@ -26,7 +26,6 @@ public class RabbitConsumer {
             key = "sky-eye-key"))
     @RabbitHandler
     public <T> void handle(Message<T> message, Channel channel) {
-        System.err.println("消费端Payload: " + message.getPayload());
         Long deliveryTag = (Long) message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
         try {
             channel.basicAck(deliveryTag, false);
