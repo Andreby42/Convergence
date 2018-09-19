@@ -38,7 +38,7 @@ public class TomcatConfig {
 		   tomcat.addAdditionalTomcatConnectors(httpConnector()); 
 		   return tomcat;
 		 //若不需要共存就去掉http2httpsFilter,同时注释以上代码使用下面的注释代码
-/*		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
+ 	/*	TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
 			@Override
 			protected void postProcessContext(Context context) {
 				SecurityConstraint constraint = new SecurityConstraint();
@@ -50,8 +50,8 @@ public class TomcatConfig {
 			}
 		};
 		tomcat.addAdditionalTomcatConnectors(httpConnector());
-		return tomcat;
-		*/
+		return tomcat;*/
+		 
 		
 
 	}
