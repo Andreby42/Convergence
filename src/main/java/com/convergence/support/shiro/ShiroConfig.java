@@ -130,6 +130,7 @@ public class ShiroConfig {
 		shiroFilter.setUnauthorizedUrl("/privilege/no");
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 		filterChainDefinitionMap.put("/assets/**", "anon");
+		filterChainDefinitionMap.put("/aop/**", "anon");
 
 		filterChainDefinitionMap.put("/login", "anon");
 
