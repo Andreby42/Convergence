@@ -1,19 +1,17 @@
 package com.convergence;
 
-import org.apache.catalina.connector.Connector;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.convergence.web.websocket.NettyServer;
 
-@SpringBootApplication
+//跳过flowable的springBoot验证
+@SpringBootApplication(exclude = {
+		org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class })
 @EnableCaching // 开启缓存
 @EnableTransactionManagement
 @MapperScan("com.convergence.dao")

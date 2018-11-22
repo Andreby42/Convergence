@@ -34,11 +34,11 @@ public class TomcatConfig {
 	public ServletWebServerFactory servletContainer() {
 			// http与https共存时候，需要强转http为https时候用注释代码
 		
-		   TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+		/*   TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
 		   tomcat.addAdditionalTomcatConnectors(httpConnector()); 
-		   return tomcat;
+		   return tomcat;*/
 		 //若不需要共存就去掉http2httpsFilter,同时注释以上代码使用下面的注释代码
- 	/*	TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
+ 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
 			@Override
 			protected void postProcessContext(Context context) {
 				SecurityConstraint constraint = new SecurityConstraint();
@@ -50,7 +50,7 @@ public class TomcatConfig {
 			}
 		};
 		tomcat.addAdditionalTomcatConnectors(httpConnector());
-		return tomcat;*/
+		return tomcat;
 		 
 		
 

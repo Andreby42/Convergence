@@ -90,7 +90,7 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
                 } else {
                     response.setIsSucc(true).setMessage("注册成功");
 
-                  /*  CustomService.watchMap.forEach((reqId, callBack) -> {
+                    CustomService.watchMap.forEach((reqId, callBack) -> {
                         response.getHadOnline().put(reqId, ((CustomService) callBack).getName()); // 将已经上线的人员返回
 
                         if (!reqId.equals(requestId)) {
@@ -104,7 +104,7 @@ public class CustomWebSocketServerHandler<T> extends SimpleChannelInboundHandler
                                 logger.warn("回调发送消息给客户端异常", e);
                             }
                         }
-                    });*/
+                    }); 
                 }
                 sendWebSocket(response.toJson());
                 this.sessionId = requestId; // 记录会话 id，当页面刷新或浏览器关闭时，注销掉此链路

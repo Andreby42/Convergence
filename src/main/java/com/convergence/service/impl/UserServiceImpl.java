@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 
 import com.convergence.dao.RoleDao;
 import com.convergence.dao.UserDao;
+import com.convergence.domain.RoleDTO;
 import com.convergence.domain.UserDTO;
 import com.convergence.domain.UserRoleDTO;
 import com.convergence.service.UserService;
@@ -169,5 +170,6 @@ public class UserServiceImpl implements UserService {
 			userDao.updateByPrimaryKey(user);
 		}
 	}
+
 
 }

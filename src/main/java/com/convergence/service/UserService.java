@@ -40,4 +40,6 @@ public interface UserService {
 	void updatePwd(UserDTO principal, String oldPassword, String password1, String password2);
 
 	void UpdateDeleteStatus(Integer id);
+
+
 }

@@ -25,8 +25,6 @@ public class TestController extends BaseController {
 	
 	@RequestMapping(value = { "/index" })
 	public String index(ModelMap modelMap) {
-		PageInfo<UserDTO> page = userService.findAll(getPageRequest());
-		modelMap.put("pageInfo", page);
 		return "user/index";
 	}
 //	@RequestMapping(value = { "/1" })
