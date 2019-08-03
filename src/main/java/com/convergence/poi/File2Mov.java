@@ -1,91 +1,91 @@
-package com.convergence.poi;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import org.jim2mov.core.DefaultMovieInfoProvider;
-import org.jim2mov.core.FrameSavedListener;
-import org.jim2mov.core.ImageProvider;
-import org.jim2mov.core.Jim2Mov;
-import org.jim2mov.core.MovieInfoProvider;
-import org.jim2mov.core.MovieSaveException;
-import org.jim2mov.utils.MovieUtils;
-
-public class File2Mov implements ImageProvider, FrameSavedListener {
-  // 文件数组
-  private ArrayList<String> fileArray = null;
-  // 文件类型
-  private int type = MovieInfoProvider.TYPE_QUICKTIME_JPEG;
-
-  // 主函数
-  public static void main(String[] args) throws MovieSaveException {
-    ArrayList<String> fileArray = new ArrayList<>();
-    File[] listFiles = new File("E:\\ppt2pic").listFiles();
-    List<File> asList = Arrays.asList(listFiles);
-    Collections.sort(asList, new Comparator<File>() {
-
-      @Override
-      public int compare(File f1, File f2) {
-        String name1 = f1.getName().substring(0, f1.getName().lastIndexOf("."));
-        String name2 = f2.getName().substring(0, f2.getName().lastIndexOf("."));
-        if (Integer.valueOf(name1) > Integer.valueOf(name2)) {
-          return 1;
-        }
-        if (Integer.valueOf(name1) < Integer.valueOf(name2)) {
-          return -1;
-        }
-        return 0;
-      }
-    });
-    for (int i = 0; i < listFiles.length; i++) {
-      fileArray.add(listFiles[i].getAbsolutePath());
-    }
-    new File2Mov(fileArray, MovieInfoProvider.TYPE_QUICKTIME_JPEG, "Test.mov");
-  }
-
-
-  /**
-   * 图片转视频
-   * 
-   * @param filePaths 文件路径数组
-   * @param type 格式
-   * @param path 文件名
-   * @throws MovieSaveException
-   */
-  public File2Mov(ArrayList<String> fileArray, int type, String path) throws MovieSaveException {
-    this.fileArray = fileArray;
-    this.type = type;
-    DefaultMovieInfoProvider dmip = new DefaultMovieInfoProvider(path);
-    // 设置帧频率
-    dmip.setFPS(1);
-    // 设置帧数--一张图片一帧
-    dmip.setNumberOfFrames(fileArray.size());
-    // 设置视频高度
-    dmip.setMWidth(320);
-    // 设置视频宽度
-    dmip.setMHeight(240);
-    new Jim2Mov(this, dmip, this).saveMovie(this.type);
-
-  }
-
-  @Override
-  public void frameSaved(int frameNumber) {
-    System.out.println("Saved frame: " + frameNumber);
-
-  }
-
-  @Override
-  public byte[] getImage(int frame) {
-    try {
-      return MovieUtils.convertImageToJPEG(new File(fileArray.get(frame)), 1.0f);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return null;
-
-  }
-
-}
+//package com.convergence.poi;
+//
+//import java.io.File;
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.Collections;
+//import java.util.Comparator;
+//import java.util.List;
+////import org.jim2mov.core.DefaultMovieInfoProvider;
+////import org.jim2mov.core.FrameSavedListener;
+////import org.jim2mov.core.ImageProvider;
+////import org.jim2mov.core.Jim2Mov;
+////import org.jim2mov.core.MovieInfoProvider;
+////import org.jim2mov.core.MovieSaveException;
+////import org.jim2mov.utils.MovieUtils;
+//
+//public class File2Mov implements ImageProvider, FrameSavedListener {
+//  // 文件数组
+//  private ArrayList<String> fileArray = null;
+//  // 文件类型
+//  private int type = MovieInfoProvider.TYPE_QUICKTIME_JPEG;
+//
+//  // 主函数
+//  public static void main(String[] args) throws MovieSaveException {
+//    ArrayList<String> fileArray = new ArrayList<>();
+//    File[] listFiles = new File("E:\\ppt2pic").listFiles();
+//    List<File> asList = Arrays.asList(listFiles);
+//    Collections.sort(asList, new Comparator<File>() {
+//
+//      @Override
+//      public int compare(File f1, File f2) {
+//        String name1 = f1.getName().substring(0, f1.getName().lastIndexOf("."));
+//        String name2 = f2.getName().substring(0, f2.getName().lastIndexOf("."));
+//        if (Integer.valueOf(name1) > Integer.valueOf(name2)) {
+//          return 1;
+//        }
+//        if (Integer.valueOf(name1) < Integer.valueOf(name2)) {
+//          return -1;
+//        }
+//        return 0;
+//      }
+//    });
+//    for (int i = 0; i < listFiles.length; i++) {
+//      fileArray.add(listFiles[i].getAbsolutePath());
+//    }
+//    new File2Mov(fileArray, MovieInfoProvider.TYPE_QUICKTIME_JPEG, "Test.mov");
+//  }
+//
+//
+//  /**
+//   * 图片转视频
+//   *
+//   * @param filePaths 文件路径数组
+//   * @param type 格式
+//   * @param path 文件名
+//   * @throws MovieSaveException
+//   */
+//  public File2Mov(ArrayList<String> fileArray, int type, String path) throws MovieSaveException {
+//    this.fileArray = fileArray;
+//    this.type = type;
+//    DefaultMovieInfoProvider dmip = new DefaultMovieInfoProvider(path);
+//    // 设置帧频率
+//    dmip.setFPS(1);
+//    // 设置帧数--一张图片一帧
+//    dmip.setNumberOfFrames(fileArray.size());
+//    // 设置视频高度
+//    dmip.setMWidth(320);
+//    // 设置视频宽度
+//    dmip.setMHeight(240);
+//    new Jim2Mov(this, dmip, this).saveMovie(this.type);
+//
+//  }
+//
+//  @Override
+//  public void frameSaved(int frameNumber) {
+//    System.out.println("Saved frame: " + frameNumber);
+//
+//  }
+//
+//  @Override
+//  public byte[] getImage(int frame) {
+//    try {
+//      return MovieUtils.convertImageToJPEG(new File(fileArray.get(frame)), 1.0f);
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//    }
+//    return null;
+//
+//  }
+//
+//}

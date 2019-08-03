@@ -26,7 +26,7 @@ public class test {
 		System.out.println(selectByPrimaryKey);
 	}
 
-	 @PostConstruct
+//	 @PostConstruct
 	public void testMg() {
 		AtomDTO atomDTO = atomService.selectByPrimaryKey(99);
 		// mgAtomService.insert(atomDTO);

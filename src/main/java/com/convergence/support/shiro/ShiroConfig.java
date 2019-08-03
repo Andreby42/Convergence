@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.compress.utils.Lists;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.mgt.DefaultSecurityManager;
@@ -134,7 +135,8 @@ public class ShiroConfig {
 
 		filterChainDefinitionMap.put("/login", "anon");
 
-		List<ResourceDTO> list = resourceService.findAllForShiro();
+//		List<ResourceDTO> list = resourceService.findAllForShiro();
+				List<ResourceDTO> list = Lists.newArrayList();
 		if (CollectionUtils.isNotEmpty(list)) {
 			for (ResourceDTO resource : list) {
 				filterChainDefinitionMap.put(resource.getSourceUrl(), "perms[" + resource.getSourceKey() + "]");

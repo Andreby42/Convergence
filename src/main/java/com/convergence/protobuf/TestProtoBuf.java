@@ -17,7 +17,7 @@ public class TestProtoBuf {
     @Resource
     private AtomDao atomDao;
 
-    @PostConstruct
+//    @PostConstruct
     public void test() throws IllegalAccessException, InvocationTargetException {
 //        AtomDTO atom = atomDao.selectByPrimaryKey(1);
 //        Atom.AtomMsg.Builder atomBuilder = Atom.AtomMsg.newBuilder();
